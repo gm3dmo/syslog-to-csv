@@ -20,3 +20,8 @@ or if you need speed:
 ```
 pypy syslog-to-csv.py /var/log/syslog.1
 ```
+
+## Visualise syslog
+Now that you have a csv you can use a wide range of tools like Pandas, and friends or even Excel to interpret your syslog data:
+
+![Syslog Visualized](images/syslog-visualized.png)
