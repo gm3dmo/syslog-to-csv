@@ -75,5 +75,8 @@ def fix_syslog_date(original_date):
     return (real_date, rd, real_datetime_obj)
 
 
+def main():
+    """main"""
+
 if __name__ == "__main__":
     main()
