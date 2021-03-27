@@ -1,5 +1,5 @@
 # Syslog to CSV
-Convert a syslog file into a csv file (debian 10) but others may work.
+Convert a [syslog](https://tools.ietf.org/html/rfc5424) file into a csv file (debian 10) but others may work.
 
 ## syslog-to-csv
 Download the latest release:
