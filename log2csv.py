@@ -17,14 +17,14 @@ def known_regexes(want_to_match):
 def strip_regex(string_to_wipe, pattern_to_wipe=r"\d+"):
     logger.debug(f"""Original: {string_to_wipe}""")
     wiped_string = re.sub(pattern_to_wipe, "", string_to_wipe)
-    logger.debug(f"""Cleansed: {wiped_string}""")
+    logger.debug(f"""Cleaned of ({pattern_to_wipe}): {wiped_string}""")
     return wiped_string
 
 
 def wipe_numbers_from_string(string_to_wipe, pattern_to_wipe=r"\d+"):
     logger.debug(f"""Original: {string_to_wipe}""")
     wiped_string = re.sub(pattern_to_wipe, "", string_to_wipe)
-    logger.debug(f"""Cleansed: {wiped_string}""")
+    logger.debug(f"""Cleaned of: ({pattern_to_wipe}) {wiped_string}""")
     return wiped_string
 
 
@@ -33,7 +33,7 @@ def wipe_64charguids_from_string(
 ):
     logger.debug(f"""Original: {string_to_wipe}""")
     wiped_string = re.sub(pattern_to_wipe, "", string_to_wipe)
-    logger.debug(f"""Cleansed: {wiped_string}""")
+    logger.debug(f"""Cleaned of: ({pattern_to_wipe}) {wiped_string}""")
     return wiped_string
 
 
