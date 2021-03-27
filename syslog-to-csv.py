@@ -6,6 +6,7 @@ import csv
 import logzero
 import logging
 import argparse
+import datetime
 from logzero import logger
 from pathlib import Path
 import log2csv as lc
@@ -65,9 +66,7 @@ def main(args):
                     logger.debug(f"""Deletion: {deletion}""")
                     w = deletions_handler[deletion](w)
                 try:
-                    (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(
-                        date
-                    )
+                    (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
                     line_dict["line_number"] = {
                         "line_number": line_number,
                         "line_length": length_of_line,
@@ -88,6 +87,7 @@ def main(args):
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     parser = argparse.ArgumentParser()
+
     parser.add_argument("filename", help="a syslog file")
 
     parser.add_argument(
@@ -98,6 +98,14 @@ if __name__ == "__main__":
         const=logging.DEBUG,
         default=logging.WARNING,
         help="debug(-d, --debug, etc)",
+    )
+
+    parser.add_argument(
+        "--base-year",
+        action="store",
+        dest="base_year",
+        default=datetime.datetime.now().year,
+        help="--base-year 2021",
     )
 
     parser.add_argument(

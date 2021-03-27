@@ -47,7 +47,7 @@ def wipe_guids_from_string(
     return wiped_string
 
 
-def fix_syslog_date(original_date):
+def fix_syslog_date(original_date, base_year=""):
     """
     `original_date='Aug 15 08:38:22`
 
@@ -66,8 +66,13 @@ def fix_syslog_date(original_date):
     original_date = " ".join(original_date.split())
     (m, d, t) = original_date.split(" ")
 
-    x = datetime.datetime.now()
-    iso_year = x.year
+    if base_year:
+       iso_year = base_year
+       logger.debug(f"""passed in via base-year: {iso_year}""")
+    else:
+       base_date_today = datetime.datetime.now()
+       iso_year = base_date_today.year
+       logger.debug(f"""defaulting to year: {iso_year}""")
 
     real_date = f"""{iso_year} {m} {d} {t}"""
     real_datetime_obj = datetime.datetime.strptime(real_date, "%Y %b %d %H:%M:%S")
