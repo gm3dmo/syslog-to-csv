@@ -40,6 +40,8 @@ def main(args):
                 "extracted_date",
                 "unix_timestamp",
                 "real_date",
+                "hostname",
+                "daemon",
                 "line",
                 "remains_of_line",
                 "wiped_line",
@@ -58,13 +60,17 @@ def main(args):
                 length_of_line = len(line)
                 line = line.rstrip()
                 line_dict = {}
-                logger.debug(line)
+                logger.debug(f"""Processing: {line_number} __ {line} __""" )
                 date, remains_of_line = line[:split_at_column], line[split_at_column:]
                 # w = remains_of_line.rstrip()
-                w = remains_of_line
+                w = remains_of_line.lstrip(' ')
+                z = w.split(' ',2)
+                hostname = z[0]
+                daemon = z[1]
                 for deletion in deletions:
                     logger.debug(f"""Deletion: {deletion}""")
                     w = deletions_handler[deletion](w)
+                    
                 try:
                     (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
                     line_dict["line_number"] = {
@@ -74,6 +80,8 @@ def main(args):
                         "unix_timestamp": real_datetime_obj.timestamp(),
                         "extracted_date": date,
                         "line": line,
+                        "hostname": hostname,
+                        "daemon": daemon,
                         "remains_of_line": remains_of_line,
                         "wiped_line": w,
                     }
