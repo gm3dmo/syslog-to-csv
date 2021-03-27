@@ -39,3 +39,6 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: run-syslog-to-csv.py
+      run: |
+        python3 syslog-to-csv.py test-data/debian-10/syslog
