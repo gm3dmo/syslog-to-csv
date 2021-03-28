@@ -3,18 +3,23 @@
 __version__ = "0.1.0"
 
 import csv
+import sys
 import logzero
-import logging
+import logging 
+import logging.config
 import argparse
 import datetime
-from logzero import logger
 from pathlib import Path
 import log2csv as lc
 
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def main(args):
 
-    logzero.loglevel(args.loglevel)
+    logger = logging.getLogger('syslog-to-csv')
+
+    
+    logger.setLevel(args.loglevel)
 
     deletions_handler = {
         "64charguids": lc.wipe_64charguids_from_string,

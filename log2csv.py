@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-
 import re
-from logzero import logger
 import datetime
+import logging
+import logging.config
 
+logger =  logging.getLogger('log2csv')
 
 def known_regexes(want_to_match):
     kr = {
