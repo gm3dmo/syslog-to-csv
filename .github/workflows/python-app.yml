@@ -13,7 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+       debian_10_csv_file = "/tmp/debian-10-syslog.csv"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -41,7 +42,7 @@ jobs:
 
     - name: run-syslog-to-csv.py
       run: |
-        python3 syslog-to-csv.py test-data/debian-10/syslog
+        python3 syslog-to-csv.py test-data/debian-10/syslog --csv-file ${debian_10_csv_file} 
     - name: head-csv
       run: |
-        head test-data/debian-10/syslog.csv
+        head ${debian_10_csv_file}
