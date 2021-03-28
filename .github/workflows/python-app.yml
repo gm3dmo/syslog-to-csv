@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
+        pip install flake8 pytest csvkit
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Lint with flake8
@@ -46,3 +46,6 @@ jobs:
     - name: head-csv
       run: |
         head ${debian_10_csv_file}
+    - name: csvkit-report
+      run: |
+        csvkit  ${debian_10_csv_file}
