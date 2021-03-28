@@ -117,6 +117,14 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--csv-file",
+        action="store",
+        dest="csv_filename",
+        default="syslog.csv",
+        help="--csv-file  <csv output file name>",
+    )
+
+    parser.add_argument(
         "--version",
         action="version",
         version="%(prog)s (version {version})".format(version=__version__),
