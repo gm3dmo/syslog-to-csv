@@ -45,7 +45,7 @@ def main(args):
                 "line",
                 "remains_of_line",
                 "wiped_line",
-            ],
+            ], quoting=csv.QUOTE_NONNUMERIC
         )
         writer.writeheader()
 
