@@ -4,7 +4,6 @@ __version__ = "0.1.0"
 
 import csv
 import sys
-import logzero
 import logging 
 import logging.config
 import argparse
