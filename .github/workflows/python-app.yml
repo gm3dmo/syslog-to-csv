@@ -48,4 +48,4 @@ jobs:
         head ${debian_10_csv_file}
     - name: csvkit-report
       run: |
-        csvkit  ${debian_10_csv_file}
+        csvstat  ${debian_10_csv_file}
