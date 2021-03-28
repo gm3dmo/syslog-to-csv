@@ -27,8 +27,8 @@ def main(args):
     logfile = Path(args.filename)
 
     logger.debug(logfile.parent)
-    output_dir = logfile.parent
-    output_filename = Path(f"""{output_dir}/{logfile.name}.csv""")
+
+    output_filename = Path(f"""{args.csv_file}""")
 
     with open(output_filename, "w") as csvfile:
         writer = csv.DictWriter(
@@ -119,7 +119,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--csv-file",
         action="store",
-        dest="csv_filename",
+        dest="csv_file",
         default="syslog.csv",
         help="--csv-file  <csv output file name>",
     )
