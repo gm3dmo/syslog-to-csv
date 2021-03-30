@@ -1,0 +1,6 @@
+Aug 15 08:22:53 debian ok-lin-blank-line-following[0]: Inserted module 'lp'
+
+Aug 15 08:22:53 debian control-m[1]: Condition check resulted in Dispatch Password Requests to Console Directory Watch being skipped.
+Aug 15 07:03:29 debian ctrl-m[3]: ^M2021-03-30 07:03:29.68 Server      Common language runtime (CLR) functionality initialized.^M
+
+Mar 30 07:03:30 debian mssql[4]: 2021-03-30 07:03:30.20 spid10s     Resource governor reconfiguration succeeded.
