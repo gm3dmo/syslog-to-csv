@@ -3,7 +3,7 @@
 __version__ = "0.1.0"
 
 import sys
-import logging 
+import logging
 import logging.config
 import argparse
 import datetime
@@ -12,20 +12,21 @@ import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def main(args):
 
     logger = logging.getLogger('syslog-to-csv')
     logger.setLevel(args.loglevel)
 
     deletions_handler = {
-        "64charguids": lc.wipe_64charguids_from_string,
-        "guids": lc.wipe_guids_from_string,
-        "numbers": lc.wipe_numbers_from_string,
+        "64charguids" : lc.wipe_64charguids_from_string,
+        "guids" : lc.wipe_guids_from_string,
+        "numbers" : lc.wipe_numbers_from_string,
     }
 
     deletions = ["64charguids", "guids", "numbers"]
 
-    syslog_fieldnames=[
+    syslog_fieldnames = [
                 "line_number",
                 "line_length",
                 "extracted_date",
@@ -76,7 +77,6 @@ def main(args):
             for deletion in deletions:
                 logger.debug(f"""Deletion: {deletion}""")
                 w = deletions_handler[deletion](w)
-                
             try:
                 (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
                 line_dict["line_number"] = {
