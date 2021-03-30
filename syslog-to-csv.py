@@ -19,9 +19,9 @@ def main(args):
     logger.setLevel(args.loglevel)
 
     deletions_handler = {
-        "64charguids" : lc.wipe_64charguids_from_string,
-        "guids" : lc.wipe_guids_from_string,
-        "numbers" : lc.wipe_numbers_from_string,
+        "64charguids": lc.wipe_64charguids_from_string,
+        "guids": lc.wipe_guids_from_string,
+        "numbers": lc.wipe_numbers_from_string,
     }
 
     deletions = ["64charguids", "guids", "numbers"]
@@ -37,7 +37,7 @@ def main(args):
                 "line",
                 "remains_of_line",
                 "wiped_line",
-            ]
+    ]
 
     logfile = Path(args.filename)
     logger.debug(logfile.parent)
@@ -63,10 +63,10 @@ def main(args):
                 continue
             line = line.rstrip()
             line_dict = {}
-            logger.debug(f"""Processing: {line_number} __ {line} __""" )
+            logger.debug(f"""Processing: {line_number} __ {line} __""")
             date, remains_of_line = line[:split_at_column], line[split_at_column:]
             w = remains_of_line.lstrip(' ')
-            z = w.split(' ',2)
+            z = w.split(' ', 2)
             if len(z) >= 2:
                 hostname = z[0]
                 daemon = z[1]
