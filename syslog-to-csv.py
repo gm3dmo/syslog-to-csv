@@ -2,7 +2,6 @@
 
 __version__ = "0.1.0"
 
-import csv
 import sys
 import logging 
 import logging.config
@@ -16,8 +15,6 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 def main(args):
 
     logger = logging.getLogger('syslog-to-csv')
-
-    
     logger.setLevel(args.loglevel)
 
     deletions_handler = {
@@ -28,17 +25,7 @@ def main(args):
 
     deletions = ["64charguids", "guids", "numbers"]
 
-    logfile = Path(args.filename)
-
-    logger.debug(logfile.parent)
-
-    output_filename = Path(f"""{args.csv_file}""")
-
-    with open(output_filename, "w") as csvfile:
-        writer = csv.DictWriter(
-            csvfile,
-            delimiter=",",
-            fieldnames=[
+    syslog_fieldnames=[
                 "line_number",
                 "line_length",
                 "extracted_date",
@@ -49,49 +36,56 @@ def main(args):
                 "line",
                 "remains_of_line",
                 "wiped_line",
-            ], quoting=csv.QUOTE_NONNUMERIC
-        )
-        writer.writeheader()
+            ]
 
-        # A syslog line looks like this :
-        # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
-        # 0123456789ABCDEF
-        # we want to extract the date so we split at 15:
-        split_at_column = 15
+    logfile = Path(args.filename)
+    logger.debug(logfile.parent)
 
-        with open(logfile) as fp:
-            for line_number, line in enumerate(fp):
-                length_of_line = len(line)
-                line = line.rstrip()
-                line_dict = {}
-                logger.debug(f"""Processing: {line_number} __ {line} __""" )
-                date, remains_of_line = line[:split_at_column], line[split_at_column:]
-                # w = remains_of_line.rstrip()
-                w = remains_of_line.lstrip(' ')
-                z = w.split(' ',2)
-                hostname = z[0]
-                daemon = z[1]
-                for deletion in deletions:
-                    logger.debug(f"""Deletion: {deletion}""")
-                    w = deletions_handler[deletion](w)
-                    
-                try:
-                    (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
-                    line_dict["line_number"] = {
-                        "line_number": line_number,
-                        "line_length": length_of_line,
-                        "real_date": real_datetime,
-                        "unix_timestamp": real_datetime_obj.timestamp(),
-                        "extracted_date": date,
-                        "line": line,
-                        "hostname": hostname,
-                        "daemon": daemon,
-                        "remains_of_line": remains_of_line,
-                        "wiped_line": w,
-                    }
-                    writer.writerow(line_dict["line_number"])
-                except:
-                    logger.error(f"Could not parse: {line_number} ({line})")
+    output_filename = Path(f"""{args.csv_file}""")
+
+    csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
+
+    csv_writer.writeheader()
+
+    # A syslog line looks like this :
+    # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
+    # 0123456789ABCDEF
+    # we want to extract the date so we split at 15:
+    split_at_column = 15
+
+    with open(logfile) as fp:
+        for line_number, line in enumerate(fp):
+            length_of_line = len(line)
+            line = line.rstrip()
+            line_dict = {}
+            logger.debug(f"""Processing: {line_number} __ {line} __""" )
+            date, remains_of_line = line[:split_at_column], line[split_at_column:]
+            # w = remains_of_line.rstrip()
+            w = remains_of_line.lstrip(' ')
+            z = w.split(' ',2)
+            hostname = z[0]
+            daemon = z[1]
+            for deletion in deletions:
+                logger.debug(f"""Deletion: {deletion}""")
+                w = deletions_handler[deletion](w)
+                
+            try:
+                (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
+                line_dict["line_number"] = {
+                    "line_number": line_number,
+                    "line_length": length_of_line,
+                    "real_date": real_datetime,
+                    "unix_timestamp": real_datetime_obj.timestamp(),
+                    "extracted_date": date,
+                    "line": line,
+                    "hostname": hostname,
+                    "daemon": daemon,
+                    "remains_of_line": remains_of_line,
+                    "wiped_line": w,
+                }
+                csv_writer.writerow(line_dict["line_number"])
+            except:
+                logger.error(f"Could not parse: {line_number} ({line})")
 
 
 # "timestamp": real_datetime.timestamp(),
