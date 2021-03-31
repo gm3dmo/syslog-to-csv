@@ -8,12 +8,13 @@ import logging.config
 
 logger =  logging.getLogger('log2csv')
 
+
 def get_csv_handle(output_filename, fieldnames):
     csv_file = open(output_filename, "w")
     csv_writer = csv.DictWriter(
             csv_file,
             delimiter=",",
-            fieldnames=fieldnames, 
+            fieldnames=fieldnames,
             quoting=csv.QUOTE_NONNUMERIC)
     return csv_writer
 
@@ -94,6 +95,7 @@ def fix_syslog_date(original_date, base_year=""):
 
 def main():
     """main"""
+
 
 if __name__ == "__main__":
     main()

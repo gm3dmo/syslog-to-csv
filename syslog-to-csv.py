@@ -3,7 +3,7 @@
 __version__ = "0.1.0"
 
 import sys
-import logging 
+import logging
 import logging.config
 import argparse
 import datetime
@@ -11,6 +11,7 @@ from pathlib import Path
 import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
 
 def main(args):
 
@@ -25,7 +26,7 @@ def main(args):
 
     deletions = ["64charguids", "guids", "numbers"]
 
-    syslog_fieldnames=[
+    syslog_fieldnames = [
                 "line_number",
                 "line_length",
                 "extracted_date",
@@ -36,7 +37,7 @@ def main(args):
                 "line",
                 "remains_of_line",
                 "wiped_line",
-            ]
+    ]
 
     logfile = Path(args.filename)
     logger.debug(logfile.parent)
@@ -62,10 +63,10 @@ def main(args):
                 continue
             line = line.rstrip()
             line_dict = {}
-            logger.debug(f"""Processing: {line_number} __ {line} __""" )
+            logger.debug(f"""Processing: {line_number} __ {line} __""")
             date, remains_of_line = line[:split_at_column], line[split_at_column:]
             w = remains_of_line.lstrip(' ')
-            z = w.split(' ',2)
+            z = w.split(' ', 2)
             if len(z) >= 2:
                 hostname = z[0]
                 daemon = z[1]
@@ -76,7 +77,6 @@ def main(args):
             for deletion in deletions:
                 logger.debug(f"""Deletion: {deletion}""")
                 w = deletions_handler[deletion](w)
-                
             try:
                 (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
                 line_dict["line_number"] = {
