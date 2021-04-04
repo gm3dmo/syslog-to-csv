@@ -46,7 +46,8 @@ def main(args):
 
     csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
 
-    csv_writer.writeheader()
+    if args.header == 'yes':
+       csv_writer.writeheader()
 
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
@@ -135,6 +136,14 @@ if __name__ == "__main__":
         "--version",
         action="version",
         version="%(prog)s (version {version})".format(version=__version__),
+    )
+
+    parser.add_argument(
+        "--header",
+        action="store",
+        dest="header",
+        default="yes",
+        help="--header no <dont print the header in the csv",
     )
 
     args = parser.parse_args()
