@@ -94,7 +94,7 @@ def main(args):
                 }
                 logger.debug(f"Writing: {line_number} ({line})")
                 csv_writer.writerow(line_dict["line_number"])
-            except:
+            except Exception:
                 logger.error(f"Could not parse: {line_number} ({line})")
 
 

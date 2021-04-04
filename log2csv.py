@@ -6,16 +6,15 @@ import datetime
 import logging
 import logging.config
 
-logger =  logging.getLogger('log2csv')
+logger = logging.getLogger('log2csv')
 
 
 def get_csv_handle(output_filename, fieldnames):
     csv_file = open(output_filename, "w")
-    csv_writer = csv.DictWriter(
-            csv_file,
-            delimiter=",",
-            fieldnames=fieldnames,
-            quoting=csv.QUOTE_NONNUMERIC)
+    csv_writer = csv.DictWriter(csv_file,
+                                delimiter=",",
+                                fieldnames=fieldnames,
+                                quoting=csv.QUOTE_NONNUMERIC)
     return csv_writer
 
 
@@ -80,12 +79,12 @@ def fix_syslog_date(original_date, base_year=""):
     (m, d, t) = original_date.split(" ")
 
     if base_year:
-       iso_year = base_year
-       logger.debug(f"""passed in via base-year: {iso_year}""")
+        iso_year = base_year
+        logger.debug(f"""passed in via base-year: {iso_year}""")
     else:
-       base_date_today = datetime.datetime.now()
-       iso_year = base_date_today.year
-       logger.debug(f"""defaulting to year: {iso_year}""")
+        base_date_today = datetime.datetime.now()
+        iso_year = base_date_today.year
+        logger.debug(f"""defaulting to year: {iso_year}""")
 
     real_date = f"""{iso_year} {m} {d} {t}"""
     real_datetime_obj = datetime.datetime.strptime(real_date, "%Y %b %d %H:%M:%S")
