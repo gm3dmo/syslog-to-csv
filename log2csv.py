@@ -6,15 +6,14 @@ import datetime
 import logging
 import logging.config
 
-logger = logging.getLogger('log2csv')
+logger = logging.getLogger("log2csv")
 
 
 def get_csv_handle(output_filename, fieldnames):
     csv_file = open(output_filename, "w")
-    csv_writer = csv.DictWriter(csv_file,
-                                delimiter=",",
-                                fieldnames=fieldnames,
-                                quoting=csv.QUOTE_NONNUMERIC)
+    csv_writer = csv.DictWriter(
+        csv_file, delimiter=",", fieldnames=fieldnames, quoting=csv.QUOTE_NONNUMERIC
+    )
     return csv_writer
 
 
