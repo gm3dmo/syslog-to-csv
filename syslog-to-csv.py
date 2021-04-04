@@ -15,7 +15,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def main(args):
 
-    logger = logging.getLogger('syslog-to-csv')
+    logger = logging.getLogger("syslog-to-csv")
     logger.setLevel(args.loglevel)
 
     deletions_handler = {
@@ -27,16 +27,16 @@ def main(args):
     deletions = ["64charguids", "guids", "numbers"]
 
     syslog_fieldnames = [
-                "line_number",
-                "line_length",
-                "extracted_date",
-                "unix_timestamp",
-                "real_date",
-                "hostname",
-                "daemon",
-                "line",
-                "remains_of_line",
-                "wiped_line",
+        "line_number",
+        "line_length",
+        "extracted_date",
+        "unix_timestamp",
+        "real_date",
+        "hostname",
+        "daemon",
+        "line",
+        "remains_of_line",
+        "wiped_line",
     ]
 
     logfile = Path(args.filename)
@@ -46,8 +46,8 @@ def main(args):
 
     csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
 
-    if args.header == 'yes':
-       csv_writer.writeheader()
+    if args.header == "yes":
+        csv_writer.writeheader()
 
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
@@ -60,26 +60,32 @@ def main(args):
             length_of_line = len(line)
             logger.debug(f"processing: {line_number} ({line})")
             if length_of_line <= split_at_column:
-                logger.error(f"squib: line {line_number} is not minimum length of ({split_at_column}) characters")
+                logger.error(
+                    f"squib: line {line_number} is not minimum length of ({split_at_column}) characters"
+                )
                 continue
             line = line.rstrip()
             line_dict = {}
             logger.debug(f"""Processing: {line_number} __ {line} __""")
             date, remains_of_line = line[:split_at_column], line[split_at_column:]
-            w = remains_of_line.lstrip(' ')
-            z = w.split(' ', 2)
+            w = remains_of_line.lstrip(" ")
+            z = w.split(" ", 2)
             if len(z) >= 2:
                 hostname = z[0]
                 daemon = z[1]
             else:
-                logger.error(f"squib: line {line_number} does not have host/daemon portion.")
+                logger.error(
+                    f"squib: line {line_number} does not have host/daemon portion."
+                )
                 continue
 
             for deletion in deletions:
                 logger.debug(f"""Deletion: {deletion}""")
                 w = deletions_handler[deletion](w)
             try:
-                (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(date, args.base_year)
+                (real_date, real_datetime, real_datetime_obj) = lc.fix_syslog_date(
+                    date, args.base_year
+                )
                 line_dict["line_number"] = {
                     "line_number": line_number,
                     "line_length": length_of_line,
