@@ -16,7 +16,7 @@ or if you need speed:
 pypy syslog-to-csv.py /var/log/syslog.1
 ```
 
-Now you have a `syslog.csv` file in your local directory
+Now you have a `syslog.csv` file in your local directory.
 
 
 ## Next Steps
