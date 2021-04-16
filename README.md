@@ -21,7 +21,7 @@ Now you have a `syslog.csv` file in your local directory.
 
 ## Next Steps
 
-- Process the csv with [csvkit]https://csvkit.readthedocs.io/en/latest/)
+- Process the csv with [csvkit](https://csvkit.readthedocs.io/en/latest/)
 
 ### Visualise syslog
 Now that you have a csv you can use a wide range of tools like Pandas, and friends or even Excel to interpret your syslog data:
