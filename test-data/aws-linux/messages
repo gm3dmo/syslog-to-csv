@@ -1,0 +1,1000 @@
+Apr 11 03:20:01 ip-172-31-3-252 rsyslogd: [origin software="rsyslogd" swVersion="8.24.0-52.amzn2" x-pid="3243" x-info="http://www.rsyslog.com"] rsyslogd was HUPed
+Apr 11 03:20:02 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 03:20:02 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 03:20:06 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117850ms.
+Apr 11 03:22:04 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127170ms.
+Apr 11 03:24:11 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117170ms.
+Apr 11 03:26:08 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119420ms.
+Apr 11 03:28:08 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129150ms.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Started Session 29525 of user root.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Starting Session 29525 of user root.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 03:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 03:30:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111620ms.
+Apr 11 03:32:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115000ms.
+Apr 11 03:34:04 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125860ms.
+Apr 11 03:36:10 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131090ms.
+Apr 11 03:38:21 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130270ms.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Started Session 29526 of user root.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Starting Session 29526 of user root.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 03:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 03:40:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116660ms.
+Apr 11 03:42:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125720ms.
+Apr 11 03:44:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120180ms.
+Apr 11 03:45:21 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 03:45:21 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 03:45:21 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1720 seconds.
+Apr 11 03:45:21 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 03:45:21 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 03:45:21 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 03:45:21 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 03:46:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125330ms.
+Apr 11 03:48:39 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120340ms.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Started Session 29527 of user root.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Starting Session 29527 of user root.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 03:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 03:50:40 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116050ms.
+Apr 11 03:52:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125980ms.
+Apr 11 03:54:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112170ms.
+Apr 11 03:56:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128260ms.
+Apr 11 03:58:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121320ms.
+Apr 11 04:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:00:01 ip-172-31-3-252 systemd: Started Session 29528 of user root.
+Apr 11 04:00:01 ip-172-31-3-252 systemd: Starting Session 29528 of user root.
+Apr 11 04:00:02 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:00:02 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:00:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110110ms.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Started Session 29529 of user root.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Starting Session 29529 of user root.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:02:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123930ms.
+Apr 11 04:04:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125220ms.
+Apr 11 04:06:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118920ms.
+Apr 11 04:08:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128040ms.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Started Session 29530 of user root.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Starting Session 29530 of user root.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:10:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125780ms.
+Apr 11 04:12:56 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130390ms.
+Apr 11 04:14:01 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 04:14:01 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 04:14:01 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1572 seconds.
+Apr 11 04:14:01 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 04:14:01 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 04:14:01 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 04:14:01 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 04:15:06 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115800ms.
+Apr 11 04:17:02 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127470ms.
+Apr 11 04:19:10 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118310ms.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Started Session 29531 of user root.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Starting Session 29531 of user root.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:21:08 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110600ms.
+Apr 11 04:22:59 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121880ms.
+Apr 11 04:25:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109530ms.
+Apr 11 04:26:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115610ms.
+Apr 11 04:28:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121570ms.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Started Session 29532 of user root.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Starting Session 29532 of user root.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:30:48 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127140ms.
+Apr 11 04:32:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129740ms.
+Apr 11 04:35:05 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112710ms.
+Apr 11 04:36:58 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108810ms.
+Apr 11 04:38:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123170ms.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Started Session 29533 of user root.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Starting Session 29533 of user root.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:40:13 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 04:40:13 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 04:40:13 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1780 seconds.
+Apr 11 04:40:13 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 04:40:13 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 04:40:13 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 04:40:13 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 04:40:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112760ms.
+Apr 11 04:42:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113500ms.
+Apr 11 04:44:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112330ms.
+Apr 11 04:46:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129600ms.
+Apr 11 04:48:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110240ms.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Started Session 29534 of user root.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Starting Session 29534 of user root.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 04:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 04:50:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119550ms.
+Apr 11 04:52:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110280ms.
+Apr 11 04:54:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117290ms.
+Apr 11 04:56:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111360ms.
+Apr 11 04:58:07 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113520ms.
+Apr 11 05:00:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109650ms.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Started Session 29535 of user root.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Starting Session 29535 of user root.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Started Session 29536 of user root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Starting Session 29536 of user root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:01:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120540ms.
+Apr 11 05:03:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119740ms.
+Apr 11 05:05:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130240ms.
+Apr 11 05:08:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120810ms.
+Apr 11 05:09:53 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 05:09:53 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 05:09:53 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1620 seconds.
+Apr 11 05:09:53 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 05:09:53 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 05:09:53 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 05:09:53 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Started Session 29537 of user root.
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Starting Session 29537 of user root.
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:10:02 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125270ms.
+Apr 11 05:12:07 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118180ms.
+Apr 11 05:14:05 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112590ms.
+Apr 11 05:15:58 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127930ms.
+Apr 11 05:18:06 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130180ms.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Started Session 29538 of user root.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Starting Session 29538 of user root.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:20:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122050ms.
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Started Session 29539 of user root.
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Starting Session 29539 of user root.
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Stopping Dynamically Generate Message Of The Day...
+Apr 11 05:22:01 ip-172-31-3-252 systemd: Starting Dynamically Generate Message Of The Day...
+Apr 11 05:22:11 ip-172-31-3-252 systemd: Started Dynamically Generate Message Of The Day.
+Apr 11 05:22:11 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:22:11 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:22:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118880ms.
+Apr 11 05:24:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127040ms.
+Apr 11 05:26:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112000ms.
+Apr 11 05:28:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128940ms.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Started Session 29540 of user root.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Starting Session 29540 of user root.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:30:25 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127260ms.
+Apr 11 05:32:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118170ms.
+Apr 11 05:34:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109920ms.
+Apr 11 05:36:21 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116920ms.
+Apr 11 05:36:53 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 05:36:53 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 05:36:53 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1644 seconds.
+Apr 11 05:36:53 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 05:36:53 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 05:36:53 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 05:36:53 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 05:38:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130270ms.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Started Session 29541 of user root.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Starting Session 29541 of user root.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:40:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109390ms.
+Apr 11 05:42:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111110ms.
+Apr 11 05:44:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130190ms.
+Apr 11 05:46:19 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117950ms.
+Apr 11 05:48:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125770ms.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Started Session 29542 of user root.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Starting Session 29542 of user root.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 05:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 05:50:23 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108180ms.
+Apr 11 05:52:11 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109750ms.
+Apr 11 05:54:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112080ms.
+Apr 11 05:55:53 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119160ms.
+Apr 11 05:57:52 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111070ms.
+Apr 11 05:59:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129510ms.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Started Session 29543 of user root.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Starting Session 29543 of user root.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Started Session 29544 of user root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Starting Session 29544 of user root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:01:53 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118630ms.
+Apr 11 06:03:52 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122000ms.
+Apr 11 06:04:18 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 06:04:18 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 06:04:18 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1361 seconds.
+Apr 11 06:04:18 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:04:18 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 06:04:18 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:04:18 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 06:05:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117530ms.
+Apr 11 06:07:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108530ms.
+Apr 11 06:09:40 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112530ms.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Started Session 29545 of user root.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Starting Session 29545 of user root.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:11:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115230ms.
+Apr 11 06:13:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129350ms.
+Apr 11 06:15:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127270ms.
+Apr 11 06:17:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111480ms.
+Apr 11 06:19:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131300ms.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Started Session 29546 of user root.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Starting Session 29546 of user root.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:21:48 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108800ms.
+Apr 11 06:23:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122710ms.
+Apr 11 06:25:39 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117670ms.
+Apr 11 06:26:59 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 06:26:59 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 06:26:59 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1650 seconds.
+Apr 11 06:26:59 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:26:59 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 06:26:59 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:26:59 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 06:27:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124870ms.
+Apr 11 06:29:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121910ms.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Started Session 29547 of user root.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Starting Session 29547 of user root.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:31:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126940ms.
+Apr 11 06:33:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110010ms.
+Apr 11 06:35:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128950ms.
+Apr 11 06:37:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123740ms.
+Apr 11 06:39:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111220ms.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Started Session 29548 of user root.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Starting Session 29548 of user root.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:41:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111330ms.
+Apr 11 06:43:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115850ms.
+Apr 11 06:45:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123850ms.
+Apr 11 06:47:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119910ms.
+Apr 11 06:49:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108040ms.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Started Session 29549 of user root.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Starting Session 29549 of user root.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 06:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 06:51:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110930ms.
+Apr 11 06:53:15 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128140ms.
+Apr 11 06:54:29 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 06:54:29 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 06:54:29 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1760 seconds.
+Apr 11 06:54:29 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:54:29 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 06:54:29 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 06:54:29 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 06:55:23 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121570ms.
+Apr 11 06:57:25 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111380ms.
+Apr 11 06:59:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130480ms.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Started Session 29550 of user root.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Starting Session 29550 of user root.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Started Session 29551 of user root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Starting Session 29551 of user root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:01:27 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108760ms.
+Apr 11 07:03:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129750ms.
+Apr 11 07:05:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114300ms.
+Apr 11 07:07:20 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126240ms.
+Apr 11 07:09:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128120ms.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Started Session 29552 of user root.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Starting Session 29552 of user root.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:11:35 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130250ms.
+Apr 11 07:13:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119840ms.
+Apr 11 07:15:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116000ms.
+Apr 11 07:17:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125090ms.
+Apr 11 07:19:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114900ms.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Started Session 29553 of user root.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Starting Session 29553 of user root.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:21:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123000ms.
+Apr 11 07:23:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109830ms.
+Apr 11 07:23:49 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 07:23:49 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 07:23:49 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1465 seconds.
+Apr 11 07:23:49 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 07:23:49 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 07:23:49 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 07:23:49 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 07:25:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119330ms.
+Apr 11 07:27:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128890ms.
+Apr 11 07:29:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109770ms.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Started Session 29554 of user root.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Starting Session 29554 of user root.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:31:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119930ms.
+Apr 11 07:33:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120790ms.
+Apr 11 07:35:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117220ms.
+Apr 11 07:37:30 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120280ms.
+Apr 11 07:39:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129060ms.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Started Session 29555 of user root.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Starting Session 29555 of user root.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:41:40 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116800ms.
+Apr 11 07:43:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123730ms.
+Apr 11 07:45:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113350ms.
+Apr 11 07:47:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120140ms.
+Apr 11 07:48:14 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 07:48:14 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 07:48:14 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1759 seconds.
+Apr 11 07:48:14 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 07:48:14 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 07:48:14 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 07:48:14 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 07:49:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131570ms.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Started Session 29556 of user root.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Starting Session 29556 of user root.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 07:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 07:51:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111380ms.
+Apr 11 07:53:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120740ms.
+Apr 11 07:55:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113650ms.
+Apr 11 07:57:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112470ms.
+Apr 11 07:59:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126720ms.
+Apr 11 08:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:00:01 ip-172-31-3-252 systemd: Started Session 29557 of user root.
+Apr 11 08:00:01 ip-172-31-3-252 systemd: Starting Session 29557 of user root.
+Apr 11 08:00:02 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:00:02 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Started Session 29558 of user root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Starting Session 29558 of user root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:01:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129900ms.
+Apr 11 08:03:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120690ms.
+Apr 11 08:05:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108220ms.
+Apr 11 08:07:30 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121660ms.
+Apr 11 08:09:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121190ms.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Started Session 29559 of user root.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Starting Session 29559 of user root.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:11:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108840ms.
+Apr 11 08:13:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117980ms.
+Apr 11 08:15:20 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110500ms.
+Apr 11 08:17:10 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124280ms.
+Apr 11 08:17:33 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 08:17:33 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 08:17:33 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1727 seconds.
+Apr 11 08:17:33 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 08:17:33 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 08:17:33 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 08:17:33 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 08:19:15 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129640ms.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Started Session 29560 of user root.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Starting Session 29560 of user root.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:21:25 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121610ms.
+Apr 11 08:23:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122300ms.
+Apr 11 08:25:29 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122100ms.
+Apr 11 08:27:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118310ms.
+Apr 11 08:29:29 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110430ms.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Started Session 29561 of user root.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Starting Session 29561 of user root.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:31:20 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108800ms.
+Apr 11 08:33:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127550ms.
+Apr 11 08:35:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126900ms.
+Apr 11 08:37:23 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131200ms.
+Apr 11 08:39:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116260ms.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Started Session 29562 of user root.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Starting Session 29562 of user root.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:41:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111170ms.
+Apr 11 08:43:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122310ms.
+Apr 11 08:45:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113590ms.
+Apr 11 08:46:20 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 08:46:20 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 08:46:20 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1456 seconds.
+Apr 11 08:46:20 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 08:46:20 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 08:46:20 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 08:46:20 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 08:47:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116400ms.
+Apr 11 08:49:15 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123320ms.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Started Session 29563 of user root.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Starting Session 29563 of user root.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 08:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 08:51:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129600ms.
+Apr 11 08:53:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122940ms.
+Apr 11 08:55:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123160ms.
+Apr 11 08:57:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119800ms.
+Apr 11 08:59:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131590ms.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Started Session 29564 of user root.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Starting Session 29564 of user root.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Started Session 29565 of user root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Starting Session 29565 of user root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:01:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118430ms.
+Apr 11 09:03:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130430ms.
+Apr 11 09:05:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109690ms.
+Apr 11 09:07:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113700ms.
+Apr 11 09:09:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117780ms.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Started Session 29566 of user root.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Starting Session 29566 of user root.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:10:36 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 09:10:36 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 09:10:36 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1691 seconds.
+Apr 11 09:10:36 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 09:10:36 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 09:10:36 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 09:10:36 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 09:11:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121280ms.
+Apr 11 09:13:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114930ms.
+Apr 11 09:15:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114020ms.
+Apr 11 09:17:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116220ms.
+Apr 11 09:19:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126260ms.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Started Session 29567 of user root.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Starting Session 29567 of user root.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:21:29 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112340ms.
+Apr 11 09:23:21 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124290ms.
+Apr 11 09:25:25 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115720ms.
+Apr 11 09:27:21 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116190ms.
+Apr 11 09:29:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124800ms.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Started Session 29568 of user root.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Starting Session 29568 of user root.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:31:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125610ms.
+Apr 11 09:33:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124050ms.
+Apr 11 09:35:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125090ms.
+Apr 11 09:37:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117390ms.
+Apr 11 09:38:47 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 09:38:47 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 09:38:47 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1729 seconds.
+Apr 11 09:38:47 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 09:38:47 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 09:38:47 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 09:38:47 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 09:39:35 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126630ms.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Started Session 29569 of user root.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Starting Session 29569 of user root.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:41:41 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124680ms.
+Apr 11 09:43:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120050ms.
+Apr 11 09:45:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131320ms.
+Apr 11 09:47:58 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127990ms.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Started Session 29570 of user root.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Starting Session 29570 of user root.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 09:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 09:50:06 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124360ms.
+Apr 11 09:52:10 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122960ms.
+Apr 11 09:54:13 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118070ms.
+Apr 11 09:56:11 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131850ms.
+Apr 11 09:58:23 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126640ms.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Started Session 29571 of user root.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Starting Session 29571 of user root.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:00:30 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129170ms.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Started Session 29572 of user root.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Starting Session 29572 of user root.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:02:39 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127770ms.
+Apr 11 10:04:47 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126600ms.
+Apr 11 10:06:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114830ms.
+Apr 11 10:07:36 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 10:07:36 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 10:07:36 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1644 seconds.
+Apr 11 10:07:36 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 10:07:36 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 10:07:36 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 10:07:36 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 10:08:48 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117500ms.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Started Session 29573 of user root.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Starting Session 29573 of user root.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:10:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118480ms.
+Apr 11 10:12:45 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127260ms.
+Apr 11 10:14:52 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127920ms.
+Apr 11 10:17:00 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122580ms.
+Apr 11 10:19:02 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113310ms.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Started Session 29574 of user root.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Starting Session 29574 of user root.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:20:56 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118670ms.
+Apr 11 10:22:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112780ms.
+Apr 11 10:24:47 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130310ms.
+Apr 11 10:26:58 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120820ms.
+Apr 11 10:28:59 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128440ms.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Started Session 29575 of user root.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Starting Session 29575 of user root.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:31:07 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122090ms.
+Apr 11 10:33:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126890ms.
+Apr 11 10:35:00 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 10:35:03 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 10:35:08 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 10:35:08 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 10:35:09 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1650 seconds.
+Apr 11 10:35:09 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 10:35:09 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 10:35:09 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 10:35:09 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 10:35:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120330ms.
+Apr 11 10:37:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109630ms.
+Apr 11 10:39:06 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113140ms.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Started Session 29576 of user root.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Starting Session 29576 of user root.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:40:59 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127250ms.
+Apr 11 10:43:07 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131130ms.
+Apr 11 10:45:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114600ms.
+Apr 11 10:47:13 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109760ms.
+Apr 11 10:49:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130170ms.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Started Session 29577 of user root.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Starting Session 29577 of user root.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 10:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 10:51:13 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123630ms.
+Apr 11 10:53:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120620ms.
+Apr 11 10:55:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122420ms.
+Apr 11 10:57:20 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127120ms.
+Apr 11 10:59:27 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128910ms.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Started Session 29578 of user root.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Starting Session 29578 of user root.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Started Session 29579 of user root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Starting Session 29579 of user root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:01:36 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122640ms.
+Apr 11 11:02:39 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 11:02:39 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 11:02:40 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1434 seconds.
+Apr 11 11:02:40 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:02:40 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 11:02:40 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:02:40 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 11:03:39 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121110ms.
+Apr 11 11:05:40 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108810ms.
+Apr 11 11:07:29 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114910ms.
+Apr 11 11:09:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108550ms.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Started Session 29580 of user root.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Starting Session 29580 of user root.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:11:12 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129430ms.
+Apr 11 11:13:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119540ms.
+Apr 11 11:15:21 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122250ms.
+Apr 11 11:17:24 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127550ms.
+Apr 11 11:19:31 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131180ms.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Started Session 29581 of user root.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Starting Session 29581 of user root.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:21:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118890ms.
+Apr 11 11:23:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118450ms.
+Apr 11 11:25:40 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123160ms.
+Apr 11 11:26:34 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 11:26:34 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 11:26:34 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1671 seconds.
+Apr 11 11:26:34 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:26:34 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 11:26:34 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:26:34 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 11:27:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126310ms.
+Apr 11 11:29:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119990ms.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Started Session 29582 of user root.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Starting Session 29582 of user root.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:31:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113790ms.
+Apr 11 11:33:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114180ms.
+Apr 11 11:35:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124090ms.
+Apr 11 11:37:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108290ms.
+Apr 11 11:39:30 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121350ms.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Started Session 29583 of user root.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Starting Session 29583 of user root.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:41:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126920ms.
+Apr 11 11:43:39 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128610ms.
+Apr 11 11:45:47 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115340ms.
+Apr 11 11:47:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112530ms.
+Apr 11 11:49:35 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118750ms.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Started Session 29584 of user root.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Starting Session 29584 of user root.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 11:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 11:51:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112490ms.
+Apr 11 11:53:27 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130470ms.
+Apr 11 11:54:25 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 11:54:25 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 11:54:25 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1556 seconds.
+Apr 11 11:54:25 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:54:25 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 11:54:25 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 11:54:25 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 11:55:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109090ms.
+Apr 11 11:57:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131680ms.
+Apr 11 11:59:38 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131910ms.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Started Session 29585 of user root.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Starting Session 29585 of user root.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Started Session 29586 of user root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Starting Session 29586 of user root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:01:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126500ms.
+Apr 11 12:03:57 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126230ms.
+Apr 11 12:06:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112550ms.
+Apr 11 12:07:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115660ms.
+Apr 11 12:09:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125210ms.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Started Session 29587 of user root.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Starting Session 29587 of user root.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:11:57 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117590ms.
+Apr 11 12:13:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 119720ms.
+Apr 11 12:15:54 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126590ms.
+Apr 11 12:18:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108950ms.
+Apr 11 12:19:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113820ms.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Started Session 29588 of user root.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Starting Session 29588 of user root.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:20:21 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 12:20:21 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 12:20:22 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1449 seconds.
+Apr 11 12:20:22 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 12:20:22 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 12:20:22 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 12:20:22 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 12:21:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118710ms.
+Apr 11 12:23:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121260ms.
+Apr 11 12:25:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113180ms.
+Apr 11 12:27:37 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110760ms.
+Apr 11 12:29:28 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125620ms.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Started Session 29589 of user root.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Starting Session 29589 of user root.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:31:34 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128470ms.
+Apr 11 12:33:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 124250ms.
+Apr 11 12:35:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128680ms.
+Apr 11 12:37:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116920ms.
+Apr 11 12:39:52 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117500ms.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Started Session 29590 of user root.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Starting Session 29590 of user root.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:41:50 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117220ms.
+Apr 11 12:43:47 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122250ms.
+Apr 11 12:44:31 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 12:44:31 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 12:44:31 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1412 seconds.
+Apr 11 12:44:31 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 12:44:31 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 12:44:31 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 12:44:31 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 12:45:49 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113230ms.
+Apr 11 12:47:43 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127920ms.
+Apr 11 12:49:51 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123840ms.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Started Session 29591 of user root.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Starting Session 29591 of user root.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 12:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 12:51:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125850ms.
+Apr 11 12:54:00 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123970ms.
+Apr 11 12:56:04 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127610ms.
+Apr 11 12:58:12 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113340ms.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Started Session 29592 of user root.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Starting Session 29592 of user root.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:00:05 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117900ms.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Started Session 29593 of user root.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Starting Session 29593 of user root.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:02:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112970ms.
+Apr 11 13:03:56 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 126950ms.
+Apr 11 13:06:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112960ms.
+Apr 11 13:07:57 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129950ms.
+Apr 11 13:08:03 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 13:08:03 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 13:08:03 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1358 seconds.
+Apr 11 13:08:03 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:08:03 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 13:08:03 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:08:03 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Started Session 29594 of user root.
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Starting Session 29594 of user root.
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:10:07 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111850ms.
+Apr 11 13:11:59 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123990ms.
+Apr 11 13:14:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 114480ms.
+Apr 11 13:15:57 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117990ms.
+Apr 11 13:17:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 127020ms.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Started Session 29595 of user root.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Starting Session 29595 of user root.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:20:02 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125860ms.
+Apr 11 13:22:08 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123520ms.
+Apr 11 13:24:12 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109240ms.
+Apr 11 13:26:01 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110710ms.
+Apr 11 13:27:52 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116590ms.
+Apr 11 13:29:48 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131140ms.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Started Session 29596 of user root.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Starting Session 29596 of user root.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:30:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:30:41 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 13:30:41 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 13:30:42 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1748 seconds.
+Apr 11 13:30:42 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:30:42 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 13:30:42 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:30:42 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 13:32:00 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122870ms.
+Apr 11 13:34:03 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116730ms.
+Apr 11 13:35:59 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 109330ms.
+Apr 11 13:37:49 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117340ms.
+Apr 11 13:39:46 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115500ms.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Started Session 29597 of user root.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Starting Session 29597 of user root.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:40:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:41:42 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 122620ms.
+Apr 11 13:43:44 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110250ms.
+Apr 11 13:45:35 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 117680ms.
+Apr 11 13:47:32 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120740ms.
+Apr 11 13:49:33 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113970ms.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Started Session 29598 of user root.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Starting Session 29598 of user root.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 13:50:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 13:51:27 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111390ms.
+Apr 11 13:53:19 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110200ms.
+Apr 11 13:55:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 112980ms.
+Apr 11 13:57:02 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113400ms.
+Apr 11 13:58:55 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 128810ms.
+Apr 11 13:59:51 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 13:59:51 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 13:59:51 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1732 seconds.
+Apr 11 13:59:51 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:59:51 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 13:59:51 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 13:59:51 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Started Session 29599 of user root.
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Starting Session 29599 of user root.
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 14:00:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Started Session 29600 of user root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Starting Session 29600 of user root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 14:01:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 14:01:04 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123920ms.
+Apr 11 14:03:08 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 116640ms.
+Apr 11 14:05:05 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 113380ms.
+Apr 11 14:06:58 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 130220ms.
+Apr 11 14:09:09 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 129070ms.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Started Session 29601 of user root.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Starting Session 29601 of user root.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 14:10:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 14:11:18 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 115840ms.
+Apr 11 14:13:14 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 121090ms.
+Apr 11 14:15:15 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120720ms.
+Apr 11 14:17:16 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 118130ms.
+Apr 11 14:19:14 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123290ms.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Started Session 29602 of user root.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Starting Session 29602 of user root.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 14:20:01 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 14:21:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 120000ms.
+Apr 11 14:23:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125520ms.
+Apr 11 14:25:23 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 111230ms.
+Apr 11 14:27:14 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 110970ms.
+Apr 11 14:28:43 ip-172-31-3-252 dhclient[2920]: DHCPREQUEST on eth0 to 172.31.0.1 port 67 (xid=0x2905061b)
+Apr 11 14:28:43 ip-172-31-3-252 dhclient[2920]: DHCPACK from 172.31.0.1 (xid=0x2905061b)
+Apr 11 14:28:43 ip-172-31-3-252 dhclient[2920]: bound to 172.31.3.252 -- renewal in 1374 seconds.
+Apr 11 14:28:43 ip-172-31-3-252 ec2net: [get_meta] Querying IMDS for meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 14:28:43 ip-172-31-3-252 ec2net: [get_meta] Getting token for IMDSv2.
+Apr 11 14:28:43 ip-172-31-3-252 ec2net: [get_meta] Trying to get http://169.254.169.254/latest/meta-data/network/interfaces/macs/0a:d6:c5:80:24:03/local-ipv4s
+Apr 11 14:28:43 ip-172-31-3-252 ec2net: [rewrite_aliases] Rewriting aliases of eth0
+Apr 11 14:29:05 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131880ms.
+Apr 11 14:30:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:30:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:30:01 ip-172-31-3-252 systemd: Started Session 29603 of user root.
+Apr 11 14:30:01 ip-172-31-3-252 systemd: Starting Session 29603 of user root.
+Apr 11 14:30:02 ip-172-31-3-252 systemd: Removed slice User Slice of root.
+Apr 11 14:30:02 ip-172-31-3-252 systemd: Stopping User Slice of root.
+Apr 11 14:31:17 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 125090ms.
+Apr 11 14:33:22 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 123390ms.
+Apr 11 14:35:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 108340ms.
+Apr 11 14:37:14 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131510ms.
+Apr 11 14:39:26 ip-172-31-3-252 dhclient[3050]: XMT: Solicit on eth0, interval 131300ms.
+Apr 11 14:40:01 ip-172-31-3-252 systemd: Created slice User Slice of root.
+Apr 11 14:40:01 ip-172-31-3-252 systemd: Starting User Slice of root.
+Apr 11 14:40:01 ip-172-31-3-252 systemd: Started Session 29604 of user root.
