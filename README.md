@@ -6,25 +6,31 @@ Download and unzip the [latest release](https://github.com/gm3dmo/syslog-to-csv/
 
 
 #### Run `syslog-to-csv.py`
-Run `syslog-to-csv.py` to create a `syslog.csv` file:
+To create a `syslog.csv` file in the working directory:
 
 ```
 python3 syslog-to-csv.py /var/log/syslog
 ```
 
-This creates a  `syslog.csv` file in the working directory directory.
-
-
-
 ##### Using pypy for speed
-To process the file much more quickly [pypy](https://www.pypy.org/) can be used instead of python:
+If large files need to be processed then `pypy3` can be used to process the file much more quickly [pypy](https://www.pypy.org/) can be used instead of python:
 
 ```
 pypy3 syslog-to-csv.py /var/log/syslog.1
 ```
 
+##### Debug mode
+Debug mode will print out details of each line as it is processed:
+
+```
+python3 -d syslog-to-csv.py /var/log/syslog
+```
+
+##### Skipped lines
+If a line in the syslog input cannot be processed for some reason then a 
+
 ##### Next Steps
-With the data in CSV format a  wide range of tools like Pandas, Sqlite or Excel can be used to interpret the syslog data. For example, this little chart was created using Pandas:
+With the data in CSV format a wide range of tools like Pandas, Sqlite or Excel can be used to interpret the syslog data. For example, this little chart was created using Pandas:
 
 - Process the csv with [csvkit](https://csvkit.readthedocs.io/en/latest/) to get a summary of it's contents.
 
