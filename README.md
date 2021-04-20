@@ -13,7 +13,7 @@ python3 syslog-to-csv.py /var/log/syslog
 ```
 
 ##### Using pypy for speed
-If large files need to be processed then `pypy3` can be used to process the file much more quickly [pypy](https://www.pypy.org/) can be used instead of python:
+If large files need to be processed more quickly then [pypy3](https://www.pypy.org/) can be used instead of python:
 
 ```
 pypy3 syslog-to-csv.py /var/log/syslog.1
