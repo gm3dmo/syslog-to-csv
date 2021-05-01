@@ -1,0 +1,1 @@
+2020-01-02T15:13:02.723498+00:01 heroku[router]: at=info method=GET path="/posts" host=myapp.herokuapp.com" fwd="178.68.87.34" dyno=web.1 connect=1ms service=18ms status=200 bytes=975 
