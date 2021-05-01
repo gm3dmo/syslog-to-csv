@@ -1,0 +1,10 @@
+{
+  "sample": {
+    "must": "at",
+    "core": [
+             "method","path","host","job",
+             "fwd", "dyno", "connect", "service",
+             "status", "bytes"
+            ]
+  }
+}
