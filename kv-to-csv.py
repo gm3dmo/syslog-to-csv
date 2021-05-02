@@ -22,19 +22,25 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
+
     filename = pathlib.Path(args.filename)
+
+    if args.log_type == None:
+        args.log_type = filename.stem.split(".")[0]
+    else:
+        pass
 
     logger.info(f"""filename: {args.filename}""")
     logger.info(f"""filename.stem: {filename.stem}""")
-
-    logfile_type = filename.stem.split(".")[0]
+    logger.info(f"""log_type: {args.log_type}""")
+    logger.info("====================================")
 
     wanted = "core"
 
-    status_codes = log2csv.get_wanted_kv_headers(logtype=logfile_type)
+    status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
     logger.debug(f"""status_codes: {status_codes}""")
 
-    fieldnames = status_codes[logfile_type][wanted]
+    fieldnames = status_codes[args.log_type][wanted]
     fieldnames.append("line_number")
     fieldnames.append("line_length")
 
@@ -66,7 +72,7 @@ def main(args):
                         )
                         parsed_line = {
                             k: raw_parsed_line[k]
-                            for k in status_codes[logfile_type][wanted]
+                            for k in status_codes[args.log_type][wanted]
                             if k in raw_parsed_line
                         }
                         # line_count starts at zero. Add 1 to get
@@ -81,10 +87,10 @@ def main(args):
                     if parsed_line != {}:
                         logger.debug(f"""line: {line_count}""")
                         logger.debug(f"""PLK: {parsed_line.keys()}""")
-                        if status_codes[logfile_type]["must"] not in parsed_line.keys():
+                        if status_codes[args.log_type]["must"] not in parsed_line.keys():
                             skipped_count += 1
                             logger.debug(
-                                f""" i skipped line: {line_count} because: {parsed_line.keys()} does not contain: {status_codes[logfile_type]['must']} """
+                                f""" i skipped line: {line_count} because: {parsed_line.keys()} does not contain: {status_codes[args.log_type]['must']} """
                             )
                             continue
                         else:
@@ -100,7 +106,7 @@ def main(args):
     human_size_of_csv = log2csv.sizer(csv_size_in_bytes)
 
     logger.info(
-        f"""Converted file: {filename} size type: {logfile_type} to CSV file {csvfile.name} size {csv_size_in_bytes} bytes or roughly {human_size_of_csv}."""
+        f"""Converted file: {filename} size type: {args.log_type} to CSV file {csvfile.name} size {csv_size_in_bytes} bytes or roughly {human_size_of_csv}."""
     )
     logger.info(f"""Skipped={skipped_count} Lines in file={line_count} lines.""")
 
