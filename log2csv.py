@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import re
-import sys
 import csv
 import time
 import json
@@ -14,6 +12,7 @@ import logging.config
 
 logger = logging.getLogger("log2csv")
 
+
 def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
@@ -22,22 +21,24 @@ def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     with open(log_formats_file) as json_file:
         data = json.load(json_file)
         if logtype in data:
-           logging.info(f"""filetype is known and can be processed: {logtype}
-extracting {len(data[logtype]['core'])} kv fields""")
-           kv_headers[logtype] = {}
-           kv_headers[logtype]['core'] = data[logtype]['core']
-           kv_headers[logtype]['must'] = data[logtype]['must']
+            logging.info(
+                f"""filetype is known and can be processed: {logtype}
+extracting {len(data[logtype]['core'])} kv fields"""
+            )
+            kv_headers[logtype] = {}
+            kv_headers[logtype]["core"] = data[logtype]["core"]
+            kv_headers[logtype]["must"] = data[logtype]["must"]
         else:
-           logging.error(f""": filetype is not known: {logtype}""")
+            logging.error(f""": filetype is not known: {logtype}""")
     return kv_headers
 
 
 def sizer(size):
-   for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
-       if size < 1024.0:
-           return "%3.1f %s" % (size, x)
-       size /= 1024.0
-   return size
+    for x in ["bytes", "KB", "MB", "GB", "TB"]:
+        if size < 1024.0:
+            return "%3.1f %s" % (size, x)
+        size /= 1024.0
+    return size
 
 
 def timeit(method):
@@ -45,31 +46,34 @@ def timeit(method):
         ts = time.time()
         result = method(*args, **kw)
         te = time.time()
-        if 'log_time' in kw:
-            name = kw.get('log_name', method.__name__.upper())
-            kw['log_time'][name] = int((te - ts) * 1000)
+        if "log_time" in kw:
+            name = kw.get("log_name", method.__name__.upper())
+            kw["log_time"][name] = int((te - ts) * 1000)
         else:
-            duration = (te - ts) 
-            logger.info('%r executed in  %2.2f ms ' %  (method.__name__, (te - ts) * 1000))
+            duration = te - ts
+            logger.info(
+                "%r executed in  %2.2f ms " % (method.__name__, (te - ts) * 1000)
+            )
             logger.info(f"""{str(datetime.timedelta(seconds=duration))}""")
         return result
+
     return timed
 
 
 def parse_kv_pairs_two(text):
     try:
-       tokenizer = shlex.shlex(text,  posix=True)
+        tokenizer = shlex.shlex(text, posix=True)
     except:
-       raise
-    tokenizer.commenters =  ''
+        raise
+    tokenizer.commenters = ""
     tokenizer.whitespace_split = True
-    tokenizer.whitespace = ' '
+    tokenizer.whitespace = " "
     result = {}
     try:
         for token in tokenizer:
-            if '=' in token:
+            if "=" in token:
                 logger.debug(token)
-                result.update(dict(x.split("=",1) for x in token.split(',')))
+                result.update(dict(x.split("=", 1) for x in token.split(",")))
     except ValueError:
         error = tokenizer.token.splitlines()[0]
         logger.debug("parsing problem tokenzer leader: " + tokenizer.error_leader())
