@@ -34,7 +34,7 @@ def main(args):
         args.csv_file = f"""{args.log_type}.csv"""
         args.csv_path = pathlib.Path(args.csv_file)
     else:
-        pass
+        args.csv_path = pathlib.Path(args.csv_file)
 
     logger.info(f"""filename: {args.filename}""")
     logger.info(f"""filename.stem: {filename.stem}""")
