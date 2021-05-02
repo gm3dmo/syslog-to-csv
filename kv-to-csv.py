@@ -55,7 +55,7 @@ def main(args):
                 try:
                     line = str(line.replace(b"\r", b"~"), "utf-8")
                     line = str(line.replace(",", "_"))
-                except:
+                except Exception:
                     logger.error(
                         f"""Could not parse line number: {line_count} data: {line}"""
                     )
@@ -76,7 +76,7 @@ def main(args):
                         # line number in the file.
                         parsed_line["line_number"] = line_count + 1
                         parsed_line["line_length"] = length_of_line
-                    except:
+                    except Exception:
                         logger.error(
                             f"""Could not parse line number: {line_count} data: {line}"""
                         )
