@@ -6,5 +6,12 @@
              "fwd", "dyno", "connect", "service",
              "status", "bytes"
             ]
+  },
+  "sample2": {
+    "must": "method",
+    "core": [
+             "at", "method", "fwd", "dyno",
+             "status", "bytes"
+            ]
   }
 }
