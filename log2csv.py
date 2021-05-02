@@ -63,7 +63,7 @@ def timeit(method):
 def parse_kv_pairs_two(text):
     try:
         tokenizer = shlex.shlex(text, posix=True)
-    except:
+    except Exception:
         raise
     tokenizer.commenters = ""
     tokenizer.whitespace_split = True
