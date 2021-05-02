@@ -30,6 +30,12 @@ def main(args):
     else:
         pass
 
+    if args.csv_file == None:
+        args.csv_file = f"""{args.log_type}.csv"""
+        args.csv_path = pathlib.Path(args.csv_file)
+    else:
+        pass
+
     logger.info(f"""filename: {args.filename}""")
     logger.info(f"""filename.stem: {filename.stem}""")
     logger.info(f"""log_type: {args.log_type}""")
@@ -42,7 +48,7 @@ def main(args):
     fieldnames.append("line_length")
 
     skipped_count = 0
-    with open(args.csv_file, "w") as csvfile:
+    with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.header == "yes":
             writer.writeheader()
@@ -82,16 +88,16 @@ def main(args):
                         continue
                     if parsed_line != {}:
                         logger.debug(f"""line: {line_count}""")
-                        logger.debug(f"""PLK: {parsed_line.keys()}""")
+                        logger.debug(f"""parsed line keys: {parsed_line.keys()}""")
                         if status_codes[args.log_type]["must"] not in parsed_line.keys():
                             skipped_count += 1
                             logger.debug(
-                                f""" i skipped line: {line_count} because: {parsed_line.keys()} does not contain: {status_codes[args.log_type]['must']} """
+                                f"""Skipped line: {line_count} because: {parsed_line.keys()} does not contain: {status_codes[args.log_type]['must']} """
                             )
                             continue
                         else:
                             pass
-                        logger.debug(f"""PLK2: {parsed_line.keys()}""")
+                        logger.debug(f"""parsed line keys2: {parsed_line.keys()}""")
                         writer.writerow(parsed_line)
                     else:
                         logger.debug(f"""line failed to parse: {line_count}""")
@@ -127,7 +133,7 @@ if __name__ == "__main__":
         "--csv-file",
         action="store",
         dest="csv_file",
-        default="log.csv",
+        default=None,
         help="--csv-file  <csv output file name>",
     )
 
