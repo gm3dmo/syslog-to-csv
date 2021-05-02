@@ -5,13 +5,10 @@ __version__ = "0.1.0"
 import os
 import sys
 import csv
-import json
 import logging
 import argparse
 import logging.config
 import pathlib
-from shlex import shlex
-from pathlib import Path
 import log2csv
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -25,7 +22,7 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
-    filename = Path(args.filename)
+    filename = pathlib.Path(args.filename)
 
     logger.info(f"""filename: {args.filename}""")
     logger.info(f"""filename.stem: {filename.stem}""")
