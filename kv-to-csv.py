@@ -33,14 +33,11 @@ def main(args):
     logger.info(f"""filename: {args.filename}""")
     logger.info(f"""filename.stem: {filename.stem}""")
     logger.info(f"""log_type: {args.log_type}""")
-    logger.info("====================================")
-
-    wanted = "core"
 
     status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
     logger.debug(f"""status_codes: {status_codes}""")
 
-    fieldnames = status_codes[args.log_type][wanted]
+    fieldnames = status_codes[args.log_type][args.section]
     fieldnames.append("line_number")
     fieldnames.append("line_length")
 
@@ -49,7 +46,6 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.header == "yes":
             writer.writeheader()
-
         with open(filename, "rb") as file:
             for line_count, line in enumerate(file.readlines()):
                 length_of_line = len(line)
@@ -64,7 +60,7 @@ def main(args):
                     )
                     continue
 
-                if wanted == "core":
+                if args.section == "core":
                     # delete the keys of parsed line we don't want
                     try:
                         raw_parsed_line = log2csv.parse_kv_pairs_two(
@@ -72,7 +68,7 @@ def main(args):
                         )
                         parsed_line = {
                             k: raw_parsed_line[k]
-                            for k in status_codes[args.log_type][wanted]
+                            for k in status_codes[args.log_type][args.section]
                             if k in raw_parsed_line
                         }
                         # line_count starts at zero. Add 1 to get
@@ -155,6 +151,14 @@ if __name__ == "__main__":
         dest="header",
         default="yes",
         help="--header no <dont print the header in the csv",
+    )
+
+    parser.add_argument(
+        "--section",
+        action="store",
+        dest="section",
+        default="core",
+        help="--section in `log-formats.json` to match against default is `core`",
     )
 
     args = parser.parse_args()
