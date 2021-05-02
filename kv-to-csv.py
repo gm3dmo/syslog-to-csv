@@ -136,6 +136,14 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--log-type",
+        action="store",
+        dest="log_type",
+        default="sample",
+        help="--log-type the type of a the file in the log-formats.json file",
+    )
+
+    parser.add_argument(
         "--header",
         action="store",
         dest="header",
