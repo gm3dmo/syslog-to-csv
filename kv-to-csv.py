@@ -26,8 +26,6 @@ def main(args):
 
     if args.log_type == None:
         args.log_type = filename.stem.split(".")[0]
-    else:
-        pass
 
     if args.csv_file == None:
         args.csv_file = f"""{args.log_type}.csv"""
@@ -35,6 +33,7 @@ def main(args):
     else:
         args.csv_path = pathlib.Path(args.csv_file)
 
+    logger.info(f"""filename: {args}""")
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""log_type: {args.log_type}""")
@@ -49,7 +48,7 @@ def main(args):
     skipped_count = 0
     with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
-        if args.header == "yes":
+        if args.no_header == False:
             writer.writeheader()
         with open(args.filename_path, "rb") as file:
             line_count = 0
@@ -152,11 +151,10 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--header",
-        action="store",
-        dest="header",
-        default="yes",
-        help="--header no <dont print the header in the csv",
+        "-n",
+        "--no-header",
+        action="store_false",
+        help="--no-header <dont print the header in the csv",
     )
 
     parser.add_argument(
