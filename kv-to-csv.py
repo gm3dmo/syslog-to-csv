@@ -22,8 +22,7 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
-
-    filename = pathlib.Path(args.filename)
+    args.filename_path = pathlib.Path(args.filename)
 
     if args.log_type == None:
         args.log_type = filename.stem.split(".")[0]
@@ -36,8 +35,8 @@ def main(args):
     else:
         args.csv_path = pathlib.Path(args.csv_file)
 
-    logger.info(f"""filename: {args.filename}""")
-    logger.info(f"""filename.stem: {filename.stem}""")
+    logger.info(f"""filename: {args.filename_path}""")
+    logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""log_type: {args.log_type}""")
 
     status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
@@ -52,7 +51,8 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.header == "yes":
             writer.writeheader()
-        with open(filename, "rb") as file:
+        with open(args.filename_path, "rb") as file:
+            line_count = 0
             for line_count, line in enumerate(file.readlines()):
                 length_of_line = len(line)
                 # Cheat section where new lines are removed
@@ -108,7 +108,7 @@ def main(args):
     human_size_of_csv = log2csv.sizer(csv_size_in_bytes)
 
     logger.info(
-        f"""Converted file: {filename} size type: {args.log_type} to CSV file {csvfile.name} size {csv_size_in_bytes} bytes or roughly {human_size_of_csv}."""
+        f"""Converted file: {args.filename} size type: {args.log_type} to CSV file {csvfile.name} size {csv_size_in_bytes} bytes or roughly {human_size_of_csv}."""
     )
     logger.info(f"""Skipped={skipped_count} Lines in file={line_count} lines.""")
 
