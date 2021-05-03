@@ -158,6 +158,19 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "-l",
+        "--no-line-number",
+        action="store_false",
+        help="--no-line-number don't add the line number column to the csv.",
+    )
+
+    parser.add_argument(
+        "-s",
+        "--no-line-length",
+        action="store_false",
+        help="--no-line-length don't t add the line length column to the csv. ",
+    )
+    parser.add_argument(
         "--section",
         action="store",
         dest="section",
