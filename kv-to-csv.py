@@ -22,6 +22,8 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
+    logger.debug(f"""filename: {args}""")
+
     args.filename_path = pathlib.Path(args.filename)
 
     if args.log_type == None:
@@ -33,7 +35,6 @@ def main(args):
     else:
         args.csv_path = pathlib.Path(args.csv_file)
 
-    logger.info(f"""filename: {args}""")
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""log_type: {args.log_type}""")
@@ -42,8 +43,11 @@ def main(args):
     logger.debug(f"""status_codes: {status_codes}""")
 
     fieldnames = status_codes[args.log_type][args.section]
-    fieldnames.append("line_number")
-    fieldnames.append("line_length")
+    
+    if args.no_line_number == False:
+        fieldnames.append("line_number")
+    if args.no_line_length == False:
+        fieldnames.append("line_length")
 
     skipped_count = 0
     with open(args.csv_path, "w") as csvfile:
@@ -78,8 +82,10 @@ def main(args):
                         }
                         # line_count starts at zero. Add 1 to get
                         # line number in the file.
-                        parsed_line["line_number"] = line_count + 1
-                        parsed_line["line_length"] = length_of_line
+                        if args.no_line_number == False:
+                            parsed_line["line_number"] = line_count + 1
+                        if args.no_line_length == False:
+                            parsed_line["line_length"] = length_of_line
                     except Exception:
                         logger.error(
                             f"""Could not parse line number: {line_count} data: {line}"""
@@ -153,21 +159,21 @@ if __name__ == "__main__":
     parser.add_argument(
         "-n",
         "--no-header",
-        action="store_false",
+        action="store_true",
         help="--no-header <dont print the header in the csv",
     )
 
     parser.add_argument(
         "-l",
         "--no-line-number",
-        action="store_false",
+        action="store_true",
         help="--no-line-number don't add the line number column to the csv.",
     )
 
     parser.add_argument(
         "-s",
         "--no-line-length",
-        action="store_false",
+        action="store_true",
         help="--no-line-length don't t add the line length column to the csv. ",
     )
     parser.add_argument(
