@@ -5,6 +5,7 @@ __version__ = "0.1.0"
 import os
 import sys
 import csv
+import gzip
 import logging
 import argparse
 import logging.config
@@ -37,6 +38,7 @@ def main(args):
 
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
+    logger.info(f"""filename.suffix: {args.filename_path.suffix}""")
     logger.info(f"""log_type: {args.log_type}""")
 
     status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
@@ -50,11 +52,15 @@ def main(args):
         fieldnames.append("line_length")
 
     skipped_count = 0
+
+
+
     with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        with open(args.filename_path, "rb") as file:
+        open_fn = gzip.open if log2csv.is_gzipped(args.filename_path) else open
+        with open_fn(args.filename_path, "rb") as file:
             line_count = 0
             for line_count, line in enumerate(file.readlines()):
                 length_of_line = len(line)
@@ -153,7 +159,14 @@ if __name__ == "__main__":
         action="store",
         dest="log_type",
         default="sample",
-        help="--log-type the type of a the file in the log-formats.json file",
+        help="--log-type the type of a the file in the log-formats.json file.",
+    )
+
+    parser.add_argument(
+        "-nz",
+        "--no-gz",
+        action="store_true",
+        help="--no-gz Input file is not gzipped.",
     )
 
     parser.add_argument(
@@ -181,7 +194,7 @@ if __name__ == "__main__":
         action="store",
         dest="section",
         default="core",
-        help="--section in `log-formats.json` to match against default is `core`",
+        help="--section in `log-formats.json` to match against default is `core`.",
     )
 
     args = parser.parse_args()

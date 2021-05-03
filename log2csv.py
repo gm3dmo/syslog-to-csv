@@ -13,6 +13,11 @@ import logging.config
 logger = logging.getLogger("log2csv")
 
 
+def is_gzipped(path):
+    if  path.suffix == ".gz":
+        return True
+
+
 def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
