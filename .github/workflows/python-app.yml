@@ -50,7 +50,8 @@ jobs:
       run: |
         csvstat  ${debian_10_csv_file}
     - name: find-time-gaps
-      run: | python3 find-time-gaps.py -f ${debian_10_csv_file}  real_date -g 120 --output-format=markdown
+      run: |
+        python3 find-time-gaps.py -f ${debian_10_csv_file}  real_date -g 120 --output-format=markdown
 
 
 
