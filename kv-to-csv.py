@@ -23,12 +23,12 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
-    logger.debug(f"""filename: {args}""")
+    logger.debug(f"""filename: {args.filename}""")
 
     args.filename_path = pathlib.Path(args.filename)
 
     if args.log_type == None:
-        args.log_type = filename.stem.split(".")[0]
+        args.log_type = args.filename.stem.split(".")[0]
 
     if args.csv_file == None:
         args.csv_file = f"""{args.log_type}.csv"""
