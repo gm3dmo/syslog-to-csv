@@ -26,7 +26,16 @@ python3 -d syslog-to-csv.py /var/log/syslog
 ```
 
 ##### Skipped lines
-If a line in the syslog input cannot be processed for some reason then a 
+If a line in the syslog input cannot be processed for some reason then an ERROR will be raised and the line will be skipped:
+
+
+```
+ERROR:syslog-to-csv:Could not parse: 2 (check resulted in Dispatch Password Requests to Console Directory Watch being skipped.)
+ERROR:syslog-to-csv:squib: line 4 does not have host/daemon portion.
+ERROR:syslog-to-csv:Could not parse: 9 (1900-00-30 07:03:29.68 line 4 runtime (CLR) functionality initialized.)
+ERROR:syslog-to-csv:squib: line 10 is not minimum length of (15) characters
+```
+
 
 ##### Next Steps
 With the data in CSV format a wide range of tools like Pandas, Sqlite or Excel can be used to interpret the syslog data. For example, this little chart was created using Pandas:
