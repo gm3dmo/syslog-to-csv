@@ -27,10 +27,10 @@ def main(args):
 
     args.filename_path = pathlib.Path(args.filename)
 
-    if args.log_type == None:
+    if args.log_type is None:
         args.log_type = args.filename.stem.split(".")[0]
 
-    if args.csv_file == None:
+    if args.csv_file is None:
         args.csv_file = f"""{args.log_type}.csv"""
         args.csv_path = pathlib.Path(args.csv_file)
     else:
