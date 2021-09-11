@@ -45,15 +45,13 @@ def main(args):
     logger.debug(f"""status_codes: {status_codes}""")
 
     fieldnames = status_codes[args.log_type][args.section]
-    
-    if args.no_line_number == False:
+
+    if args.no_line_number is False:
         fieldnames.append("line_number")
-    if args.no_line_length == False:
+    if args.no_line_length is False:
         fieldnames.append("line_length")
 
     skipped_count = 0
-
-
 
     with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
@@ -88,9 +86,9 @@ def main(args):
                         }
                         # line_count starts at zero. Add 1 to get
                         # line number in the file.
-                        if args.no_line_number == False:
+                        if args.no_line_number is False:
                             parsed_line["line_number"] = line_count + 1
-                        if args.no_line_length == False:
+                        if args.no_line_length is False:
                             parsed_line["line_length"] = length_of_line
                     except Exception:
                         logger.error(
@@ -100,7 +98,10 @@ def main(args):
                     if parsed_line != {}:
                         logger.debug(f"""line: {line_count}""")
                         logger.debug(f"""parsed line keys: {parsed_line.keys()}""")
-                        if status_codes[args.log_type]["must"] not in parsed_line.keys():
+                        if (
+                            status_codes[args.log_type]["must"]
+                            not in parsed_line.keys()
+                        ):
                             skipped_count += 1
                             logger.debug(
                                 f"""Skipped line: {line_count} because: {parsed_line.keys()} does not contain: {status_codes[args.log_type]['must']} """
