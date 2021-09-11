@@ -26,6 +26,8 @@ def main(args):
     logger.debug(f"""filename: {args.filename}""")
 
     args.filename_path = pathlib.Path(args.filename)
+    args.file_size_bytes = log2csv.get_filesize(args.filename_path)
+    args.file_size_human = log2csv.sizer(args.file_size_bytes)
 
     if args.log_type is None:
         args.log_type = args.filename.stem.split(".")[0]
@@ -39,7 +41,8 @@ def main(args):
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""filename.suffix: {args.filename_path.suffix}""")
-    logger.info(f"""log_type: {args.log_type}""")
+    logger.info(f"""filename.size: {args.file_size_human}""")
+    logger.info(f"""filename.log_type: {args.log_type}""")
 
     status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
     logger.debug(f"""status_codes: {status_codes}""")
@@ -52,6 +55,7 @@ def main(args):
         fieldnames.append("line_length")
 
     skipped_count = 0
+
 
     with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
@@ -137,7 +141,8 @@ if __name__ == "__main__":
         action="store_const",
         dest="loglevel",
         const=logging.DEBUG,
-        default=logging.WARNING,
+        default=logging.INFO,
+        #default=logging.WARNING,
         help="debug(-d, --debug, etc)",
     )
 

@@ -103,6 +103,10 @@ def known_regexes(want_to_match):
     return kr[want_to_match]
 
 
+def get_filesize(path):
+    return pathlib.Path(path).stat().st_size 
+
+
 def strip_regex(string_to_wipe, pattern_to_wipe=r"\d+"):
     logger.debug(f"""Original: {string_to_wipe}""")
     wiped_string = re.sub(pattern_to_wipe, "", string_to_wipe)
