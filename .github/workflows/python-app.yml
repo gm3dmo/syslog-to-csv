@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       debian_10_csv_file:  "/tmp/debian-10-syslog.csv"
+      heroku_csv_file:  "/tmp/heroku-sample.csv"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -43,12 +44,21 @@ jobs:
     - name: run-syslog-to-csv.py
       run: |
         python3 syslog-to-csv.py test-data/debian-10/syslog --csv-file ${debian_10_csv_file} 
-    - name: head-csv
+    - name: run-kv-to-csv.py
+      run: |
+        python3 kv-to-csv.py test-data/heroku-log/sample --csv-file ${heroku_csv_file} 
+    - name: head-csv-syslog
       run: |
         head ${debian_10_csv_file}
-    - name: csvkit-report
+    - name: csvkit-report-syslog
       run: |
         csvstat  ${debian_10_csv_file}
+    - name: head-csv-kv
+      run: |
+        head ${heroku_csv_file}
+    - name: csvkit-report-kv
+      run: |
+        csvstat  ${heroku_csv_file}
     - name: find-time-gaps
       run: |
         python3 find-time-gaps.py -f ${debian_10_csv_file}  real_date -g 120 --output-format=markdown
