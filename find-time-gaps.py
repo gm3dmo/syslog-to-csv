@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-find-time-gaps.py - this can be used to find gaps (or reversals) in timestamps in a CSV file. 
+find-time-gaps.py - this can be used to find gaps (or reversals) in timestamps in a CSV file.
 """
 
 __version__ = "0.1.0"
@@ -11,7 +11,6 @@ import sys
 import argparse
 import logging
 import logging.config
-from datetime import datetime, timedelta
 import pandas as pd
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -21,7 +20,7 @@ def main(args):
 
     logger = logging.getLogger("find-time-gaps")
     logger.setLevel(args.loglevel)
-
+    
     logger.info(f"""reading {args.filename}""")
     logger.info(f"""acting on {args.column_name}""")
     logger.info(f"""search for gaps of {args.gap}""")
