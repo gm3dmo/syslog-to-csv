@@ -27,7 +27,7 @@ def get_wanted_kv_headers(logtype="sample", extract_type="core"):
         data = json.load(json_file)
         if logtype in data:
             logging.info(
-                f"""filetype is known and can be processed: {logtype}
+                f"""logtype ({logtype}) is known and can be processed: {logtype}
 extracting {len(data[logtype]['core'])} kv fields"""
             )
             kv_headers[logtype] = {}
