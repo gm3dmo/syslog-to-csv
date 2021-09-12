@@ -61,7 +61,7 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        open_fn = gzip.open if log2csv.is_gzipped(args.filename_path) else open
+        open_fn = log2csv.open_file_handle(args.filename_path)
         with open_fn(args.filename_path, "rb") as file:
             line_count = 0
             for line_count, line in enumerate(file.readlines()):

@@ -18,6 +18,11 @@ def is_gzipped(path):
         return True
 
 
+def open_file_handle(fn):
+    open_fh = gzip.open if is_gzipped(fn) else open
+    return open_fh
+
+
 def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
