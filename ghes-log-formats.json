@@ -1,4 +1,13 @@
 {
+  "exceptions": {
+     "must": "release",
+             "core": [
+                       "release", "api_route","user", "method",
+                       "cause", "time", "created_at", "class",
+                       "message", "request_id", "controller", "url",
+                       "repo_id"
+                     ]
+        },
   "resqued": {
     "must": "app",
     "core": [
