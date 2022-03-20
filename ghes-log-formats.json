@@ -1,5 +1,5 @@
 {
-  "hookshot-go": {
+  "hookshot": {
      "must": "time",
              "core": [
                        "time", "level","msg","process","guid",
