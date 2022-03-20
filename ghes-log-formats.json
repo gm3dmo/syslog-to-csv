@@ -5,7 +5,7 @@
                        "time", "level","msg","process","guid",
                        "parent", "hook_id","github_request_id","dest_url","queue",
                        "event", "action","synthetic_status","status","request_duration",
-                       "repo_id", "queue_duration", "sender_id","public_error_message",
+                       "repo_id", "queue_duration", "sender_id","public_error_message"
                      ]
         },
   "exceptions": {
