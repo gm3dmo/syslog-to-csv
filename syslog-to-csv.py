@@ -12,6 +12,9 @@ import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+def split_daemon(daemon):
+    return daemon.split('[')   
+
 
 def main(args):
 
@@ -72,7 +75,8 @@ def main(args):
             z = w.split(" ", 2)
             if len(z) >= 2:
                 hostname = z[0]
-                daemon = z[1]
+                d = split_daemon(z[1])
+                daemon = d[0]
             else:
                 logger.error(
                     f"squib: line {line_number} does not have host/daemon portion."
@@ -92,10 +96,8 @@ def main(args):
                     "real_date": real_datetime,
                     "unix_timestamp": real_datetime_obj.timestamp(),
                     "extracted_date": date,
-                    "line": line,
                     "hostname": hostname,
                     "daemon": daemon,
-                    "remains_of_line": remains_of_line,
                     "wiped_line": w,
                 }
                 logger.debug(f"Writing: {line_number} ({line})")
