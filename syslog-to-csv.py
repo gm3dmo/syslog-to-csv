@@ -106,8 +106,6 @@ def main(args):
                 logger.error(f"Could not parse: {line_number} ({line})")
 
 
-# "timestamp": real_datetime.timestamp(),
-
 if __name__ == "__main__":
     """ This is executed when run from the command line """
     parser = argparse.ArgumentParser()
