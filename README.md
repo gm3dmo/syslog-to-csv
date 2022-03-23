@@ -1,5 +1,5 @@
 ### Syslog to CSV
-Convert a [syslog](https://tools.ietf.org/html/rfc5424) file to Comma Separated Values (CSV) format using [Python 3](https://python.org)  This has been tested with Debian 10 and AWS Linux but other syslog formats will probably work.
+Convert a [syslog](https://tools.ietf.org/html/rfc5424) file to Comma Separated Values (CSV) format using [Python 3](https://python.org).  Tested with Debian 10 and AWS Linux but other syslog formats will probably work.
 
 #### Install/Setup `syslog-to-csv`
 Download and unzip the [latest release](https://github.com/gm3dmo/syslog-to-csv/releases/latest):
