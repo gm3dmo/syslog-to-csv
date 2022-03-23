@@ -37,8 +37,6 @@ def main(args):
         "real_date",
         "hostname",
         "daemon",
-        "line",
-        "remains_of_line",
         "wiped_line",
     ]
 
