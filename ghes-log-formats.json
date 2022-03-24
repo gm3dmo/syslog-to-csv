@@ -1,7 +1,8 @@
 {
   "hookshot": {
+     "processor": "kv-to-csv.py",
      "must": "time",
-             "core": [
+     "core": [
                        "time", "level","msg","process","guid",
                        "parent", "hook_id","github_request_id","dest_url","queue",
                        "event", "action","synthetic_status","status","request_duration",
@@ -9,6 +10,7 @@
                      ]
         },
   "exceptions": {
+     "processor": "jsonl-to-csv.py",
      "must": "release",
              "core": [
                        "release", "app","api_route","user", "method",
@@ -18,6 +20,7 @@
                      ]
         },
   "resqued": {
+     "processor": "unknown",
     "must": "app",
     "core": [
              "app","env","enterprise","job",
@@ -27,6 +30,7 @@
             ]
   },
   "auth": {
+           "processor": "unknown"
            "must": "now",
            "core": ["now", "ip","repo", "action",
                 "protocol", "message", "method", "at", "from",
@@ -38,6 +42,7 @@
                 ]
   },
   "timerd": {
+          "processor": "unknown"
            "must": "app",
            "core": ["app", "ns","now", "class",
                 "timer", "interval", "at", "scheduler", "from",
@@ -45,6 +50,7 @@
                 ]
   },
   "gitauth": {
+           "processor": "unknown"
            "must": "app",
            "core": ["app",
                     "ns",
@@ -70,8 +76,9 @@
                     "worker_request_count"
            ]
   },
-
   "unicorn": {
+     "processor": "kv-to-csv.py",
+    "must": "app",
             "must":  "app",
             "core": [
               "app",
@@ -118,6 +125,7 @@
              ]
           },
  "babeld": {
+             "processor": "kv-to-csv.py",
              "must": "proto",
              "core": [
                        "ac_ms",
@@ -263,8 +271,3 @@
              ]
        }
 }
-
-
-
-
-
