@@ -55,8 +55,11 @@ def main(args):
                    # lookup the processor for log_type
                    processor = get_processor(log_type)
                    for item in list(p.glob(glob_string)):
-                      csv_file = f"""{item}.csv"""
-                      print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
+                      if item endswith('.csv'):
+                          next
+                      else
+                         csv_file = f"""{item}.csv"""
+                         print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
