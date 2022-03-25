@@ -55,7 +55,7 @@ def main(args):
                    # lookup the processor for log_type
                    processor = get_processor(log_type)
                    for item in list(p.glob(glob_string)):
-                      if item endswith('.csv'):
+                      if item.endswith('.csv'):
                           next
                       else
                          csv_file = f"""{item}.csv"""
