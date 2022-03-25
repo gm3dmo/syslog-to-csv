@@ -25,7 +25,7 @@ def get_processor(log_type):
     with open(log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
-            kv_headers[logtype] = {}
+            kv_headers[log_type] = {}
             return data[logtype]["processor"]
 
     if  log_type == 'syslog':
