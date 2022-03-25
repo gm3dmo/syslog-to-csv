@@ -39,7 +39,6 @@ def main(args):
     p = Path('.')
     bin_dir = 'syslog-to-csv'
     log_directories =[ 'github-logs', 'system-logs' ]
-    python_interpreter = 'pypy3'
     for log_directory in log_directories:
        for log_type in log_types:
            glob_string = f"""{log_directory}/{log_type}*"""
@@ -47,7 +46,7 @@ def main(args):
            processor = get_processor(log_type)
            for item in list(p.glob(glob_string)):
               csv_file = f"""{item}.csv"""
-              print(f"""pypy3 {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
+              print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
@@ -60,6 +59,13 @@ if __name__ == "__main__":
         const=logging.DEBUG,
         default=logging.WARNING,
         help="debug(-d, --debug, etc)",
+    )
+    parser.add_argument(
+        "--python-interpreter",
+        action="store",
+        dest="python_interpreter",
+        default="pypy3",
+        help="defines the python interpreter used: --python-interpreter /usr/bin/python",
     )
     parser.add_argument(
         "--version",
