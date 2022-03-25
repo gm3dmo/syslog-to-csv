@@ -30,7 +30,7 @@
             ]
   },
   "auth": {
-           "processor": "unknown"
+           "processor": "unknown",
            "must": "now",
            "core": ["now", "ip","repo", "action",
                 "protocol", "message", "method", "at", "from",
