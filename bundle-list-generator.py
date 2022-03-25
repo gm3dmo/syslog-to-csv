@@ -14,9 +14,9 @@ import log2csv as lc
 from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 log_types = ['unicorn', 'exceptions', 'auth', 'gitauth', 'production', 'syslog' ]
+skip_list = ['system-logs/auth']
 
 def get_processor(log_type):
     p = pathlib.Path(__file__)
@@ -36,17 +36,27 @@ def get_processor(log_type):
         return 'kv-to-csv.py'
 
 def main(args):
+    logger = logging.getLogger("syslog-to-csv")
+    logger.setLevel(args.loglevel)
+
     p = Path('.')
     bin_dir = 'syslog-to-csv'
     log_directories =[ 'github-logs', 'system-logs' ]
     for log_directory in log_directories:
        for log_type in log_types:
            glob_string = f"""{log_directory}/{log_type}*"""
-           # lookup the processor for log_type
-           processor = get_processor(log_type)
-           for item in list(p.glob(glob_string)):
-              csv_file = f"""{item}.csv"""
-              print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
+           for skip_listed_log in skip_list:
+               logger.debug(f"""Processing skip list: {skip_listed_log}""")
+               if glob_string.startswith(skip_listed_log):
+                   logger.debug(f"""skip_list match: {skip_listed_log} == {glob_string}""")
+                   next
+               else:
+                   logger.debug(f"""not a match: {skip_listed_log} == {glob_string}""")
+                   # lookup the processor for log_type
+                   processor = get_processor(log_type)
+                   for item in list(p.glob(glob_string)):
+                      csv_file = f"""{item}.csv"""
+                      print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
