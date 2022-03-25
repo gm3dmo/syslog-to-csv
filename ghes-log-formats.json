@@ -42,7 +42,7 @@
                 ]
   },
   "timerd": {
-          "processor": "unknown"
+          "processor": "unknown",
            "must": "app",
            "core": ["app", "ns","now", "class",
                 "timer", "interval", "at", "scheduler", "from",
@@ -50,7 +50,7 @@
                 ]
   },
   "gitauth": {
-           "processor": "unknown"
+           "processor": "unknown",
            "must": "app",
            "core": ["app",
                     "ns",
