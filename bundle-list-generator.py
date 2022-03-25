@@ -26,7 +26,7 @@ def get_processor(log_type):
         data = json.load(json_file)
         if log_type in data:
             kv_headers[log_type] = {}
-            return data[logtype]["processor"]
+            return data[log_type]["processor"]
 
     if  log_type == 'syslog':
         return 'syslog-to-csv.py'
