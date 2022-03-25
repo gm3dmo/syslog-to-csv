@@ -16,6 +16,8 @@ def split_daemon(daemon):
     return daemon.split('[')   
 
 
+
+
 def main(args):
 
     logger = logging.getLogger("syslog-to-csv")
