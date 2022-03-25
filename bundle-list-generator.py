@@ -57,7 +57,7 @@ def main(args):
                    for item in list(p.glob(glob_string)):
                       if item.endswith('.csv'):
                           next
-                      else
+                      else:
                          csv_file = f"""{item}.csv"""
                          print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
 
