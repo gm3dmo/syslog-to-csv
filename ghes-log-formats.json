@@ -30,7 +30,7 @@
             ]
   },
   "auth": {
-           "processor": "unknown",
+           "processor": "kv-to-csv.py",
            "must": "now",
            "core": ["now", "ip","repo", "action",
                 "protocol", "message", "method", "at", "from",
@@ -50,7 +50,7 @@
                 ]
   },
   "gitauth": {
-           "processor": "unknown",
+           "processor": "kv-to-csv.py",
            "must": "app",
            "core": ["app",
                     "ns",
