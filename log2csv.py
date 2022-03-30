@@ -2,6 +2,7 @@
 
 import re
 import csv
+import gzip
 import time
 import json
 import shlex
