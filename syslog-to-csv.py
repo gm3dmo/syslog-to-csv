@@ -139,6 +139,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--log-type",
+        action="store",
+        dest="log_type",
+        default="syslog",
+        help="--log-type syslog ",
+
+    parser.add_argument(
         "--version",
         action="version",
         version="%(prog)s (version {version})".format(version=__version__),
