@@ -15,7 +15,7 @@ from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-log_types = ['unicorn', 'exceptions', 'auth', 'gitauth', 'production', 'syslog' ]
+log_types = ['unicorn', 'exceptions', 'auth', 'gitauth', 'syslog' ]
 skip_list = ['system-logs/auth']
 
 def get_processor(log_type):
