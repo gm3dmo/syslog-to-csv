@@ -40,12 +40,12 @@ def main(args):
     logger.info(f"""*** These values will be removed {values_to_eliminate} ***""")
 
     result_frame = df[df["time_difference"] > args.gap][
-        ["line_number", "time_difference", "longer_gap", "line"]
+        ["line_number", "time_difference", "longer_gap" ]
     ]
 
     result_frame2 = result_frame[
         result_frame["time_difference"] != values_to_eliminate
-    ][["line_number", "time_difference", "longer_gap", "line"]]
+    ][["line_number", "time_difference", "longer_gap" ]]
 
     logger.info(f"""\n{result_frame2.to_markdown(index=False)}""")
 
