@@ -140,3 +140,4 @@ cython_debug/
 
 *.csv
 
+test-data/ghes/3.1/syslog.1.gz
