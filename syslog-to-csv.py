@@ -63,13 +63,13 @@ def main(args):
             try:
                line = line.decode('utf-8')
             except Exception as e:
-                logger.warn(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
+                logger.warning(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
                 continue
             logger.debug(f"""DAVE type line: {type(line)}""")
             length_of_line = len(line)
             logger.debug(f"processing: {line_number} ({line})")
             if length_of_line <= split_at_column:
-                logger.error(
+                logger.warning(
                     f"squib: line {line_number} is not minimum length of ({split_at_column}) characters"
                 )
                 continue
@@ -88,7 +88,7 @@ def main(args):
                 d = split_daemon(z[1])
                 daemon = d[0]
             else:
-                logger.error(
+                logger.warning(
                     f"squib: line {line_number} does not have host/daemon portion."
                 )
                 continue
@@ -113,7 +113,7 @@ def main(args):
                 logger.debug(f"Writing: {line_number} ({line})")
                 csv_writer.writerow(line_dict["line_number"])
             except Exception as e:
-                logger.error(f"Could not parse: {line_number} ({line}) {e}")
+                logger.warning(f"Could not parse: {line_number} ({line}) {e}")
 
 
 if __name__ == "__main__":
