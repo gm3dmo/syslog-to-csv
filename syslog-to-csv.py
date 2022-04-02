@@ -7,15 +7,13 @@ import logging
 import logging.config
 import argparse
 import datetime
-from pathlib import Path
+import pathlib
 import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def split_daemon(daemon):
     return daemon.split('[')   
-
-
 
 
 def main(args):
@@ -42,10 +40,11 @@ def main(args):
         "wiped_line",
     ]
 
-    logfile = Path(args.filename)
+    logfile = pathlib.Path(args.filename)
     logger.debug(logfile.parent)
+    args.filename_path = pathlib.Path(args.filename)
 
-    output_filename = Path(f"""{args.csv_file}""")
+    output_filename = pathlib.Path(f"""{args.csv_file}""")
 
     csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
 
@@ -58,8 +57,15 @@ def main(args):
     # we want to extract the date so we split at 15:
     split_at_column = 15
 
-    with open(logfile) as fp:
-        for line_number, line in enumerate(fp):
+    open_fn = lc.open_file_handle(args.filename_path)
+    with open_fn(args.filename_path, "rb") as file:
+        for line_number, line in enumerate(file):
+            try:
+               line = line.decode('utf-8')
+            except Exception as e:
+                logger.warn(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
+                continue
+            logger.debug(f"""DAVE type line: {type(line)}""")
             length_of_line = len(line)
             logger.debug(f"processing: {line_number} ({line})")
             if length_of_line <= split_at_column:
@@ -71,7 +77,11 @@ def main(args):
             line_dict = {}
             logger.debug(f"""Processing: {line_number} __ {line} __""")
             date, remains_of_line = line[:split_at_column], line[split_at_column:]
-            w = remains_of_line.lstrip(" ")
+            logger.debug(f"""line number: {line_number}: remains_of_line is of type: {type(remains_of_line)}""")
+            r = remains_of_line
+            logger.debug(f"""type r: {type(r)}""")
+            w = r.lstrip(" ")
+            logger.debug(f"""type w: {type(w)}""")
             z = w.split(" ", 2)
             if len(z) >= 2:
                 hostname = z[0]
@@ -102,8 +112,8 @@ def main(args):
                 }
                 logger.debug(f"Writing: {line_number} ({line})")
                 csv_writer.writerow(line_dict["line_number"])
-            except Exception:
-                logger.error(f"Could not parse: {line_number} ({line})")
+            except Exception as e:
+                logger.error(f"Could not parse: {line_number} ({line}) {e}")
 
 
 if __name__ == "__main__":
