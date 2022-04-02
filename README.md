@@ -27,13 +27,10 @@ python3 -d syslog-to-csv.py /var/log/syslog
 
 
 ##### Skipped lines
-If a line in the syslog input cannot be processed for some reason then an ERROR will be raised and the line will be skipped:
+If a line in the syslog input cannot be processed a WARNING is raised.The line is skipped:
 
 ```
-ERROR:syslog-to-csv:Could not parse: 2 (check resulted in Dispatch Password Requests to Console Directory Watch being skipped.)
-ERROR:syslog-to-csv:squib: line 4 does not have host/daemon portion.
-ERROR:syslog-to-csv:Could not parse: 9 (1900-00-30 07:03:29.68 line 4 runtime (CLR) functionality initialized.)
-ERROR:syslog-to-csv:squib: line 10 is not minimum length of (15) characters
+WARNING:syslog-to-csv:Could not convert line number 150486 to utf-8: (b'Apr  1 20:33:22 testserver babeld[11452]: ts=2022-04-01T20:33:22.247904Z pid=1 tid=42 version=81d8f62 proto=ssh id=cb40592709493fa370ce6730da376af6 ip=23.95.222.129 srcp=43688 dstp=22 log_level=ERROR msg="ssh_handle_key_exchange failed: Protocol mismatch: \x16\x03\x01\x01\xfd\x01" conn_progress=0.4\n') 'utf-8' codec can't decode byte 0xfd in position 285: invalid start byte
 ```
 
 ##### Next Steps
