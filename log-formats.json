@@ -1,6 +1,7 @@
 {
-  "hookshot": {
+  "hookshot-go": {
      "processor": "kv-to-csv.py",
+     "contained_in_log": "syslog",
      "must": "time",
      "core": [
                        "time", "level","msg","process","guid",
@@ -126,6 +127,7 @@
           },
  "babeld": {
              "processor": "kv-to-csv.py",
+             "contained_in_log": "syslog",
              "must": "proto",
              "core": [
                        "ac_ms",
