@@ -21,6 +21,13 @@ def main(args):
     logger.setLevel(args.loglevel)
 
     wanted_daemons = ['babeld', 'hookshot-go']
+    daemon_handles = {}
+    # open file handles for the wanted daemons
+    for daemon in wanted_daemons:
+        daemon_log = f"""{daemon}.log"""
+        logger.debug(f"""opening file handle for {daemon} filename is {daemon_log}""")
+        daemon_handles[daemon] = open(daemon_log, 'w')
+
 
     syslog_fieldnames = [
         "line_number",
@@ -75,7 +82,8 @@ def main(args):
                 d = split_daemon(z[1])
                 daemon = d[0]
                 if daemon in wanted_daemons:
-                    logger.debug(f"""daemon {daemon} is a wanted daemon""")
+                    logger.debug(f"""daemon {daemon} is a wanted daemon. Write it to it's file.""")
+                    daemon_handles[daemon].write(line)
             else:
                 logger.warning(
                     f"squib: line {line_number} does not have host/daemon portion."
@@ -83,7 +91,9 @@ def main(args):
                 continue
             ## Now write the entire daemon line to to daemon.log
 
-
+    for daemon in wanted_daemons:
+        logger.debug(f"""closing file handle for {daemon} """)
+        daemon_handles[daemon] .close()
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
