@@ -36,6 +36,7 @@ def get_processor(log_type):
         return 'kv-to-csv.py'
 
 def main(args):
+    logger = logging.getLogger("bundle-list-generator")
     logger.setLevel(args.loglevel)
     p = Path('.')
     bin_dir = 'syslog-to-csv'
