@@ -41,6 +41,7 @@ def main(args):
     p = Path('.')
     bin_dir = 'syslog-to-csv'
     log_directories =[ 'github-logs', 'system-logs' ]
+    splitter = 'syslog-daemon-extractor.py'
     for log_directory in log_directories:
         for log_type in log_types:
             glob_string = f"""{log_directory}/{log_type}*"""
@@ -53,14 +54,24 @@ def main(args):
                     logger.debug(f"""not a match: {skip_listed_log} == {glob_string}""")
                     # lookup the processor for log_type
                     processor = get_processor(log_type)
+
+                    # Loop round once to identify syslog files and split them
                     for item in list(p.glob(glob_string)):
-                        logger.debug(type(item))
-                        logger.debug(str(item))
+                        if str(item).endswith('.csv'):
+                            next
+                        else:
+                            csv_file = f"""{item}.csv"""
+                            if log_type == 'syslog':
+                                print(f"""{args.python_interpreter} {bin_dir}/{splitter} {item} --log-type {log_type} --csv-file {csv_file}""")
+
+                    # loop round a second time to process syslog in it's entirety
+                    for item in list(p.glob(glob_string)):
                         if str(item).endswith('.csv'):
                             next
                         else:
                             csv_file = f"""{item}.csv"""
                             print(f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}""")
+
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
