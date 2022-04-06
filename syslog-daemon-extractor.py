@@ -83,6 +83,7 @@ def main(args):
                 daemon = d[0]
                 if daemon in wanted_daemons:
                     logger.debug(f"""daemon {daemon} is a wanted daemon. Write it to it's file.""")
+                    line = f"""{line}\n"""
                     daemon_handles[daemon].write(line)
             else:
                 logger.warning(
