@@ -2,6 +2,21 @@
 
 """
 find-time-gaps.py - this can be used to find gaps (or reversals) in timestamps in a CSV file.
+
+“Lord Cut-Glass, in his kitchen full of time, squats down alone to a dogdish, marked Fido, 
+of peppery fish-scraps and listens to the voices of his sixty-six clocks, one for each year of his loony age, 
+and watches, with love, their black-and-white moony loudlipped faces tocking the earth away: slow clocks, 
+quick clocks, pendulumed heart-knocks, china, alarm, grandfather, cuckoo; clocks shaped like Noah's whirring Ark,
+clocks that bicker in marble ships, clocks in the wombs of glass women, hourglass chimers, tu-wit-tuwoo clocks, 
+clocks that pluck tunes, Vesuvius clocks all black bells and lava, Niagara clocks that cataract their ticks, 
+old time weeping clocks with ebony beards, clocks with no hands for ever drumming out time 
+without ever knowing what time it is. His sixty-six singers are all set at different hours. 
+
+Lord Cut-Glass lives in a house and a life at siege. Any minute or dark day now, 
+the unknown enemy will loot and savage downhill, but they will not catch him napping. 
+Sixty-six different times in his fish-slimy kitchen ping, strike, tick, chime, and tock.”
+
+Under Milk Wood, Dylan Thomas
 """
 
 __version__ = "0.1.0"
