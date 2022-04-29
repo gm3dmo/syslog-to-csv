@@ -16,17 +16,15 @@ def split_daemon(daemon):
     return daemon.split('[')
 
 
-
-
 def main(args):
     logger = logging.getLogger("syslog-daemon-extractor")
     logger.setLevel(args.loglevel)
 
+    args.report_data = {}
+
     seen_daemons = []
     daemon_handles = {}
     # open file handles for the wanted daemons
-
-
 
     syslog_fieldnames = [
         "line_number",
@@ -47,15 +45,13 @@ def main(args):
 
     csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
 
-    if args.header == "yes":
-        csv_writer.writeheader()
-
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
     # 0123456789ABCDEF
     # we want to extract the date so we split at 15:
     split_at_column = 15
 
+    args.report_data['start_time'] = datetime.datetime.now()
     open_fn = lc.open_file_handle(args.filename_path)
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
@@ -80,6 +76,14 @@ def main(args):
                 hostname = z[0]
                 d = split_daemon(z[1])
                 daemon = d[0]
+                # There really is a daemon called `/cinnamon-killer-daemon`
+                # now that sound exciting and spicy but this script it just a bit of fun
+                # it won't work very well if it tries to write to `/cinnamon-killer-daemon.log`
+                # and even it it did that would probably be terrible.`
+                # so we'll just strip out all the non alphanumberic characters from `daemon`
+                # with this:
+                daemon = lc.slugify(daemon)
+                # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
                    daemon_log = f"""{daemon}.log"""
                    daemon_handles[daemon] = open(daemon_log, 'w')
@@ -96,6 +100,7 @@ def main(args):
                 )
                 continue
 
+    args.report_data['end_time'] = datetime.datetime.now()
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
