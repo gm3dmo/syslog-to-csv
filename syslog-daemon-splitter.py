@@ -79,12 +79,14 @@ def main(args):
                 hostname = z[0]
                 d = split_daemon(z[1])
                 daemon = d[0]
-                # There really is a daemon called `/cinnamon-killer-daemon`
+                # This isn't me complaining. It's a warning about accepting
+                # data that could come from anywhere and cleaning it up before
+                # you do anything with it. There really is a daemon called `/cinnamon-killer-daemon`
                 # now that sound exciting and spicy but this script it just a bit of fun
                 # it won't work very well if it tries to write to `/cinnamon-killer-daemon.log`
-                # and even it it did that would probably be terrible.`
-                # so we'll just strip out all the non alphanumberic characters from `daemon`
-                # with this:
+                # and even it it did that would probably be terrible because let's face it
+                # people are probably running this script as root so we'll just strip out all the 
+                # non alphanumberic characters from `daemon` with this:
                 daemon = lc.slugify(daemon)
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
