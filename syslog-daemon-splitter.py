@@ -3,7 +3,9 @@
 __version__ = "0.1.0"
 
 import sys
+import time
 import logging
+import string
 import logging.config
 import argparse
 import datetime
@@ -51,7 +53,8 @@ def main(args):
     # we want to extract the date so we split at 15:
     split_at_column = 15
 
-    args.report_data['start_time'] = datetime.datetime.now()
+    args.report_data['start_timestamp'] = time.time()
+
     open_fn = lc.open_file_handle(args.filename_path)
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
@@ -100,7 +103,12 @@ def main(args):
                 )
                 continue
 
-    args.report_data['end_time'] = datetime.datetime.now()
+    args.report_data['end_timestamp'] = time.time()
+    args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp'] 
+    args.report_data['seen_daemons'] = seen_daemons
+    args.report_data['seen_daemons_string'] = '\n  '.join(seen_daemons)
+
+    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted:\n  {args.report_data['seen_daemons_string']}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
@@ -114,7 +122,7 @@ if __name__ == "__main__":
         action="store_const",
         dest="loglevel",
         const=logging.DEBUG,
-        default=logging.WARNING,
+        default=logging.INFO,
         help="debug(-d, --debug, etc)",
     )
 
