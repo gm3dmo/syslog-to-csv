@@ -80,14 +80,15 @@ def main(args):
                 hostname = z[0]
                 d = split_daemon(z[1])
                 daemon = d[0]
-                if daemon in seen_daemons:
-                    logger.debug(f"""daemon {daemon} has been seen before writing to its file""")
-                    line = f"""{line}\n"""
-                    daemon_handles[daemon].write(line)
-                else:
+                if daemon not in seen_daemons:
                    daemon_log = f"""{daemon}.log"""
-                   logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
                    daemon_handles[daemon] = open(daemon_log, 'w')
+                   logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
+                   line = f"""{line}\n"""
+                   daemon_handles[daemon].write(line)
+                   seen_daemons.append(daemon)
+                else:
+                   logger.debug(f"""daemon {daemon} has been seen before writing to its file""")
                    daemon_handles[daemon].write(line)
             else:
                 logger.warning(
