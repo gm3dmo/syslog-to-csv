@@ -107,8 +107,9 @@ def main(args):
     args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp'] 
     args.report_data['seen_daemons'] = seen_daemons
     args.report_data['seen_daemons_string'] = '\n  '.join(seen_daemons)
+    args.report_data['seen_daemons_count'] = len(seen_daemons)
 
-    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted:\n  {args.report_data['seen_daemons_string']}""")
+    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
