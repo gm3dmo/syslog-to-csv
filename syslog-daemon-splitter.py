@@ -85,15 +85,16 @@ def main(args):
                 # now that sound exciting and spicy but this script it just a bit of fun
                 # it won't work very well if it tries to write to `/cinnamon-killer-daemon.log`
                 # and even it it did that would probably be terrible because let's face it
-                # people are probably running this script as root so we'll just strip out all the 
+                # people are probably running this script as root so we'll just strip out all the
                 # non alphanumberic characters from `daemon` with this:
                 daemon = lc.slugify(daemon)
+                # Pop a new line back on the "line":
+                line = f"""{line}\n"""
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
                    daemon_log = f"""{daemon}.log"""
                    daemon_handles[daemon] = open(daemon_log, 'w')
                    logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
-                   line = f"""{line}\n"""
                    daemon_handles[daemon].write(line)
                    seen_daemons.append(daemon)
                 else:
@@ -106,7 +107,7 @@ def main(args):
                 continue
 
     args.report_data['end_timestamp'] = time.time()
-    args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp'] 
+    args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp']
     args.report_data['seen_daemons'] = seen_daemons
     args.report_data['seen_daemons_string'] = '\n  '.join(seen_daemons)
     args.report_data['seen_daemons_count'] = len(seen_daemons)
