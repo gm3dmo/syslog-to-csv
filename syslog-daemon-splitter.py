@@ -43,9 +43,7 @@ def main(args):
     logger.debug(logfile.parent)
     args.filename_path = pathlib.Path(args.filename)
 
-    output_filename = pathlib.Path(f"""{args.csv_file}""")
-
-    csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
+    output_filename = pathlib.Path(f"""{logfile.parent}/{args.csv_file}""")
 
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
@@ -92,7 +90,7 @@ def main(args):
                 line = f"""{line}\n"""
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
-                   daemon_log = f"""{daemon}.log"""
+                   daemon_log = pathlib.Path(f"""{logfile.parent}/{daemon}.log""")
                    daemon_handles[daemon] = open(daemon_log, 'w')
                    logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
                    daemon_handles[daemon].write(line)
