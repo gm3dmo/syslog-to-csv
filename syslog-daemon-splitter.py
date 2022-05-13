@@ -20,7 +20,7 @@ def split_daemon(daemon):
 
 
 def main(args):
-    logger = logging.getLogger("syslog-daemon-extractor")
+    logger = logging.getLogger("syslog-daemon-splitter")
     logger.setLevel(args.loglevel)
 
     args.report_data = {}
