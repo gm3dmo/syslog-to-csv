@@ -27,6 +27,7 @@ def main(args):
 
     seen_daemons = []
     daemon_handles = {}
+    daemon_metrics = {}
     # open file handles for the wanted daemons
 
     syslog_fieldnames = [
@@ -102,9 +103,12 @@ def main(args):
                    logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
                    daemon_handles[daemon].write(line)
                    seen_daemons.append(daemon)
+                   daemon_metrics[daemon] = {'bytes_written': 0}
+                   daemon_metrics[daemon]['bytes_written'] += len(line) 
                 else:
                    logger.debug(f"""daemon {daemon} has been seen before writing to its file""")
                    daemon_handles[daemon].write(line)
+                   daemon_metrics[daemon]['bytes_written'] += len(line) 
             else:
                 logger.warning(
                     f"squib: line {line_number} does not have host/daemon portion."
@@ -114,10 +118,11 @@ def main(args):
     args.report_data['end_timestamp'] = time.time()
     args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp']
     args.report_data['seen_daemons'] = seen_daemons
+    args.report_data['daemon_metrics'] = daemon_metrics
     args.report_data['seen_daemons_string'] = '\n  '.join(seen_daemons)
     args.report_data['seen_daemons_count'] = len(seen_daemons)
 
-    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}""")
+    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}\n\ndaemon_metrics:\n {args.report_data['daemon_metrics']}""")
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
