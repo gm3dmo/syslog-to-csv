@@ -41,9 +41,9 @@ def main(args):
 
     logfile = pathlib.Path(args.filename)
     logger.debug(logfile.parent)
-    args.filename_path = pathlib.Path(args.filename)
+    logger.debug(args.split_log_subdir)
 
-    output_filename = pathlib.Path(f"""{logfile.parent}/{args.csv_file}""")
+    args.filename_path = pathlib.Path(args.filename)
 
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
@@ -90,7 +90,11 @@ def main(args):
                 line = f"""{line}\n"""
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
-                   daemon_log = pathlib.Path(f"""{logfile.parent}/{daemon}.log""")
+                   daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}""")
+                   daemon_dir.parent.mkdir(parents=True, exist_ok=True)
+                   logger.debug(daemon_dir)
+                   daemon_log = f"""{daemon}.log"""
+                   daemon_log = daemon_dir / daemon_log
                    daemon_handles[daemon] = open(daemon_log, 'w')
                    logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
                    daemon_handles[daemon].write(line)
@@ -150,6 +154,14 @@ if __name__ == "__main__":
         dest="log_type",
         default="syslog",
         help="--log-type syslog ",
+    )
+
+    parser.add_argument(
+       "--split-log-subdir",
+       action="store",
+        dest="split_log_subdir",
+        default="split-logs",
+        help="--split-log-subdir split-logs",
     )
 
     parser.add_argument(
