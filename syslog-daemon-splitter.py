@@ -2,6 +2,7 @@
 
 __version__ = "0.1.0"
 
+import os
 import sys
 import time
 import logging
@@ -42,6 +43,11 @@ def main(args):
     logfile = pathlib.Path(args.filename)
     logger.debug(logfile.parent)
     logger.debug(args.split_log_subdir)
+    daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}""")
+    daemon_dir.parent.mkdir(parents=True, exist_ok=True)
+    if not os.path.exists(daemon_dir):
+        os.mkdir(daemon_dir)
+    logger.debug(daemon_dir)
 
     args.filename_path = pathlib.Path(args.filename)
 
@@ -90,9 +96,6 @@ def main(args):
                 line = f"""{line}\n"""
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
-                   daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}""")
-                   daemon_dir.parent.mkdir(parents=True, exist_ok=True)
-                   logger.debug(daemon_dir)
                    daemon_log = f"""{daemon}.log"""
                    daemon_log = daemon_dir / daemon_log
                    daemon_handles[daemon] = open(daemon_log, 'w')
