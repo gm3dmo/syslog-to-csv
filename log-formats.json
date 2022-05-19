@@ -50,6 +50,16 @@
                 "test"
                 ]
   },
+    "lfs-server": {
+     "processor": "kv-to-csv.py",
+    "must": "app",
+            "must":  "app",
+            "core": [
+                       "app", "sha", "host","method","user", "method",
+                       "request_auth", "user_agent", "service", "request_url",
+                       "proxied_url", "status", "response_time"
+          ]
+          },
   "gitauth": {
            "processor": "kv-to-csv.py",
            "must": "app",
