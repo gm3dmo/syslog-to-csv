@@ -41,7 +41,7 @@ def main(args):
     p = Path('.')
     bin_dir = 'syslog-to-csv'
     log_directories =[ 'github-logs', 'system-logs' ]
-    splitter = 'syslog-daemon-extractor.py'
+    splitter = 'syslog-daemon-splitter.py'
     for log_directory in log_directories:
         for log_type in log_types:
             glob_string = f"""{log_directory}/{log_type}*"""
