@@ -1,10 +1,10 @@
 {
   "ldap-sync": {
-     "processor": "kv-to-csv",
-    "must": "app",
+     "processor": "kv-to-csv.py",
+    "must": "now",
     "core": [
-             "app","now","dn","result_count","at", "runtime",
-             "team_id","team_name","dn","entry_found","ldap_fields_changed", "runtime",
+             "now", "dn", "result_count","at", "runtime",
+             "team_id","team_name","dn","entry_found","ldap_fields_changed", "runtime"
             ]
   },
   "hookshot-go": {
@@ -58,16 +58,15 @@
                 "test"
                 ]
   },
-    "lfs-server": {
-     "processor": "kv-to-csv.py",
-    "must": "app",
-            "must":  "app",
-            "core": [
-                       "app", "sha", "host","method","user", "method",
-                       "request_auth", "user_agent", "service", "request_url",
-                       "proxied_url", "status", "response_time"
-          ]
-          },
+  "auth": {
+           "processor": "kv-to-csv.py",
+           "must": "now",
+           "core": ["now", "method",
+                    "at", "success", "from", "request_id", "url"
+                    "login", "two_factor_type", "failure_reason",
+                    "failure_type", "two_factor_type"
+           ]
+  },
   "gitauth": {
            "processor": "kv-to-csv.py",
            "must": "app",
