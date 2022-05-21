@@ -1,4 +1,12 @@
 {
+  "ldap-sync": {
+     "processor": "kv-to-csv",
+    "must": "app",
+    "core": [
+             "app","now","dn","result_count","at", "runtime",
+             "team_id","team_name","dn","entry_found","ldap_fields_changed", "runtime",
+            ]
+  },
   "hookshot-go": {
      "processor": "kv-to-csv.py",
      "contained_in_log": "syslog",
