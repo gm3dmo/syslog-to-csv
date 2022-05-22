@@ -4,7 +4,7 @@
     "must": "now",
     "core": [
              "now", "dn", "result_count","at", "runtime",
-             "team_id","team_name","dn","entry_found","ldap_fields_changed"
+             "team_id","team_name","entry_found","ldap_fields_changed"
             ]
   },
   "hookshot-go": {
