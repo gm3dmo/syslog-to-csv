@@ -61,7 +61,7 @@
   "auth": {
            "processor": "kv-to-csv.py",
            "must": "now",
-           "core": ["now", "method","message"
+           "core": ["now", "method","message",
                     "at", "success", "from", "request_id", "url", "user_agent",
                     "login", "raw_login", "two_factor_type", "failure_reason",
                     "failure_type", "two_factor_type", "hashed_token", "token_type"
