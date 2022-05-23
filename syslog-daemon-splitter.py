@@ -42,8 +42,10 @@ def main(args):
     ]
 
     logfile = pathlib.Path(args.filename)
+    args.filename_stat = os.stat(logfile)
     logger.debug(logfile.parent)
     logger.debug(args.split_log_subdir)
+    logger.debug(args.filename_stat.st_size)
     daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}""")
     daemon_dir.parent.mkdir(parents=True, exist_ok=True)
     if not os.path.exists(daemon_dir):
@@ -115,6 +117,9 @@ def main(args):
                 )
                 continue
 
+    
+    args.report_data['input_file'] = args.filename
+    args.report_data['input_file_size'] = args.filename_stat.st_size
     args.report_data['end_timestamp'] = time.time()
     args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp']
     args.report_data['seen_daemons'] = seen_daemons
@@ -123,6 +128,13 @@ def main(args):
     args.report_data['seen_daemons_count'] = len(seen_daemons)
 
     logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}\n\ndaemon_metrics:\n {args.report_data['daemon_metrics']}""")
+
+    if args.sankey == True:
+        print(f"""\n\n{args.filename} [{args.filename_stat.st_size}] BytesWritten\n""")
+        for daemon in daemon_metrics:
+            print(f"""BytesWritten [{daemon_metrics[daemon]['bytes_written']}] {daemon}""")
+        
+
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
@@ -154,6 +166,13 @@ if __name__ == "__main__":
         dest="csv_file",
         default="syslog.csv",
         help="--csv-file  <csv output file name>",
+    )
+
+    parser.add_argument(
+        "--sankey",
+        action="store_true",
+        dest="sankey",
+        help="Generate output for https://sankeymatic.com/build/",
     )
 
     parser.add_argument(
