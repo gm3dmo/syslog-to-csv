@@ -42,6 +42,7 @@ def main(args):
     else:
         args.csv_path = pathlib.Path(args.csv_file)
 
+    args.report_data["filename_path"] = args.filename_path
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""filename.suffix: {args.filename_path.suffix}""")
@@ -66,9 +67,10 @@ def main(args):
             writer.writeheader()
         open_fn = log2csv.open_file_handle(args.filename_path)
         with open_fn(args.filename_path, "rb") as file:
-            line_count = 0
+            lines_processed_counter = 0
             for line_count, line in enumerate(file.readlines()):
                 length_of_line = len(line)
+                lines_processed_counter += 1
                 # Cheat section where new lines are removed
                 # and comma replaced with underscore.
                 try:
@@ -123,6 +125,7 @@ def main(args):
                         logger.debug(f"""{line}""")
                         next
 
+    args.report_data["csv_file"] = args.csv_file
     args.report_data["skipped_count"] = skipped_count
     args.report_data["csv_size_in_bytes"] = os.stat(csvfile.name).st_size
     args.report_data["human_size_of_csv"] = log2csv.sizer(
@@ -130,9 +133,9 @@ def main(args):
     )
 
     logger.info(
-        f"""Converted file: {args.filename} size type: {args.log_type} to CSV file {csvfile.name} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
+        f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {csvfile.name} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
     )
-    logger.info(f"""Skipped={skipped_count} Lines in file={line_count} lines.""")
+    logger.info(f"""Processed: {args.report_data["filename_path"]}\nLines in file={lines_processed_counter} lines.\nSkipped={args.report_data["skipped_count"]}\nCSV file: {args.report_data["csv_file"]} """)
 
 
 if __name__ == "__main__":
