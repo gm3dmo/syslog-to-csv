@@ -12,22 +12,22 @@ import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def split_daemon(daemon):
-    return daemon.split('[')   
+    return daemon.split("[")
 
 
 def main(args):
     logger = logging.getLogger("syslog-daemon-extractor")
     logger.setLevel(args.loglevel)
 
-    wanted_daemons = ['babeld', 'hookshot-go']
+    wanted_daemons = ["babeld", "hookshot-go"]
     daemon_handles = {}
     # open file handles for the wanted daemons
     for daemon in wanted_daemons:
         daemon_log = f"""{daemon}.log"""
         logger.debug(f"""opening file handle for {daemon} filename is {daemon_log}""")
-        daemon_handles[daemon] = open(daemon_log, 'w')
-
+        daemon_handles[daemon] = open(daemon_log, "w")
 
     syslog_fieldnames = [
         "line_number",
@@ -61,9 +61,11 @@ def main(args):
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
             try:
-               line = line.decode('utf-8')
+                line = line.decode("utf-8")
             except Exception as e:
-                logger.warning(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
+                logger.warning(
+                    f"Could not convert line number {line_number} to utf-8: ({line}) {e}"
+                )
                 continue
             length_of_line = len(line)
             if length_of_line <= split_at_column:
@@ -82,7 +84,9 @@ def main(args):
                 d = split_daemon(z[1])
                 daemon = d[0]
                 if daemon in wanted_daemons:
-                    logger.debug(f"""daemon {daemon} is a wanted daemon. Write it to it's file.""")
+                    logger.debug(
+                        f"""daemon {daemon} is a wanted daemon. Write it to it's file."""
+                    )
                     line = f"""{line}\n"""
                     daemon_handles[daemon].write(line)
             else:
@@ -94,10 +98,11 @@ def main(args):
 
     for daemon in wanted_daemons:
         logger.debug(f"""closing file handle for {daemon} """)
-        daemon_handles[daemon] .close()
+        daemon_handles[daemon].close()
+
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
     parser = argparse.ArgumentParser()
 
     parser.add_argument("filename", help="a syslog file")
@@ -129,8 +134,8 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-       "--log-type",
-       action="store",
+        "--log-type",
+        action="store",
         dest="log_type",
         default="syslog",
         help="--log-type syslog ",

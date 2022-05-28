@@ -23,11 +23,11 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def main(args):
     # create logger
-    logger = logging.getLogger('root')
+    logger = logging.getLogger("root")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(logging.INFO)
-    #logger.setLevel(logging.DEBUG)
+    # logger.setLevel(logging.DEBUG)
 
     p = pathlib.Path(sys.argv[1])
 
@@ -39,7 +39,6 @@ def main(args):
     if args.no_line_length is False:
         fieldnames.append("line_length")
 
-
     if args.csv_file is None:
         args.csv_file = f"""{args.log_type}.csv"""
         args.csv_path = pathlib.Path(args.csv_file)
@@ -50,7 +49,7 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        with open(p,'r') as jsonl_file:
+        with open(p, "r") as jsonl_file:
             line_count = 0
             for line in jsonl_file:
                 line_count += 1
@@ -59,10 +58,8 @@ def main(args):
                 try:
                     json_line = json.loads(line)
                     parsed_line = {
-                                k: json_line[k]
-                                for k in fieldnames
-                                if k in json_line
-                            }
+                        k: json_line[k] for k in fieldnames if k in json_line
+                    }
                 except Exception as e:
                     logger.debug(f"""{e}""")
                 else:
@@ -74,7 +71,6 @@ def main(args):
                         parsed_line["line_length"] = length_of_line
                     logger.debug(f"""{parsed_line}""")
                     writer.writerow(parsed_line)
-
 
 
 if __name__ == "__main__":

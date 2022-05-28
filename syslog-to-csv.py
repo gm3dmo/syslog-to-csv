@@ -12,8 +12,9 @@ import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def split_daemon(daemon):
-    return daemon.split('[')   
+    return daemon.split("[")
 
 
 def main(args):
@@ -61,9 +62,11 @@ def main(args):
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
             try:
-               line = line.decode('utf-8')
+                line = line.decode("utf-8")
             except Exception as e:
-                logger.warning(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
+                logger.warning(
+                    f"Could not convert line number {line_number} to utf-8: ({line}) {e}"
+                )
                 continue
             logger.debug(f"""DAVE type line: {type(line)}""")
             length_of_line = len(line)
@@ -77,7 +80,9 @@ def main(args):
             line_dict = {}
             logger.debug(f"""Processing: {line_number} __ {line} __""")
             date, remains_of_line = line[:split_at_column], line[split_at_column:]
-            logger.debug(f"""line number: {line_number}: remains_of_line is of type: {type(remains_of_line)}""")
+            logger.debug(
+                f"""line number: {line_number}: remains_of_line is of type: {type(remains_of_line)}"""
+            )
             r = remains_of_line
             logger.debug(f"""type r: {type(r)}""")
             w = r.lstrip(" ")
@@ -117,7 +122,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
     parser = argparse.ArgumentParser()
 
     parser.add_argument("filename", help="a syslog file")
@@ -149,8 +154,8 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-       "--log-type",
-       action="store",
+        "--log-type",
+        action="store",
         dest="log_type",
         default="syslog",
         help="--log-type syslog ",

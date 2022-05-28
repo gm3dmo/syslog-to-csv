@@ -56,7 +56,6 @@ def main(args):
 
     skipped_count = 0
 
-
     with open(args.csv_path, "w") as csvfile:
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
@@ -142,7 +141,7 @@ if __name__ == "__main__":
         dest="loglevel",
         const=logging.DEBUG,
         default=logging.INFO,
-        #default=logging.WARNING,
+        # default=logging.WARNING,
         help="debug(-d, --debug, etc)",
     )
 
