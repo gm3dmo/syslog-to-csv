@@ -54,6 +54,9 @@ def main(args):
     logger.debug(daemon_dir)
 
     args.filename_path = pathlib.Path(args.filename)
+    logger.info(
+        f"""Splitting logfile: {logfile} of size: {args.filename_stat.st_size}"""
+    )
 
     # A syslog line looks like this :
     # Aug 15 08:22:53 debian systemd-modules-load[272]: Inserted module 'ppdev'
