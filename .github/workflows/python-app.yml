@@ -24,7 +24,6 @@ jobs:
         python-version: 3.9
 
     - name: Run black formatter linter
-      uses: actions/checkout@v2
       uses: psf/black@stable
 
     - name: Install dependencies
