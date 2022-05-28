@@ -23,9 +23,7 @@ jobs:
       with:
         python-version: 3.9
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
+    - name: Run black formatter/linter
       - uses: actions/checkout@v2
       - uses: psf/black@stable
         with:
