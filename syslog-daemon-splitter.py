@@ -15,8 +15,9 @@ import log2csv as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 def split_daemon(daemon):
-    return daemon.split('[')
+    return daemon.split("[")
 
 
 def main(args):
@@ -60,15 +61,17 @@ def main(args):
     # we want to extract the date so we split at 15:
     split_at_column = 15
 
-    args.report_data['start_timestamp'] = time.time()
+    args.report_data["start_timestamp"] = time.time()
 
     open_fn = lc.open_file_handle(args.filename_path)
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
             try:
-               line = line.decode('utf-8')
+                line = line.decode("utf-8")
             except Exception as e:
-                logger.warning(f"Could not convert line number {line_number} to utf-8: ({line}) {e}")
+                logger.warning(
+                    f"Could not convert line number {line_number} to utf-8: ({line}) {e}"
+                )
                 continue
             length_of_line = len(line)
             if length_of_line <= split_at_column:
@@ -99,45 +102,53 @@ def main(args):
                 line = f"""{line}\n"""
                 # Create a new file for each daemon if the daemon has not been seen before:
                 if daemon not in seen_daemons:
-                   daemon_log = f"""{daemon}.log"""
-                   daemon_log = daemon_dir / daemon_log
-                   daemon_handles[daemon] = open(daemon_log, 'w')
-                   logger.debug(f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}""")
-                   daemon_handles[daemon].write(line)
-                   seen_daemons.append(daemon)
-                   daemon_metrics[daemon] = {'bytes_written': 0}
-                   daemon_metrics[daemon]['bytes_written'] += len(line) 
+                    daemon_log = f"""{daemon}.log"""
+                    daemon_log = daemon_dir / daemon_log
+                    daemon_handles[daemon] = open(daemon_log, "w")
+                    logger.debug(
+                        f"""daemon {daemon} has not been seen before opening file handle and filename is {daemon_log}"""
+                    )
+                    daemon_handles[daemon].write(line)
+                    seen_daemons.append(daemon)
+                    daemon_metrics[daemon] = {"bytes_written": 0}
+                    daemon_metrics[daemon]["bytes_written"] += len(line)
                 else:
-                   logger.debug(f"""daemon {daemon} has been seen before writing to its file""")
-                   daemon_handles[daemon].write(line)
-                   daemon_metrics[daemon]['bytes_written'] += len(line) 
+                    logger.debug(
+                        f"""daemon {daemon} has been seen before writing to its file"""
+                    )
+                    daemon_handles[daemon].write(line)
+                    daemon_metrics[daemon]["bytes_written"] += len(line)
             else:
                 logger.warning(
                     f"squib: line {line_number} does not have host/daemon portion."
                 )
                 continue
 
-    
-    args.report_data['input_file'] = args.filename
-    args.report_data['input_file_size'] = args.filename_stat.st_size
-    args.report_data['end_timestamp'] = time.time()
-    args.report_data['duration'] = args.report_data['end_timestamp']  - args.report_data['start_timestamp']
-    args.report_data['seen_daemons'] = seen_daemons
-    args.report_data['daemon_metrics'] = daemon_metrics
-    args.report_data['seen_daemons_string'] = '\n  '.join(seen_daemons)
-    args.report_data['seen_daemons_count'] = len(seen_daemons)
+    args.report_data["input_file"] = args.filename
+    args.report_data["input_file_size"] = args.filename_stat.st_size
+    args.report_data["end_timestamp"] = time.time()
+    args.report_data["duration"] = (
+        args.report_data["end_timestamp"] - args.report_data["start_timestamp"]
+    )
+    args.report_data["seen_daemons"] = seen_daemons
+    args.report_data["daemon_metrics"] = daemon_metrics
+    args.report_data["seen_daemons_string"] = "\n  ".join(seen_daemons)
+    args.report_data["seen_daemons_count"] = len(seen_daemons)
 
-    logger.info(f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}\n\ndaemon_metrics:\n {args.report_data['daemon_metrics']}""")
+    logger.info(
+        f"""\nstart: {args.report_data['start_timestamp']}\nend:{args.report_data['end_timestamp']}\nduration: {args.report_data['duration']}\ndaemons extracted ({args.report_data['seen_daemons_count']}):\n  {args.report_data['seen_daemons_string']}\n\ndaemon_metrics:\n {args.report_data['daemon_metrics']}"""
+    )
 
     if args.sankey == True:
         print(f"""\n\n{args.filename} [{args.filename_stat.st_size}] BytesWritten\n""")
         for daemon in daemon_metrics:
-            print(f"""BytesWritten [{daemon_metrics[daemon]['bytes_written']}] {daemon}""")
-        
+            print(
+                f"""BytesWritten [{daemon_metrics[daemon]['bytes_written']}] {daemon}"""
+            )
 
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
+    """This is executed when run from the command line"""
     parser = argparse.ArgumentParser()
 
     parser.add_argument("filename", help="a syslog file")
@@ -176,16 +187,16 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-       "--log-type",
-       action="store",
+        "--log-type",
+        action="store",
         dest="log_type",
         default="syslog",
         help="--log-type syslog ",
     )
 
     parser.add_argument(
-       "--split-log-subdir",
-       action="store",
+        "--split-log-subdir",
+        action="store",
         dest="split_log_subdir",
         default="split-logs",
         help="--split-log-subdir split-logs",
