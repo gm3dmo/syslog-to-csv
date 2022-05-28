@@ -21,13 +21,15 @@ def slugify(value):
     underscores) and converts spaces to hyphens. Also strips leading and
     trailing whitespace.
     """
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
-    value = re.sub('[^\w\s-]', '', value).strip().lower()
-    return re.sub('[-\s]+', '-', value)
+    value = (
+        unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    )
+    value = re.sub("[^\w\s-]", "", value).strip().lower()
+    return re.sub("[-\s]+", "-", value)
 
 
 def is_gzipped(path):
-    if  path.suffix == ".gz":
+    if path.suffix == ".gz":
         return True
 
 
@@ -122,7 +124,7 @@ def known_regexes(want_to_match):
 
 
 def get_filesize(path):
-    return pathlib.Path(path).stat().st_size 
+    return pathlib.Path(path).stat().st_size
 
 
 def strip_regex(string_to_wipe, pattern_to_wipe=r"\d+"):
