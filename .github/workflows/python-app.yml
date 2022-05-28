@@ -23,12 +23,9 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Run black formatter/linter
+    - name: Run black formatter linter
       - uses: actions/checkout@v2
       - uses: psf/black@stable
-        with:
-          options: "--check --verbose"
-          src: "."
 
     - name: Install dependencies
       run: |
