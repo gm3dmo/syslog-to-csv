@@ -7,6 +7,14 @@
              "team_id","team_name","entry_found","ldap_fields_changed"
             ]
   },
+    "spokesd": {
+     "processor": "kv-to-csv.py",
+    "must": "app",
+    "core": [
+             "app", "host", "twirp_status","twirp_method", "twirp_package",
+             "request_id", "user_agent", "request_duration"
+            ]
+  },
   "hookshot-go": {
      "processor": "kv-to-csv.py",
      "contained_in_log": "syslog",
