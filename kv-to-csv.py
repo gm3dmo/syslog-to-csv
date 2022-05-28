@@ -6,6 +6,7 @@ import os
 import sys
 import csv
 import gzip
+import time
 import logging
 import argparse
 import logging.config
@@ -25,9 +26,12 @@ def main(args):
 
     logger.debug(f"""filename: {args.filename}""")
 
+    args.report_data = {}
     args.filename_path = pathlib.Path(args.filename)
     args.file_size_bytes = log2csv.get_filesize(args.filename_path)
     args.file_size_human = log2csv.sizer(args.file_size_bytes)
+
+    args.report_data["start_timestamp"] = time.time()
 
     if args.log_type is None:
         args.log_type = args.filename.stem.split(".")[0]
@@ -119,11 +123,14 @@ def main(args):
                         logger.debug(f"""{line}""")
                         next
 
-    csv_size_in_bytes = os.stat(csvfile.name).st_size
-    human_size_of_csv = log2csv.sizer(csv_size_in_bytes)
+    args.report_data["skipped_count"] = skipped_count
+    args.report_data["csv_size_in_bytes"] = os.stat(csvfile.name).st_size
+    args.report_data["human_size_of_csv"] = log2csv.sizer(
+        args.report_data["csv_size_in_bytes"]
+    )
 
     logger.info(
-        f"""Converted file: {args.filename} size type: {args.log_type} to CSV file {csvfile.name} size {csv_size_in_bytes} bytes or roughly {human_size_of_csv}."""
+        f"""Converted file: {args.filename} size type: {args.log_type} to CSV file {csvfile.name} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
     )
     logger.info(f"""Skipped={skipped_count} Lines in file={line_count} lines.""")
 
