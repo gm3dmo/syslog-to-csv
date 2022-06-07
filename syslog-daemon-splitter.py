@@ -47,7 +47,7 @@ def main(args):
     logger.debug(logfile.parent)
     logger.debug(args.split_log_subdir)
     logger.debug(args.filename_stat.st_size)
-    daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}""")
+    daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}-{logfile.name}""")
     daemon_dir.parent.mkdir(parents=True, exist_ok=True)
     if not os.path.exists(daemon_dir):
         os.mkdir(daemon_dir)
