@@ -1,0 +1,6 @@
+rm logs.db
+sqlite3 logs.db << EOF
+.separator ","
+.import github-logs/exceptions.log.csv exceptions
+.import github-logs/unicorn.log.csv unicorn
+EOF
