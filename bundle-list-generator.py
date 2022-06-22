@@ -44,6 +44,8 @@ def main(args):
     bin_dir = "syslog-to-csv"
     log_directories = ["github-logs", "system-logs"]
     splitter = "syslog-daemon-splitter.py"
+    priority_logs = []
+    secondary_logs = []
     for log_directory in log_directories:
         for log_type in log_types:
             glob_string = f"""{log_directory}/{log_type}*"""
@@ -66,20 +68,22 @@ def main(args):
                         else:
                             csv_file = f"""{item}.csv"""
                             if log_type == "syslog":
-                                print(
-                                    f"""{args.python_interpreter} {bin_dir}/{splitter} {item} --log-type {log_type} --csv-file {csv_file}"""
+                                priority_logs.append(
+                                    f"""{args.python_interpreter} {bin_dir}/{splitter} {item} --sankey"""
                                 )
 
-                    # loop round a second time to process syslog in it's entirety
+                    # loop round a second time to process syslog in it's entirety and convert that to a csv
                     for item in list(p.glob(glob_string)):
                         if str(item).endswith(".csv"):
                             next
                         else:
                             csv_file = f"""{item}.csv"""
-                            print(
+                            secondary_logs.append(
                                 f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                             )
 
+    print('\n'.join(priority_logs))
+    print('\n'.join(secondary_logs))
 
 if __name__ == "__main__":
     """This is executed when run from the command line"""
