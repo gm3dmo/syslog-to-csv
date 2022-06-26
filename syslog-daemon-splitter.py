@@ -144,10 +144,16 @@ def main(args):
 
     if args.sankey == True:
         print(f"""\n\n{args.filename} [{args.filename_stat.st_size}] BytesWritten\n""")
-        for daemon in daemon_metrics:
+        #for daemon in daemon_metrics:
+        sorted_daemon_metrics = dict(reversed(sorted(daemon_metrics.items(), key=lambda item: item[1]['bytes_written'])))
+        counter = 0
+        for daemon in sorted_daemon_metrics:
             print(
                 f"""BytesWritten [{daemon_metrics[daemon]['bytes_written']}] {daemon}"""
             )
+            if counter == 30:
+                print(f"""""")
+            counter +=1
 
 
 if __name__ == "__main__":
