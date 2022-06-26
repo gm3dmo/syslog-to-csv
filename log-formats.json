@@ -15,6 +15,17 @@
              "request_id", "user_agent", "request_duration"
             ]
   },
+    "spokes-sweeper": {
+     "processor": "kv-to-csv.py",
+    "must": "app",
+    "core": [
+             "app", "service", "msg", "twirp_method", "twirp_package",
+             "message", "sha", "loop", "fleet", "online", "unavailabe",
+             "resolved", "elapsed", "healthy", "degraded", "error",
+             "replicas", "type", "func", "request_id", "user_agent", 
+             "request_duration"
+            ]
+  },
   "hookshot-go": {
      "processor": "kv-to-csv.py",
      "contained_in_log": "syslog",
