@@ -9,21 +9,26 @@
   },
     "spokesd": {
      "processor": "kv-to-csv.py",
+     "contained_in_log": "syslog",
     "must": "app",
     "core": [
-             "app", "host", "twirp_status","twirp_method", "twirp_package",
-             "request_id", "user_agent", "request_duration"
+             "app", "time", "msg", "level", "host", "service",
+             "twirp_service","twirp_status","twirp_method", "twirp_package",
+             "fleet", "resolved","elapsed", "at", "online",
+             "request_id", "request_duration", "request_auth",
+             "remote_addr", "component",
+              "user_agent", "unavailable", "status"
             ]
   },
     "spokes-sweeper": {
      "processor": "kv-to-csv.py",
+     "contained_in_log": "syslog",
     "must": "app",
     "core": [
-             "app", "service", "msg", "twirp_method", "twirp_package",
-             "message", "sha", "loop", "fleet", "online", "unavailabe",
+             "app", "time", "service", "msg", "twirp_method", "twirp_package",
+             "message", "sha", "loop", "fleet", "online", "unavailable",
              "resolved", "elapsed", "healthy", "degraded", "error",
-             "replicas", "type", "func", "request_id", "user_agent", 
-             "request_duration"
+             "replicas", "type", "func", "request_id", "user_agent"
             ]
   },
   "hookshot-go": {
