@@ -135,7 +135,9 @@ def main(args):
     logger.info(
         f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {csvfile.name} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
     )
-    logger.info(f"""Processed: {args.report_data["filename_path"]}\nLines in file={lines_processed_counter} lines.\nSkipped={args.report_data["skipped_count"]}\nCSV file: {args.report_data["csv_file"]} """)
+    logger.info(
+        f"""Processed: {args.report_data["filename_path"]}\nLines in file={lines_processed_counter} lines.\nSkipped={args.report_data["skipped_count"]}\nCSV file: {args.report_data["csv_file"]} """
+    )
 
 
 if __name__ == "__main__":
