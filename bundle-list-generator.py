@@ -82,8 +82,9 @@ def main(args):
                                 f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                             )
 
-    print('\n'.join(priority_logs))
-    print('\n'.join(secondary_logs))
+    print("\n".join(priority_logs))
+    print("\n".join(secondary_logs))
+
 
 if __name__ == "__main__":
     """This is executed when run from the command line"""
