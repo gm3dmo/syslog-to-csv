@@ -47,7 +47,9 @@ def main(args):
     logger.debug(logfile.parent)
     logger.debug(args.split_log_subdir)
     logger.debug(args.filename_stat.st_size)
-    daemon_dir = pathlib.Path(f"""{logfile.parent}/{args.split_log_subdir}-{logfile.name}""")
+    daemon_dir = pathlib.Path(
+        f"""{logfile.parent}/{args.split_log_subdir}-{logfile.name}"""
+    )
     daemon_dir.parent.mkdir(parents=True, exist_ok=True)
     if not os.path.exists(daemon_dir):
         os.mkdir(daemon_dir)
@@ -144,8 +146,14 @@ def main(args):
 
     if args.sankey == True:
         print(f"""\n\n{args.filename} [{args.filename_stat.st_size}] BytesWritten\n""")
-        #for daemon in daemon_metrics:
-        sorted_daemon_metrics = dict(reversed(sorted(daemon_metrics.items(), key=lambda item: item[1]['bytes_written'])))
+        # for daemon in daemon_metrics:
+        sorted_daemon_metrics = dict(
+            reversed(
+                sorted(
+                    daemon_metrics.items(), key=lambda item: item[1]["bytes_written"]
+                )
+            )
+        )
         counter = 0
         for daemon in sorted_daemon_metrics:
             print(
@@ -153,7 +161,7 @@ def main(args):
             )
             if counter == 30:
                 print(f"""""")
-            counter +=1
+            counter += 1
 
 
 if __name__ == "__main__":
