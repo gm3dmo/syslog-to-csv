@@ -49,7 +49,7 @@
                        "release", "app","api_route","user", "method",
                        "cause", "time", "created_at", "class",
                        "message", "request_id", "controller", "url",
-                       "repo_id"
+                       "repo_id", "user_agent"
                      ]
         },
   "resqued": {
