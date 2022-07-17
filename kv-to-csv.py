@@ -45,7 +45,7 @@ def main(args):
     args.report_data["filename_path"] = args.filename_path
     logger.info(f"""filename: {args.filename_path}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
-    logger.info(f"""filename.suffix: {args.filename_path.suffix}""")
+    logger.info(f"""filename.suffix: ({args.filename_path.suffix})""")
     logger.info(f"""filename.size: {args.file_size_human}""")
     logger.info(f"""filename.log_type: {args.log_type}""")
 
