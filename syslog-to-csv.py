@@ -2,6 +2,7 @@
 
 __version__ = "0.1.0"
 
+import os
 import sys
 import time
 import logging
@@ -57,6 +58,8 @@ def main(args):
     logger.info(f"""filename.suffix: ({args.filename_path.suffix})""")
     logger.info(f"""filename.size: {args.file_size_human}""")
     logger.info(f"""filename.log_type: {args.log_type}""")
+
+    skipped_count = 0
 
     csv_writer = lc.get_csv_handle(args.output_filename, fieldnames=syslog_fieldnames)
 
@@ -130,6 +133,17 @@ def main(args):
                 csv_writer.writerow(line_dict["line_number"])
             except Exception as e:
                 logger.warning(f"Could not parse: {line_number} ({line}) {e}")
+
+    args.report_data["csv_file"] = args.csv_file
+    args.report_data["skipped_count"] = skipped_count
+    args.report_data["csv_size_in_bytes"] = os.stat(args.csv_file).st_size
+    args.report_data["human_size_of_csv"] = lc.sizer(
+        args.report_data["csv_size_in_bytes"]
+    )
+
+    logger.info(
+        f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {args.report_data["csv_file"]} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
+    )
 
 
 if __name__ == "__main__":
