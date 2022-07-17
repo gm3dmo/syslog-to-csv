@@ -61,8 +61,8 @@ def main(args):
 
     skipped_count = 0
 
-    with open(args.csv_path, "w") as csvfile:
-        writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
+    with open(args.csv_path, "w") as csvhandle:
+        writer = csv.DictWriter(csvhandle, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
         open_fn = log2csv.open_file_handle(args.filename_path)
@@ -127,13 +127,13 @@ def main(args):
 
     args.report_data["csv_file"] = args.csv_file
     args.report_data["skipped_count"] = skipped_count
-    args.report_data["csv_size_in_bytes"] = os.stat(csvfile.name).st_size
+    args.report_data["csv_size_in_bytes"] = os.stat(args.csv_file).st_size
     args.report_data["human_size_of_csv"] = log2csv.sizer(
         args.report_data["csv_size_in_bytes"]
     )
 
     logger.info(
-        f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {csvfile.name} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
+        f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {args.report_data["csv_file"]} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}."""
     )
     logger.info(
         f"""Processed: {args.report_data["filename_path"]}\nLines in file={lines_processed_counter} lines.\nSkipped={args.report_data["skipped_count"]}\nCSV file: {args.report_data["csv_file"]} """
