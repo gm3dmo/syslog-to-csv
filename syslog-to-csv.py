@@ -3,6 +3,7 @@
 __version__ = "0.1.0"
 
 import sys
+import time
 import logging
 import logging.config
 import argparse
@@ -18,7 +19,6 @@ def split_daemon(daemon):
 
 
 def main(args):
-
     logger = logging.getLogger("syslog-to-csv")
     logger.setLevel(args.loglevel)
 
@@ -43,11 +43,22 @@ def main(args):
 
     logfile = pathlib.Path(args.filename)
     logger.debug(logfile.parent)
+
+    args.report_data = {}
     args.filename_path = pathlib.Path(args.filename)
+    args.output_filename = pathlib.Path(f"""{args.csv_file}""")
+    args.file_size_bytes = lc.get_filesize(args.filename_path)
+    args.file_size_human = lc.sizer(args.file_size_bytes)
 
-    output_filename = pathlib.Path(f"""{args.csv_file}""")
+    args.report_data["start_timestamp"] = time.time()
 
-    csv_writer = lc.get_csv_handle(output_filename, fieldnames=syslog_fieldnames)
+    logger.info(f"""filename: {args.filename_path}""")
+    logger.info(f"""filename.stem: {args.filename_path.stem}""")
+    logger.info(f"""filename.suffix: ({args.filename_path.suffix})""")
+    logger.info(f"""filename.size: {args.file_size_human}""")
+    logger.info(f"""filename.log_type: {args.log_type}""")
+
+    csv_writer = lc.get_csv_handle(args.output_filename, fieldnames=syslog_fieldnames)
 
     if args.header == "yes":
         csv_writer.writeheader()
@@ -133,7 +144,7 @@ if __name__ == "__main__":
         action="store_const",
         dest="loglevel",
         const=logging.DEBUG,
-        default=logging.WARNING,
+        default=logging.INFO,
         help="debug(-d, --debug, etc)",
     )
 
