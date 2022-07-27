@@ -15,7 +15,7 @@ from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-log_types = ["unicorn", "exceptions", "auth", "gitauth", "syslog"]
+log_types = ["unicorn", "exceptions", "auth", "gitauth", "syslog", "hookshot-go"]
 skip_list = ["system-logs/auth"]
 
 
@@ -42,7 +42,7 @@ def main(args):
     logger.setLevel(args.loglevel)
     p = Path(".")
     bin_dir = "syslog-to-csv"
-    log_directories = ["github-logs", "system-logs"]
+    log_directories = ["github-logs", "system-logs", "system-logs/split-logs-syslog", "system-logs/split-logs-syslog.1"]
     splitter = "syslog-daemon-splitter.py"
     priority_logs = []
     secondary_logs = []
