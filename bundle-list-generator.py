@@ -42,7 +42,12 @@ def main(args):
     logger.setLevel(args.loglevel)
     p = Path(".")
     bin_dir = "syslog-to-csv"
-    log_directories = ["github-logs", "system-logs", "system-logs/split-logs-syslog", "system-logs/split-logs-syslog.1"]
+    log_directories = [
+        "github-logs",
+        "system-logs",
+        "system-logs/split-logs-syslog",
+        "system-logs/split-logs-syslog.1",
+    ]
     splitter = "syslog-daemon-splitter.py"
     priority_logs = []
     secondary_logs = []
