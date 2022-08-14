@@ -1,7 +1,10 @@
 
 ### `syslog-daemon-splitter`
-Split out the contents of a syslog file by the daemon name (daemon names will be *slugified*))
+Splits out the contents of a syslog file by the daemon name (daemon names will be *slugified*))
 
+#### Generates output for a diagram at sankeymatic.com
+
+```
 test-data/ghes/3.1/syslog.1.gz [9753083] BytesWritten
 
 BytesWritten [20526922] github-timerd
@@ -35,3 +38,5 @@ BytesWritten [41922] dockerd
 BytesWritten [41178] consul
 BytesWritten [33048] elasticsearch
 BytesWritten [24761] ghe-user-disk-start
+```
+
