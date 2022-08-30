@@ -6,10 +6,13 @@ sqlite3 logs.db << EOF
 .import github-logs/gitauth.log.csv gitauth
 .import github-logs/auth.log.csv auth
 .import system-logs/split-logs-syslog/babeld.log.csv babeld
+.import system-logs/split-logs-syslog/hookshot-go.log.csv hookshotgo
 
 .import github-logs/exceptions.log.1.csv exceptions1
 .import github-logs/unicorn.log.1.csv unicorn1
 .import github-logs/gitauth.log.1.csv gitauth1
 .import github-logs/auth.log.1.csv auth1
-.import system-logs/split-logs-syslog/babeld.log.1.csv babeld1
+.import system-logs/split-logs-syslog.1/babeld.log.csv babeld1
+.import system-logs/split-logs-syslog.1/hookshot-go.log.csv hookshotgo1
+
 EOF
