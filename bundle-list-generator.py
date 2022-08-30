@@ -15,7 +15,15 @@ from pathlib import Path
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-log_types = ["unicorn", "exceptions", "auth", "gitauth", "syslog", "hookshot-go"]
+log_types = [
+    "unicorn",
+    "exceptions",
+    "auth",
+    "gitauth",
+    "syslog",
+    "hookshot-go",
+    "babeld",
+]
 skip_list = ["system-logs/auth"]
 
 
