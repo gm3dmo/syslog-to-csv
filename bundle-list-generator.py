@@ -23,6 +23,7 @@ log_types = [
     "syslog",
     "hookshot-go",
     "babeld",
+    "gitrpcd",
 ]
 skip_list = ["system-logs/auth"]
 

@@ -31,16 +31,7 @@ def main(args):
 
     deletions = ["64charguids", "guids", "numbers"]
 
-    syslog_fieldnames = [
-        "line_number",
-        "line_length",
-        "extracted_date",
-        "unix_timestamp",
-        "real_date",
-        "hostname",
-        "daemon",
-        "wiped_line",
-    ]
+    syslog_fieldnames = lc.syslog_fieldnames()
 
     logfile = pathlib.Path(args.filename)
     logger.debug(logfile.parent)

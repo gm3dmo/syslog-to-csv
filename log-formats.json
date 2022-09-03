@@ -36,7 +36,7 @@
      "contained_in_log": "syslog",
      "must": "time",
      "core": [
-                       "time", "level","msg","process","guid",
+                       "time", "msg", "process","guid",
                        "parent", "hook_id","github_request_id","dest_url","queue",
                        "event", "action","synthetic_status","status","request_duration",
                        "repo_id", "queue_duration", "sender_id","public_error_message"
@@ -47,10 +47,11 @@
      "contained_in_log": "syslog",
      "must": "time",
      "core": [
-                       "time", "level", "msg", "app", "sha", "remote_addr",
-                       "twirp_method", "twirp_service", "service", "user_agent",
-                       "health", "twirp_method", "service", "user_agent","health",
-                       "request_duration", "repository_id", "blobs", "blob_size"
+                       "time", "component", "level", "msg", "app", "sha", "remote_addr",
+                       "twirp_method", "twirp_service", "twirp_package", "twirp_error", "service",
+                       "health", "user_agent", "health", "request_duration", 
+                       "repository_id", "path", "blobs", "blob_size",
+                       "spec", "request_duration"
                      ]
         },
   "exceptions": {
