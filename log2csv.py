@@ -14,6 +14,18 @@ import unicodedata
 
 logger = logging.getLogger("log2csv")
 
+def syslog_fieldnames():
+    return [
+        "line_number",
+        "line_length",
+        "extracted_date",
+        "unix_timestamp",
+        "real_date",
+        "hostname",
+        "daemon",
+        "wiped_line",
+    ]
+
 
 def slugify(value):
     """
