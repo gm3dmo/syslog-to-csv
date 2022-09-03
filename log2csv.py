@@ -14,6 +14,7 @@ import unicodedata
 
 logger = logging.getLogger("log2csv")
 
+
 def syslog_fieldnames():
     return [
         "line_number",
