@@ -48,9 +48,10 @@
      "must": "time",
      "core": [
                        "time", "level", "msg", "app", "sha", "remote_addr",
-                       "twirp_method", "twirp_service", "service", "user_agent",
-                       "health", "twirp_method", "service", "user_agent","health",
-                       "request_duration", "repository_id", "blobs", "blob_size"
+                       "twirp_method", "twirp_service", "twirp_package", "twirp_error", "service",
+                       "health", "user_agent","health", "request_duration", 
+                       "repository_id", "blobs", "blob_size"
+                       "spec", "request_duration" 
                      ]
         },
   "exceptions": {
