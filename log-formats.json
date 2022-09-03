@@ -42,6 +42,17 @@
                        "repo_id", "queue_duration", "sender_id","public_error_message"
                      ]
         },
+  "gitrpcd": {
+     "processor": "kv-to-csv.py",
+     "contained_in_log": "syslog",
+     "must": "time",
+     "core": [
+                       "time", "level", "msg", "app", "sha", "remote_addr",
+                       "twirp_method", "twirp_service", "service", "user_agent",
+                       "health", "twirp_method", "service", "user_agent","health",
+                       "request_duration", "repository_id", "blobs", "blob_size"
+                     ]
+        },
   "exceptions": {
      "processor": "jsonl-to-csv.py",
      "must": "release",
