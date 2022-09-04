@@ -107,11 +107,11 @@ def main(args):
                     continue
                 line = line.rstrip()
                 line_dict = {}
-                logger.debug(f"""Processing: {line_number} __ {line} __""")
+                #logger.debug(f"""Processing: {line_number} __ {line} __""")
                 date, remains_of_line = line[:split_at_column], line[split_at_column:]
-                logger.debug(
-                    f"""line number: {line_number}: remains_of_line is of type: {type(remains_of_line)}"""
-                )
+                #logger.debug(
+                #    f"""line number: {line_number}: remains_of_line is of type: {type(remains_of_line)}"""
+                #)
                 r = remains_of_line
                 logger.debug(f"""type r: {type(r)}""")
                 w = r.lstrip(" ")
@@ -121,6 +121,7 @@ def main(args):
                     hostname = z[0]
                     d = lc.split_daemon(z[1])
                     daemon = d[0]
+                    logger.debug(f"""line number: {line_number}: z: ({z[2]})""")
                 else:
                     logger.warning(
                         f"squib: line {line_number} does not have host/daemon portion."
