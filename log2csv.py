@@ -15,6 +15,10 @@ import unicodedata
 logger = logging.getLogger("log2csv")
 
 
+def split_daemon(daemon):
+    return daemon.split("[")
+
+
 def syslog_fieldnames():
     return [
         "line_number",

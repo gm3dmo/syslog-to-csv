@@ -54,6 +54,13 @@
                        "spec", "request_duration"
                      ]
         },
+  "actions-job-agent": {
+     "processor": "sylog-jsonl-to-csv.py",
+     "contained_in_log": "syslog",
+     "must": "logType",
+     "core": [
+                     ]
+        },
   "exceptions": {
      "processor": "jsonl-to-csv.py",
      "must": "release",
