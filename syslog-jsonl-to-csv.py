@@ -29,14 +29,12 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def main(args):
 
-
     # create logger
     logger = logging.getLogger("root")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
     logger.debug(f"""filename: {args.filename}""")
-
 
     args.report_data = {}
     args.filename_path = pathlib.Path(args.filename)
@@ -52,12 +50,11 @@ def main(args):
     logger.info(f"""filename.size: {args.file_size_human}""")
     logger.info(f"""filename.log_type: {args.log_type}""")
 
-
     # create logger
     logger = logging.getLogger("root")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
     logging.basicConfig(format=FORMAT)
-    #logger.setLevel(logging.INFO)
+    # logger.setLevel(logging.INFO)
     # logger.setLevel(logging.DEBUG)
 
     p = pathlib.Path(sys.argv[1])
@@ -118,8 +115,10 @@ def main(args):
                     d = lc.split_daemon(z[1])
                     daemon = d[0]
                     json_msg = json.loads(z[2])
-                    logger.debug(f"""line number: {line_number}: \n\n\n json_msg: ({json_msg})\n\n\n""")
-                    
+                    logger.debug(
+                        f"""line number: {line_number}: \n\n\n json_msg: ({json_msg})\n\n\n"""
+                    )
+
                 else:
                     logger.warning(
                         f"squib: line {line_number} does not have host/daemon portion."
@@ -128,9 +127,6 @@ def main(args):
 
                     logger.debug(f"Writing: {line_number} ({line})")
                     csv_writer.writerow(line_dict["line_number"])
-
-
-
 
 
 if __name__ == "__main__":
