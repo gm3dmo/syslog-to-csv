@@ -114,10 +114,13 @@ def main(args):
                     hostname = z[0]
                     d = lc.split_daemon(z[1])
                     daemon = d[0]
-                    json_msg = json.loads(z[2])
-                    logger.debug(
-                        f"""line number: {line_number}: \n\n\n json_msg: ({json_msg})\n\n\n"""
-                    )
+                    try:
+                        json_msg = json.loads(z[2])
+                        logger.debug(
+                            f"""line number: {line_number}: \n\n\n json_msg: ({json.dumps(json_msg, indent=4)})\n\n\n"""
+                        )
+                    except:
+                        next
 
                 else:
                     logger.warning(
