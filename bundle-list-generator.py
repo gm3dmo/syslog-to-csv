@@ -24,6 +24,7 @@ log_types = [
     "hookshot-go",
     "babeld",
     "gitrpcd",
+    "spokesd"
 ]
 skip_list = ["system-logs/auth"]
 
