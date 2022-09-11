@@ -7,6 +7,7 @@ sqlite3 logs.db << EOF
 .import github-logs/auth.log.csv auth
 .import system-logs/split-logs-syslog/babeld.csv babeld
 .import system-logs/split-logs-syslog/hookshot-go.csv hookshotgo
+.import system-logs/split-logs-syslog/spokesd spokesd
 
 .import github-logs/exceptions.log.1.csv exceptions1
 .import github-logs/unicorn.log.1.csv unicorn1
@@ -14,5 +15,6 @@ sqlite3 logs.db << EOF
 .import github-logs/auth.log.1.csv auth1
 .import system-logs/split-logs-syslog.1/babeld.csv babeld1
 .import system-logs/split-logs-syslog.1/hookshot-go.csv hookshotgo1
+.import system-logs/split-logs-syslog.1/spokesd spokesd1
 
 EOF
