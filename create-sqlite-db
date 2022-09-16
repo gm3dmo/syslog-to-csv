@@ -6,7 +6,7 @@ sqlite3 logs.db << EOF
 .import "github-logs/exceptions.log.1.csv" exceptions
 .import "| tail -n +2 github-logs/exceptions.log.csv" exceptions
 
-.import "github-logs/unicorn.log.1.csv unicorn
+.import "github-logs/unicorn.log.1.csv" unicorn
 .import "| tail -n +2 github-logs/unicorn.log.csv" unicorn
 
 .import "github-logs/gitauth.log.1.csv" gitauth
@@ -15,12 +15,12 @@ sqlite3 logs.db << EOF
 .import "github-logs/auth.log.1.csv" auth
 .import "| tail -n +2 github-logs/auth.log.csv" auth
 
-.import system-logs/split-logs-syslog/babeld.csv babeld
-.import system-logs/split-logs-syslog.1/babeld.csv babeld
+.import system-logs/split-logs-syslog/babeld.log.csv babeld
+.import system-logs/split-logs-syslog.1/babeld.log.csv babeld
 
-.import "system-logs/split-logs-syslog.1/hookshot-go.csv" hookshotgo
-.import "| tail -n +2 system-logs/split-logs-syslog/hookshot-go.csv" hookshotgo
+.import "system-logs/split-logs-syslog.1/hookshot-go.log.csv" hookshotgo
+.import "| tail -n +2 system-logs/split-logs-syslog/hookshot-go.log.csv" hookshotgo
 
-.import "system-logs/split-logs-syslog.1/spokesd" spokesd
-.import "| tail -n +2 system-logs/split-logs-syslog/spokesd" spokesd
+.import "system-logs/split-logs-syslog.1/spokesd.log.csv" spokesd
+.import "| tail -n +2 system-logs/split-logs-syslog/spokesd.log.csv" spokesd
 EOF
