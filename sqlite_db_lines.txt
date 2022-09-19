@@ -1,8 +1,8 @@
 rm logs.db
 sqlite3 logs.db << EOF
 .mode.csv
-.separator 
-.import "github-logs/unicorn.log.1.csv" unicorn
-.import "system-logs/syslog.csv" syslog
-.import "system-logs/syslog.1.csv" syslog
+.separator ','
+.import "|tail -n +2 github-logs/unicorn.log.1.csv unicorn
+.import "|tail -n +2 system-logs/syslog.csv syslog
+.import "|tail -n +2 system-logs/syslog.1.csv syslog
 EOF

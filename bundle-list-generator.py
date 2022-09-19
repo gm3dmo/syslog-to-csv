@@ -63,10 +63,12 @@ def main(args):
     splitter = "syslog-daemon-splitter.py"
     priority_logs = []
     secondary_logs = []
-    sqlite_db_lines = [ "rm logs.db", "sqlite3 logs.db << EOF", ".mode.csv", ".separator "]
+    sqlite_db_lines = [ "rm logs.db", "sqlite3 logs.db << EOF", ".mode.csv", ".separator ','"]
 
+    count_of_log_types = {}
     for log_directory in log_directories:
         for log_type in log_types:
+            count_of_log_types[log_type] = 0
             glob_string = f"""{log_directory}/{log_type}*"""
             for skip_listed_log in skip_list:
                 logger.debug(f"""Processing skip list: {skip_listed_log}""")
@@ -79,6 +81,7 @@ def main(args):
                     logger.debug(f"""not a match: {skip_listed_log} == {glob_string}""")
                     # lookup the processor for log_type
                     processor = get_processor(log_type)
+                    count_of_log_types[log_type] += 1
 
                     # Loop round once to identify syslog files and split them
                     for item in list(p.glob(glob_string)):
@@ -100,14 +103,16 @@ def main(args):
                             secondary_logs.append(
                                 f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                             )
-                            db_string = f""".import "{csv_file}" {log_type}"""
-                            sqlite_db_lines.append(db_string)                            
-                            logging.info(db_string)
+                            if count_of_log_types[log_type] == 0:
+                                sqlite_db_lines.append(f""".import {csv_file} {log_type}""")
+                            else:
+                                sqlite_db_lines.append(f""".import "|tail -n +2 {csv_file} {log_type}""")
 
+
+    print(count_of_log_types)
     print("\n".join(priority_logs))
     print("\n".join(secondary_logs))
     sqlite_db_lines.append("EOF")
-    logging.info("\n".join(sqlite_db_lines))
 
     with open("sqlite_db_lines.txt", "w") as f:
         f.write("\n".join(sqlite_db_lines))
