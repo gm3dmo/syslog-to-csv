@@ -81,7 +81,6 @@ def main(args):
                     logger.debug(f"""not a match: {skip_listed_log} == {glob_string}""")
                     # lookup the processor for log_type
                     processor = get_processor(log_type)
-                    count_of_log_types[log_type] += 1
 
                     # Loop round once to identify syslog files and split them
                     for item in list(p.glob(glob_string)):
@@ -107,6 +106,7 @@ def main(args):
                                 sqlite_db_lines.append(f""".import {csv_file} {log_type}""")
                             else:
                                 sqlite_db_lines.append(f""".import "|tail -n +2 {csv_file} {log_type}""")
+                        count_of_log_types[log_type] += 1
 
 
     print(count_of_log_types)
