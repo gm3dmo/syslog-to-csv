@@ -2,6 +2,7 @@
 
 __version__ = "0.1.0"
 
+import sqlite3
 import sys
 import json
 import logging
@@ -58,9 +59,12 @@ def main(args):
         "system-logs/split-logs-syslog",
         "system-logs/split-logs-syslog.1",
     ]
+    
     splitter = "syslog-daemon-splitter.py"
     priority_logs = []
     secondary_logs = []
+    sqlite_db_lines = [ "rm logs.db", "sqlite3 logs.db << EOF", ".mode.csv", ".separator "]
+
     for log_directory in log_directories:
         for log_type in log_types:
             glob_string = f"""{log_directory}/{log_type}*"""
@@ -96,9 +100,17 @@ def main(args):
                             secondary_logs.append(
                                 f"""{args.python_interpreter} {bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                             )
+                            db_string = f""".import "{csv_file}" {log_type}"""
+                            sqlite_db_lines.append(db_string)                            
+                            logging.info(db_string)
 
     print("\n".join(priority_logs))
     print("\n".join(secondary_logs))
+    sqlite_db_lines.append("EOF")
+    logging.info("\n".join(sqlite_db_lines))
+
+    with open("sqlite_db_lines.txt", "w") as f:
+        f.write("\n".join(sqlite_db_lines))
 
 
 if __name__ == "__main__":
