@@ -20,10 +20,14 @@ def create_list_of_files_to_convert(args):
     for log_directory in args.log_directories:
         logger.debug(log_directory)
         for log_type in args.log_types:
+            processor = get_processor(log_type)
             glob_string = f"""{log_directory}/{log_type}*"""
             for item in list(args.p.glob(glob_string)):
                 logger.debug(item)
-                log_list.append(item)
+                csv_file = f"""{item}.csv"""
+                log_list.append(
+                    f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
+                )
     return log_list
 
 

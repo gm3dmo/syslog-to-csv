@@ -21,7 +21,7 @@ def main(args):
     logger = logging.getLogger("bundle-list-generator")
     logger.setLevel(args.loglevel)
     args.p = Path(".")
-    bin_dir = "syslog-to-csv"
+    args.bin_dir = "syslog-to-csv"
     args.log_directories = [
         "github-logs",
         "system-logs",
@@ -45,6 +45,9 @@ def main(args):
     logger.debug(args.files_to_convert)
 
     args.log_list = lc.create_list_of_files_to_convert(args)
+
+    for file in args.log_list:
+        logger.info(file)
 
 
 if __name__ == "__main__":
