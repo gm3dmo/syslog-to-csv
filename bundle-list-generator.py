@@ -109,7 +109,6 @@ def main(args):
                         count_of_log_types[log_type] += 1
 
 
-    print(count_of_log_types)
     print("\n".join(priority_logs))
     print("\n".join(secondary_logs))
     sqlite_db_lines.append("EOF")
