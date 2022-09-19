@@ -105,7 +105,7 @@ def main(args):
                             if count_of_log_types[log_type] == 0:
                                 sqlite_db_lines.append(f""".import {csv_file} {log_type}""")
                             else:
-                                sqlite_db_lines.append(f""".import "|tail -n +2 {csv_file} {log_type}""")
+                                sqlite_db_lines.append(f""".import "|tail -n +2 {csv_file} {log_type}" """)
                         count_of_log_types[log_type] += 1
 
 
