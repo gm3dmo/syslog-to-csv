@@ -141,3 +141,4 @@ cython_debug/
 *.csv
 
 test-data/ghes/3.1/syslog.1.gz
+sqlite_db_lines.txt
