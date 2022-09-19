@@ -81,18 +81,6 @@
              "status", "elapsed"
             ]
   },
-  "auth": {
-           "processor": "kv-to-csv.py",
-           "must": "now",
-           "core": ["now", "ip","repo", "action",
-                "protocol", "message", "method", "at", "from",
-                "login", "failure_type","raw_login"
-                ],
-          "known": ["now", "ip","repo", "action",
-                "protocol", "message", "method", "at", "from",
-                "login", "failure_type"
-                ]
-  },
   "timerd": {
           "processor": "unknown",
            "must": "app",
