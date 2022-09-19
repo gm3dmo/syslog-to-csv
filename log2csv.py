@@ -15,6 +15,53 @@ import unicodedata
 logger = logging.getLogger("log2csv")
 
 
+def create_list_of_files_to_convert(args):
+    log_list = []
+    for log_directory in args.log_directories:
+        logger.debug(log_directory)
+        for log_type in args.log_types:
+            glob_string = f"""{log_directory}/{log_type}*"""
+            for item in list(args.p.glob(glob_string)):
+                logger.debug(item)
+                log_list.append(item)
+    return log_list
+
+
+def get_processor(log_type):
+    p = pathlib.Path(__file__)
+    log_formats_file = p.parent / "log-formats.json"
+    kv_headers = {}
+    with open(log_formats_file) as json_file:
+        data = json.load(json_file)
+        if log_type in data:
+            kv_headers[log_type] = {}
+            return data[log_type]["processor"]
+    if log_type == "syslog":
+        return "syslog-to-csv.py"
+    if log_type == "exceptions":
+        return "jsonl-to-csv.py"
+    else:
+        return "kv-to-csv.py"
+
+
+def get_processor(log_type):
+    p = pathlib.Path(__file__)
+    log_formats_file = p.parent / "log-formats.json"
+    kv_headers = {}
+    with open(log_formats_file) as json_file:
+        data = json.load(json_file)
+        if log_type in data:
+            kv_headers[log_type] = {}
+            return data[log_type]["processor"]
+
+    if log_type == "syslog":
+        return "syslog-to-csv.py"
+    if log_type == "exceptions":
+        return "jsonl-to-csv.py"
+    else:
+        return "kv-to-csv.py"
+
+
 def split_daemon(daemon):
     return daemon.split("[")
 
