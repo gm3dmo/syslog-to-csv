@@ -23,6 +23,8 @@ def create_list_of_files_to_convert(args):
             processor = get_processor(log_type)
             glob_string = f"""{log_directory}/{log_type}*"""
             for item in list(args.p.glob(glob_string)):
+                if item.endswith(".csv"):
+                    next
                 logger.debug(item)
                 csv_file = f"""{item}.csv"""
                 log_list.append(
