@@ -28,18 +28,18 @@ def main(args):
         "system-logs/split-logs-syslog",
         "system-logs/split-logs-syslog.1",
     ]
-    
+
     args.log_types = [
-    "unicorn",
-    "exceptions",
-    "auth",
-    "gitauth",
-    "syslog",
-    "hookshot-go",
-    "babeld",
-    "gitrpcd",
-    "spokesd",
-]
+        "unicorn",
+        "exceptions",
+        "auth",
+        "gitauth",
+        "syslog",
+        "hookshot-go",
+        "babeld",
+        "gitrpcd",
+        "spokesd",
+    ]
 
     args.files_to_convert = lc.create_list_of_files_to_convert(args)
     logger.debug(args.files_to_convert)
