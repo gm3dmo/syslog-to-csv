@@ -41,13 +41,14 @@ def main(args):
         "spokesd",
     ]
 
-    args.files_to_convert = lc.create_list_of_files_to_convert(args)
-    logger.debug(args.files_to_convert)
+    args.sqlite_db_lines = [ "rm logs.db", "sqlite3 logs.db << EOF", ".mode.csv", ".separator ','"]
 
-    args.log_list = lc.create_list_of_files_to_convert(args)
+    (files_to_convert, sqlite_db_chunk) = lc.create_list_of_files_to_convert(args)
 
-    for file in args.log_list:
-        logger.info(file)
+    print("\n".join(files_to_convert))
+    print("\n")
+    print("\n".join(sqlite_db_chunk))
+
 
 
 if __name__ == "__main__":

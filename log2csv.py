@@ -15,42 +15,49 @@ import unicodedata
 logger = logging.getLogger("log2csv")
 
 
+def get_log_type(path):
+        log_type = path.stem.split(".")[0]
+        return log_type
+
+
 def create_list_of_files_to_convert(args):
     log_list = []
+    count_of_log_types = {}
+    sqlite_db_chunk = args.sqlite_db_lines
+
+    logger.info(f"""count_of_log_types: {count_of_log_types}""")
+
+    for lt in args.log_types:
+        count_of_log_types[lt] = 0
+
     for log_directory in args.log_directories:
         logger.debug(log_directory)
-        for log_type in args.log_types:
-            processor = get_processor(log_type)
-            glob_string = f"""{log_directory}/{log_type}*"""
-            for item in list(args.p.glob(glob_string)):
-                logger.debug(type(item))
-                logger.debug(str(item))
-                if str(item).endswith(".csv"):
-                    next
-                else:
+        glob_string = f"""{log_directory}/*"""
+        for item in list(args.p.glob(glob_string)):
+            if str(item).endswith(".csv"):
+                next
+            else:
+                log_type = get_log_type(item)
+                if log_type in args.log_types:
+                    processor = get_processor(log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
                     log_list.append(
                         f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                     )
-    return log_list
+                    if count_of_log_types[log_type] == 0:
+                        sqlite_db_chunk.append(f""".import {csv_file} {log_type}""")
+                        count_of_log_types[log_type] += 1
+                        logger.info(f"""====> {log_type}: zero count {count_of_log_types[log_type]}""")
+                    else:
+                        sqlite_db_chunk.append(f""".import "|tail -n +2 {csv_file} {log_type}" """)
+                        count_of_log_types[log_type] += 1
+                        logger.info(f"""----> {log_type}: count {count_of_log_types[log_type]}""")
+    logger.info(f"""end count_of_log_types: {count_of_log_types}""")
+    sqlite_db_chunk.append(f"""EOF""")
+    return (log_list, sqlite_db_chunk )
 
 
-def get_processor(log_type):
-    p = pathlib.Path(__file__)
-    log_formats_file = p.parent / "log-formats.json"
-    kv_headers = {}
-    with open(log_formats_file) as json_file:
-        data = json.load(json_file)
-        if log_type in data:
-            kv_headers[log_type] = {}
-            return data[log_type]["processor"]
-    if log_type == "syslog":
-        return "syslog-to-csv.py"
-    if log_type == "exceptions":
-        return "jsonl-to-csv.py"
-    else:
-        return "kv-to-csv.py"
 
 
 def get_processor(log_type):
