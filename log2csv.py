@@ -23,9 +23,9 @@ def get_log_type(path):
 def create_list_of_files_to_convert(args):
     log_list = []
     count_of_log_types = {}
+    syslog_files = [] 
     sqlite_db_chunk = args.sqlite_db_lines
-
-    logger.info(f"""count_of_log_types: {count_of_log_types}""")
+    logger.debug(f"""count_of_log_types: {count_of_log_types}""")
 
     for lt in args.log_types:
         count_of_log_types[lt] = 0
@@ -34,8 +34,13 @@ def create_list_of_files_to_convert(args):
         logger.debug(log_directory)
         glob_string = f"""{log_directory}/*"""
         for item in list(args.p.glob(glob_string)):
+            logger.debug(f"""{item.name}""")
             if str(item).endswith(".csv"):
                 next
+            if item.name.startswith("syslog"):
+                syslog_files.append(item)
+                logger.debug(f"{item.name}")
+                
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
@@ -48,16 +53,14 @@ def create_list_of_files_to_convert(args):
                     if count_of_log_types[log_type] == 0:
                         sqlite_db_chunk.append(f""".import {csv_file} {log_type}""")
                         count_of_log_types[log_type] += 1
-                        logger.info(f"""====> {log_type}: zero count {count_of_log_types[log_type]}""")
+                        logger.debug(f"""====> {log_type}: zero count {count_of_log_types[log_type]}""")
                     else:
                         sqlite_db_chunk.append(f""".import "|tail -n +2 {csv_file} {log_type}" """)
                         count_of_log_types[log_type] += 1
-                        logger.info(f"""----> {log_type}: count {count_of_log_types[log_type]}""")
-    logger.info(f"""end count_of_log_types: {count_of_log_types}""")
+                        logger.debug(f"""----> {log_type}: count {count_of_log_types[log_type]}""")
+    logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
     sqlite_db_chunk.append(f"""EOF""")
-    return (log_list, sqlite_db_chunk )
-
-
+    return (log_list, sqlite_db_chunk, syslog_files)
 
 
 def get_processor(log_type):
