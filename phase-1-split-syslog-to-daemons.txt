@@ -1,2 +1,0 @@
-pypy3 syslog-to-csv/syslog-daemon-splitter.py system-logs/syslog --sankey
-pypy3 syslog-to-csv/syslog-daemon-splitter.py system-logs/syslog.1 --sankey
