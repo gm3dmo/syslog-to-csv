@@ -16,14 +16,14 @@ logger = logging.getLogger("log2csv")
 
 
 def get_log_type(path):
-        log_type = path.stem.split(".")[0]
-        return log_type
+    log_type = path.stem.split(".")[0]
+    return log_type
 
 
 def create_list_of_files_to_convert(args):
     log_list = []
     count_of_log_types = {}
-    syslog_files = [] 
+    syslog_files = []
     sqlite_db_chunk = args.sqlite_db_lines
     logger.debug(f"""count_of_log_types: {count_of_log_types}""")
 
@@ -40,7 +40,7 @@ def create_list_of_files_to_convert(args):
             if item.name.startswith("syslog"):
                 syslog_files.append(item)
                 logger.debug(f"{item.name}")
-                
+
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
@@ -53,11 +53,17 @@ def create_list_of_files_to_convert(args):
                     if count_of_log_types[log_type] == 0:
                         sqlite_db_chunk.append(f""".import {csv_file} {log_type}""")
                         count_of_log_types[log_type] += 1
-                        logger.debug(f"""====> {log_type}: zero count {count_of_log_types[log_type]}""")
+                        logger.debug(
+                            f"""====> {log_type}: zero count {count_of_log_types[log_type]}"""
+                        )
                     else:
-                        sqlite_db_chunk.append(f""".import "|tail -n +2 {csv_file} {log_type}" """)
+                        sqlite_db_chunk.append(
+                            f""".import "|tail -n +2 {csv_file} {log_type}" """
+                        )
                         count_of_log_types[log_type] += 1
-                        logger.debug(f"""----> {log_type}: count {count_of_log_types[log_type]}""")
+                        logger.debug(
+                            f"""----> {log_type}: count {count_of_log_types[log_type]}"""
+                        )
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
     sqlite_db_chunk.append(f"""EOF""")
     return (log_list, sqlite_db_chunk, syslog_files)
