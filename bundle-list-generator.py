@@ -28,6 +28,9 @@ def main(args):
         "system-logs/split-logs-syslog",
         "system-logs/split-logs-syslog.1",
     ]
+    
+    priority_logs = []
+    splitter = "syslog-daemon-splitter.py"
 
     args.log_types = [
         "unicorn",
@@ -42,13 +45,26 @@ def main(args):
     ]
 
     args.sqlite_db_lines = [ "rm logs.db", "sqlite3 logs.db << EOF", ".mode.csv", ".separator ','"]
+    args.syslog_files = []
 
-    (files_to_convert, sqlite_db_chunk) = lc.create_list_of_files_to_convert(args)
+    bin_dir = "syslog-to-csv"
 
-    print("\n".join(files_to_convert))
-    print("\n")
-    print("\n".join(sqlite_db_chunk))
+    (files_to_convert, sqlite_db_chunk, syslog_files) = lc.create_list_of_files_to_convert(args)
 
+
+    with open("phase-1-split-syslog-to-daemons.txt", "w") as f:
+        for line in syslog_files:
+            f.writelines(f"""{args.python_interpreter} {bin_dir}/{splitter} {line} --sankey\n""")
+
+
+    with open("phase-2-convert-to-csv.txt", "w") as f:
+        for line in files_to_convert:
+            f.writelines(f"{line}\n")
+
+
+    with open("phase-3-create-sqlitedb.txt", "w") as f:
+        for line in sqlite_db_chunk:
+            f.writelines(f"{line}\n")
 
 
 if __name__ == "__main__":
