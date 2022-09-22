@@ -154,6 +154,7 @@
               "request_category",
               "request_host",
               "request_method",
+              "request_id",
               "route",
               "server_id",
               "status",
