@@ -47,7 +47,7 @@ def main(args):
     args.sqlite_db_lines = [
         "rm logs.db",
         "sqlite3 logs.db << EOF",
-        ".mode.csv",
+        ".mode csv",
         ".separator ','",
     ]
     args.syslog_files = []
