@@ -36,7 +36,7 @@ def create_list_of_files_to_convert(args):
         for item in list(args.p.glob(glob_string)):
             logger.debug(f"""{item.name}""")
             if str(item).endswith(".csv"):
-                next
+                continue
             if item.name.startswith("syslog"):
                 syslog_files.append(item)
                 logger.debug(f"{item.name}")
