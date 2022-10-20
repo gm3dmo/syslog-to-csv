@@ -1,6 +1,7 @@
 {
   "ldap-sync": {
      "processor": "kv-to-csv.py",
+     "table_name": "ldapsync",
     "must": "now",
     "core": [
              "now", "dn", "result_count","at", "runtime",
@@ -23,6 +24,7 @@
     "spokes-sweeper": {
      "processor": "kv-to-csv.py",
      "contained_in_log": "syslog",
+     "table_name": "spokessweeper",
     "must": "app",
     "core": [
              "app", "time", "service", "msg", "twirp_method", "twirp_package",
@@ -34,6 +36,7 @@
   "hookshot-go": {
      "processor": "kv-to-csv.py",
      "contained_in_log": "syslog",
+     "table_name": "hookshot",
      "must": "time",
      "core": [
                        "time", "msg", "process","guid",
@@ -57,6 +60,7 @@
   "actions-job-agent": {
      "processor": "sylog-jsonl-to-csv.py",
      "contained_in_log": "syslog",
+     'table_name": "actionsjobagent"
      "must": "logType",
      "core": [
                      ]
