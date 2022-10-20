@@ -60,7 +60,7 @@
   "actions-job-agent": {
      "processor": "sylog-jsonl-to-csv.py",
      "contained_in_log": "syslog",
-     'table_name": "actionsjobagent"
+     "table_name": "actionsjobagent"
      "must": "logType",
      "core": [
                      ]
