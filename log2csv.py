@@ -44,6 +44,7 @@ def create_list_of_files_to_convert(args):
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
+                    table_name = log_type
                     processor = get_processor(log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
@@ -51,14 +52,14 @@ def create_list_of_files_to_convert(args):
                         f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                     )
                     if count_of_log_types[log_type] == 0:
-                        sqlite_db_chunk.append(f""".import {csv_file} {log_type}""")
+                        sqlite_db_chunk.append(f""".import {csv_file} {table_name}""")
                         count_of_log_types[log_type] += 1
                         logger.debug(
                             f"""====> {log_type}: zero count {count_of_log_types[log_type]}"""
                         )
                     else:
                         sqlite_db_chunk.append(
-                            f""".import "|tail -n +2 {csv_file}" {log_type} """
+                            f""".import "|tail -n +2 {csv_file}" {table_name} """
                         )
                         count_of_log_types[log_type] += 1
                         logger.debug(
