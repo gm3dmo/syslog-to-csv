@@ -58,7 +58,7 @@ def create_list_of_files_to_convert(args):
                         )
                     else:
                         sqlite_db_chunk.append(
-                            f""".import "|tail -n +2 {csv_file} {log_type}" """
+                            f""".import "|tail -n +2 {csv_file}" {log_type} """
                         )
                         count_of_log_types[log_type] += 1
                         logger.debug(
