@@ -54,7 +54,7 @@
                        "twirp_method", "twirp_service", "twirp_package", "twirp_error", "service",
                        "health", "user_agent", "request_duration", 
                        "repository_id", "path", "blobs", "blob_size",
-                       "spec", "request_duration"
+                       "spec"
                      ]
         },
   "actions-job-agent": {
