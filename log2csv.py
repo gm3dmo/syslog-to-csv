@@ -44,6 +44,7 @@ def create_list_of_files_to_convert(args):
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
+                
                     table_name = log_type
                     processor = get_processor(log_type)
                     logger.debug(item)
@@ -68,6 +69,20 @@ def create_list_of_files_to_convert(args):
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
     sqlite_db_chunk.append(f"""EOF""")
     return (log_list, sqlite_db_chunk, syslog_files)
+
+
+def get_table_name(log_type):
+    p = pathlib.Path(__file__)
+    log_formats_file = p.parent / "log-formats.json"
+    kv_headers = {}
+    with open(log_formats_file) as json_file:
+        data = json.load(json_file)
+        if log_type in data:
+            kv_headers[log_type] = {}
+            table_name = False
+            if data[log_type]["table_name"]:
+                table_name = data[log_type]["table_name"]
+            return table_name
 
 
 def get_processor(log_type):
