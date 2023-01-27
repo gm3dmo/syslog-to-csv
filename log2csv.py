@@ -45,7 +45,7 @@ def create_list_of_files_to_convert(args):
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
                 
-                    table_name = log_type
+                    table_name = get_table_name(log_type)
                     processor = get_processor(log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
