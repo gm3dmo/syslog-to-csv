@@ -46,6 +46,8 @@ def create_list_of_files_to_convert(args):
                 if log_type in args.log_types:
                 
                     table_name = get_table_name(log_type)
+                    if table_name == False:
+                       table_name = log_type
                     processor = get_processor(log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
@@ -80,7 +82,7 @@ def get_table_name(log_type):
         if log_type in data:
             kv_headers[log_type] = {}
             table_name = False
-            if data[log_type]["table_name"]:
+            if "table_name" in data[log_type]:
                 table_name = data[log_type]["table_name"]
             return table_name
 
