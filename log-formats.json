@@ -187,6 +187,7 @@
                        "auth_tries",
                        "banner",
                        "cipher",
+                       "status",
                        "client_recv",
                        "client_sent",
                        "cmd",
