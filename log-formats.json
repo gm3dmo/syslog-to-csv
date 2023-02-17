@@ -1,4 +1,16 @@
 {
+  "codeload": {
+     "processor": "kv-to-csv.py",
+     "table_name": "codeload",
+    "must": "pid",
+    "core": [
+             "pid", "version", "ip", "ua", "code",
+             "url", "hasauth", "hastoken", "sr", "ss",
+             "duration_ms", "api_ms", "api_tries",
+             "api_cr", "dc", "site", "log_level", "msg"
+            ]
+  },
+{
   "ldap-sync": {
      "processor": "kv-to-csv.py",
      "table_name": "ldapsync",
