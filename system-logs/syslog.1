@@ -1,0 +1,11 @@
+Feb 17 13:45:53 gm3dmo-0f3e795e716703657-ghe-test-net babeld[4150]: ts=2023-02-18T13:45:53.648342Z pid=1 tid=28 version=84c6dfc proto=ssh id=79968fb4ccbfdb9cce0ef41f6710c008 banner="SSH-2.0-babeld-84c6dfc" best_kex="diffie-hellman-group-exchange-sha256" best_sigtype="ssh-rsa" best_cipher="aes128-ctr" best_mac="hmac-sha2-256" cipher="aes128-ctr" hmac="hmac-sha2-256" pk_ms=38554.494 ip=173.95.25.38 srcp=40437 dstp=22 log_level=ERROR msg="failed to verify pubkey: exited with error: Socket error: disconnected" auth_tries=0 probe_ok=0 probe_fail=0 srq_ok=0 srq_bad=0 hin=609 hout=1785 sin=609 sout=1785 siocin=-1 siocout=-1 fds=11 fde=-1
+Feb 17 13:45:53 gm3dmo-0f3e795e716703657-ghe-test-net kernel: [UFW BLOCK] IN=eth0 OUT= MAC=06:e9:83:04:69:8b:0e:9c:af:40:00:01:08:00 SRC=89.248.163.140 DST=172.31.3.115 LEN=40 TOS=0x00 PREC=0x00 TTL=233 ID=35715 PROTO=TCP SPT=55628 DPT=11051 WINDOW=1024 RES=0x00 SYN URGP=0
+Feb 17 13:45:53 gm3dmo-0f3e795e716703657-ghe-test-net hookshot-go[4150]: time=2023-02-18T13:45:53.912643065Z level=INFO msg="GET /_ping" process=api status=200 verb=GET path=/_ping uri=http://127.0.0.1:20494/_ping elapsed=0.000s user_agent="Consul Health Check" github_request_id=
+Feb 17 13:45:54 gm3dmo-0f3e795e716703657-ghe-test-net render[4150]: 127.0.0.1 - - [18/Feb/2023:13:45:54 +0000] "GET /_ping HTTP/1.1" 200 - 0.0006
+Feb 17 13:45:55 gm3dmo-0f3e795e716703657-ghe-test-net gpgverify[4150]: unabled to extract opentracing context from request: opentracing: SpanContext not found in Extract carrier
+Feb 17 13:45:55 gm3dmo-0f3e795e716703657-ghe-test-net gpgverify[4150]: route="ping" request_id="" "duration=0.052840 status=200"
+Feb 17 13:45:56 gm3dmo-0f3e795e716703657-ghe-test-net systemd[1]: Starting Nomad jobs service...
+Feb 17 13:45:56 gm3dmo-0f3e795e716703657-ghe-test-net systemd[1]: nomad-jobs.service: Succeeded.
+Feb 17 13:45:56 gm3dmo-0f3e795e716703657-ghe-test-net systemd[1]: Started Nomad jobs service.
+Feb 17 13:45:56 gm3dmo-0f3e795e716703657-ghe-test-net spokesd[4150]: time=2023-02-18T13:45:56.542473515Z level=INFO msg="fetching fileservers" app=spokesd service=spokesd sha=7965ab342681e74c161fbdc42900575af3ae1be4 host=gm3dmo-0f3e795e716703657-ghe-test-net fleet=true func=RunFetch at=start
+Feb 17 13:45:56 gm3dmo-0f3e795e716703657-ghe-test-net spokesd[4150]: time=2023-02-18T13:45:56.542987329Z le
