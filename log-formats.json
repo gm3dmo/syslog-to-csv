@@ -1,4 +1,16 @@
 {
+  "codeload": {
+     "processor": "kv-to-csv.py",
+     "table_name": "codeload",
+    "must": "pid",
+    "core": [
+             "pid", "version", "ip", "ua", "code",
+             "url", "hasauth", "hastoken", "sr", "ss",
+             "duration_ms", "api_ms", "api_tries",
+             "api_cr", "dc", "site", "log_level", "msg"
+            ]
+  },
+{
   "ldap-sync": {
      "processor": "kv-to-csv.py",
      "table_name": "ldapsync",
@@ -96,7 +108,7 @@
   "auth": {
            "processor": "kv-to-csv.py",
            "must": "now",
-           "core": ["now", "method","message",
+           "core": ["now", "method","message", "repo", "ip", "protocol",
                     "at", "success", "from", "request_id", "url", "user_agent",
                     "login", "raw_login", "two_factor_type", "failure_reason",
                     "failure_type", "hashed_token", "token_type"
