@@ -1,7 +1,7 @@
 {
-  "codeload": {
-     "processor": "kv-to-csv.py",
-     "table_name": "codeload",
+    "codeload": {
+    "processor": "kv-to-csv.py",
+    "table_name": "codeload",
     "must": "pid",
     "core": [
              "pid", "version", "ip", "ua", "code",
