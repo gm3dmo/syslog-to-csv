@@ -27,7 +27,7 @@ def create_connection(sqliteDB):
 
 
 def get_create_view_text(table, column):
-    return f"""create view percentage_of_{column} as select {table}.'{column}', count() as count_of  round(100.0 * count() / (select count() from {table}), 2) as percentage from {table} group by {table}.'{column}';"""
+    return f"""create view percentage_of_{column} as select {table}.'{column}', count() as count_of,  round(100.0 * count() / (select count() from {table}), 2) as percentage from {table} group by {table}.'{column}';"""
 
 
 def get_drop_view_text(table, column):
