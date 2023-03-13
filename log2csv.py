@@ -26,8 +26,12 @@ def create_connection(sqliteDB):
      return conn
 
 
-def get_view_text(table, column):
+def get_create_view_text(table, column):
     return f"""create view percentage_of_{column} as select {table}.'{column}', count() as count_of  round(100.0 * count() / (select count() from {table}), 2) as percentage from {table} group by {table}.'{column}';"""
+
+
+def get_drop_view_text(table, column):
+    return f"""drop view percentage_of_{column};"""
 
 
 def create_view(conn, create_view_sql):
@@ -35,6 +39,15 @@ def create_view(conn, create_view_sql):
           c = conn.cursor()
           logger.info(f"""{create_view_sql}""")
           c.execute(create_view_sql)
+     except Exception as e:
+          logger.error(f"""{e}""")
+
+
+def drop_view(conn, drop_view_sql):
+     try:
+          c = conn.cursor()
+          logger.info(f"""{drop_view_sql}""")
+          c.execute(drop_view_sql)
      except Exception as e:
           logger.error(f"""{e}""")
 
