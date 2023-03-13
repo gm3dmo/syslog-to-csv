@@ -20,7 +20,7 @@ def create_connection(sqliteDB):
      try:
           conn=sqlite3.connect(sqliteDB)
           return conn
-     except Error as e:
+     except Exception as e:
           logger.error(f"""{e}""")
      return conn
 
