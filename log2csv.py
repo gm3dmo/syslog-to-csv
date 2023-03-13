@@ -15,6 +15,24 @@ import unicodedata
 logger = logging.getLogger("log2csv")
 
 
+def create_connection(sqliteDB):
+     conn = None
+     try:
+          conn=sqlite3.connect(sqliteDB)
+          return conn
+     except Error as e:
+          print(e)
+     return conn
+
+
+def create_view(conn, create_view_sql):
+     try:
+          c=conn.cursor()
+          c.execute(create_view_sql)
+     except Error as e:
+          print (e)
+
+
 def get_log_type(path):
     log_type = path.stem.split(".")[0]
     return log_type
