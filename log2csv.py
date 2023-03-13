@@ -33,7 +33,7 @@ create view percentage_of_{column} as select {table}.'{column}', count() as coun
 def create_view(conn, create_view_sql):
      try:
           c = conn.cursor()
-          logger.info(f"""{create_view_sql}"")
+          logger.info(f"""{create_view_sql}""")
           c.execute(create_view_sql)
      except Exception as e:
           logger.error(f"""{e}""")
