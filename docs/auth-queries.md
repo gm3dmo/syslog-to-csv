@@ -18,7 +18,8 @@ select * from percentage_of_ip order by percentage desc limit 20;
 #### Top 20 `login`'s in auth.log by percentage
 
 ```sql
-create view percentage_of_login as select login, round(100.0 * count() / (select count() from auth), 2) as percentage from auth group by login;
+drop view percentage_of_login;
+create view percentage_of_login as select login, count() as count_of, round(100.0 * count() / (select count() from auth), 2) as percentage from auth group by login;
 
 .mode columns
 .width 20 10
@@ -27,9 +28,22 @@ create view percentage_of_login as select login, round(100.0 * count() / (select
 select * from percentage_of_login order by percentage desc limit 20;
 ```
 
+##### Example
+
+```
+login                 count_of    percentage
+--------------------  ----------  ----------
+jenkins               2644365     11.4
+circleci              1696393     7.32
+johndoe               1166605     5.03
+github-bot            1146013     4.94
+```
+
+
 #### Top 20 `user_id`'s in auth.log by percentage
 
 ```sql
+drop view percentage_of_user_id
 create view percentage_of_user_id as select login, round(100.0 * count() / (select count() from auth), 2) as percentage from auth group by user_id;
 
 .mode columns
