@@ -27,7 +27,7 @@ create view percentage_of_login as select login, round(100.0 * count() / (select
 select * from percentage_of_login order by percentage desc limit 20;
 ```
 
-#### Top 20 `login`'s in auth.log by percentage
+#### Top 20 `user_id`'s in auth.log by percentage
 
 ```sql
 create view percentage_of_user_id as select login, round(100.0 * count() / (select count() from auth), 2) as percentage from auth group by user_id;
