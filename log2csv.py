@@ -34,8 +34,8 @@ def create_view(conn, create_view_sql):
      try:
           c=conn.cursor()
           c.execute(create_view_sql)
-     except Error as e:
-          print (e)
+     except Exception as e:
+          logger.error(f"""{e}""")
 
 
 def get_log_type(path):
