@@ -139,6 +139,19 @@ create view percentage_of_method as select method, round(100.0 * count() / (sele
 
 select * from percentage_of_method order by percentage desc limit 20;
 ```
+
+##### Example method:
+```
+method                                              percentage
+--------------------------------------------------  ----------
+GitHub::Authentication::Attempt.log                 99.96
+GitHub::Authentication::SAML.rails_authenticate     0.01
+SAML::Session.log_change                            0.01
+SAML::Session.revoke_on_destroy                     0.01
+                                                    0.0
+Class.create_user                                   0.0
+```
+
 #### Top 20 `from`'s in auth.log by percentage
 
 ```sql
@@ -147,11 +160,23 @@ create view percentage_of_from as select auth.'from', round(100.0 * count() / (s
 .mode columns
 .width 50 10
 .headers on
-
 select * from percentage_of_from order by percentage desc limit 20;
 ```
 
+##### Example from:
 
+```
+from                                                percentage
+--------------------------------------------------  ----------
+api                                                 87.84
+git                                                 8.72
+internal_api                                        3.31
+api_middleware                                      0.09
+                                                    0.04
+internal_lfs                                        0.0
+lfs                                                 0.0
+web_api                                             0.0
+```
 
 #### Top 20 `protocol`'s in auth.log by percentage
 
@@ -165,4 +190,12 @@ create view percentage_of_protocol as select protocol, round(100.0 * count() / (
 
 select * from percentage_of_protocol order by percentage desc limit 20;
 ```
+##### Example protocol
 
+```
+protocol                                            percentage
+--------------------------------------------------  ----------
+                                                    91.28
+http                                                8.71
+svn                                                 0.01
+```
