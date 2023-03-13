@@ -7,6 +7,7 @@ import time
 import json
 import shlex
 import pathlib
+import sqlite3
 import datetime
 import logging
 import logging.config
