@@ -21,7 +21,7 @@ def create_connection(sqliteDB):
           conn=sqlite3.connect(sqliteDB)
           return conn
      except Error as e:
-          print(e)
+          logger.error(f"""{e}""")
      return conn
 
 
