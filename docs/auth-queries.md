@@ -27,6 +27,19 @@ create view percentage_of_raw_login as select raw_login, round(100.0 * count() /
 select * from percentage_of_raw_login order by percentage desc limit 20;
 ```
 
+#### Top 20 `login`'s in auth.log by percentage
+
+```sql
+create view percentage_of_login as select login, round(100.0 * count() / (select count() from auth), 2) as percentage from auth group by login;
+
+.mode columns
+.width 20 10
+.headers on
+
+select * from percentage_of_login order by percentage desc limit 20;
+```
+
+
 #### Top 20 `user_agent`'s in auth.log by percentage
 
 ```sql
