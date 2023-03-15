@@ -13,7 +13,7 @@ import logging.config
 import pathlib
 import log2csv
 
-from log2csv import create_connection, get_create_view_text, get_drop_view_text, create_view, drop_view
+from log2csv import create_connection, get_create_view_text, get_drop_view_text, create_view, drop_view, select_from_view
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
