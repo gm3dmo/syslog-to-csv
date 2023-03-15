@@ -32,7 +32,7 @@ def main(args):
     list_of_columns = ['ip',
             'login', 'user_id', 'raw_login', 'user_agent',
             'repo', 'url', 'failure_type', 'failure_reason',
-            'method', 'from', 'hashed_token', 'message'
+            'method', 'from', 'hashed_token', 'message',
             'protocol',
             ]
 
