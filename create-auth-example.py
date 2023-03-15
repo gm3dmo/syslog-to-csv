@@ -31,8 +31,8 @@ def main(args):
     table = "auth"
     list_of_columns = ['ip',
             'login', 'user_id', 'raw_login', 'user_agent',
-            'repo', 'url',
-            'method', 'from',
+            'repo', 'url', 'failure_type', 'failure_reason',
+            'method', 'from', 'hashed_token', 'message'
             'protocol',
             ]
 
