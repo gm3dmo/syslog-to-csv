@@ -44,6 +44,7 @@ def main(args):
         create_view(conn, create_view_text)
         
         # Query each view
+        view_table = f"{table}_{column_view}" 
         query = f"SELECT * FROM {table}_{column_view}"
         select_from_view(conn, query)
 
