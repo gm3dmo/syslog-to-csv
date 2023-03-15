@@ -36,6 +36,18 @@ def main(args):
             'protocol',
             ]
 
+ 
+    report = []
+    report_limit = 10
+    header = """sqlite3 ../logs.db << EOF
+.mode columns
+.headers on
+.width 60 0 0
+
+.print 'Support Bundle auth.log summary'
+.print '-------------------------------'"""
+    report.append(header)
+
     for column_view in list_of_columns:
         drop_view_text = get_drop_view_text(table, column_view)
         drop_view(conn, drop_view_text)
@@ -47,6 +59,13 @@ def main(args):
         view_table = f"{table}_{column_view}" 
         query = f"SELECT * FROM {table}_{column_view}"
         select_from_view(conn, query)
+        report.append(f"""SELECT * FROM {table}_{column_view} order by percentage desc limit {report_limit}; 
+.print ''""")
+
+
+    print('\n'.join(report))
+
+
 
 if __name__ == "__main__":
     """This is executed when run from the command line"""
