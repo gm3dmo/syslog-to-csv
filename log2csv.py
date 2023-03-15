@@ -52,6 +52,15 @@ def drop_view(conn, drop_view_sql):
           logger.error(f"""{e}""")
 
 
+def select_from_view(conn, query):
+     try:
+          c = conn.cursor()
+          logger.info(f"""select from view: {query}""")
+          c.execute(query)
+     except Exception as e:
+          logger.error(f"""{e}""")
+
+
 def get_log_type(path):
     log_type = path.stem.split(".")[0]
     return log_type
