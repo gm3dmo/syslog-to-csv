@@ -13,7 +13,7 @@ import logging.config
 import pathlib
 import log2csv
 
-from log2csv import create_connection, get_create_view_text, get_drop_view_text, create_view, drop_view, select_from_view
+from log2csv import create_connection, get_create_view_text, get_drop_view_text, create_view, drop_view, select_from_view, get_view_facets
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -26,15 +26,10 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
-    sqlite_db = '../logs.db'
+    sqlite_db = args.db_file
     conn = create_connection(sqlite_db)
-    table = "auth"
-    list_of_columns = ['ip',
-            'login', 'user_id', 'raw_login', 'user_agent',
-            'repo', 'url', 'failure_type', 'failure_reason',
-            'method', 'from', 'hashed_token', 'message',
-            'protocol',
-            ]
+    table = args.table_name
+    list_of_columns = get_view_facets(table)
 
  
     report = []
@@ -66,10 +61,25 @@ def main(args):
     print('\n'.join(report))
 
 
-
 if __name__ == "__main__":
     """This is executed when run from the command line"""
     parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--db-file",
+        action="store",
+        dest="db_file",
+        default="logs.db",
+        help="--db-file  <filename of sqlite db>",
+    )
+
+    parser.add_argument(
+        "--table-name",
+        action="store",
+        dest="table_name",
+        default="auth",
+        help="--table-name  <name of table for which to create views/facets>",
+    )
 
 
     parser.add_argument(

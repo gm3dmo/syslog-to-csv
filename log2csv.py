@@ -131,6 +131,20 @@ def get_table_name(log_type):
             if "table_name" in data[log_type]:
                 table_name = data[log_type]["table_name"]
             return table_name
+        
+
+def get_view_facets(log_type):
+    p = pathlib.Path(__file__)
+    log_formats_file = p.parent / "log-formats.json"
+    kv_headers = {}
+    with open(log_formats_file) as json_file:
+        data = json.load(json_file)
+        if log_type in data:
+            kv_headers[log_type] = {}
+            table_name = False
+            if "view_facets" in data[log_type]:
+                view_facets = data[log_type]["view_facets"]
+            return view_facets
 
 
 def get_processor(log_type):
