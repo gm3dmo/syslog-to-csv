@@ -15,7 +15,7 @@ import log2csv
 
 from log2csv import create_connection, get_create_view_text, get_drop_view_text, create_view, drop_view, select_from_view, get_view_facets
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
 @log2csv.timeit
@@ -30,6 +30,9 @@ def main(args):
     conn = create_connection(sqlite_db)
     table = args.table_name
     list_of_columns = get_view_facets(table)
+    logger.info(f"""sqlite database: {sqlite_db}""")
+    logger.info(f"""creating views for table: {table}""")
+    logger.info(f"""views will be created for: {list_of_columns}""")
 
  
     report = []
@@ -39,8 +42,8 @@ def main(args):
 .headers on
 .width 60 0 0
 
-.print 'Support Bundle auth.log summary'
-.print '-------------------------------'"""
+.print '{table} Summary'
+.print '---------------'"""
     report.append(header)
 
     for column_view in list_of_columns:
