@@ -111,7 +111,12 @@
                     "at", "success", "from", "request_id", "url", "user_agent",
                     "login", "raw_login", "user_id", "two_factor_type", "failure_reason",
                     "failure_type", "hashed_token", "token_type"
-           ]
+           ],
+           view_facets: ['ip',
+            'login', 'user_id', 'raw_login', 'user_agent',
+            'repo', 'url', 'failure_type', 'failure_reason',
+            'method', 'from', 'hashed_token', 'message',
+            'protocol']           
   },
   "gitauth": {
            "processor": "kv-to-csv.py",
