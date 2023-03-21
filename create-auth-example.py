@@ -34,7 +34,7 @@ def main(args):
  
     report = []
     report_limit = 10
-    header = """sqlite3 ../logs.db << EOF
+    header = f"""sqlite3 {sqlite_db} << EOF
 .mode columns
 .headers on
 .width 60 0 0
