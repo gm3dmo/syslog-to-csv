@@ -34,6 +34,7 @@ MANIFEST
 
 # sqlite database
 *.db
+*.sql
 
 # Installer logs
 pip-log.txt
