@@ -58,30 +58,26 @@ def main(args):
 
     args.syslog_files = []
 
-    #bin_dir = "syslog-to-csv"
+    # bin_dir = "syslog-to-csv"
     bin_dir = "."
-
-
 
     (
         files_to_convert,
         sqlite_db_chunk,
         syslog_files,
     ) = lc.create_list_of_files_to_convert(args)
-    
-    
+
     MACHINE_RUNNING = True
 
     while MACHINE_RUNNING == True:
         print(f"""Phase 1: Split syslog files out to a file per daemon""")
         for line in syslog_files:
-                cmd = f"""{args.python_interpreter} {splitter} {line}"""
-                try:
-                    subprocess.run([cmd], check=True, shell=True)
-                except subprocess.CalledProcessError as err:
-                    print('ERROR:', err)
+            cmd = f"""{args.python_interpreter} {splitter} {line}"""
+            try:
+                subprocess.run([cmd], check=True, shell=True)
+            except subprocess.CalledProcessError as err:
+                print("ERROR:", err)
 
-            
         print(f"""Converting: {len(files_to_convert)}""")
         print(f"""Converting: {files_to_convert}""")
         # Now that syslog has been split into a file per daemon, we want to
@@ -98,11 +94,10 @@ def main(args):
         print(f"""Converting: {files_to_convert}""")
         print(f"""Phase 2b: Convert log files to CSV""")
         print(f"""\n""")
-        
 
         print(f"""Phase 3: Generate sqlite database from csv files""")
         print(f"""SQLITE: {sqlite_db_chunk}""")
- 
+
         if check_db_exists() == True:
             MACHINE_RUNNING = False
 
