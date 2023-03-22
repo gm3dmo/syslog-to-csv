@@ -28,7 +28,6 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 def main(args):
-
     # create logger
     logger = logging.getLogger("root")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"

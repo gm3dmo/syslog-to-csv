@@ -32,7 +32,6 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
 def main(args):
-
     logger = logging.getLogger("find-time-gaps")
     logger.setLevel(args.loglevel)
 
