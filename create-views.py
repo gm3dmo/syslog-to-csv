@@ -33,6 +33,7 @@ def main(args):
     logger.info(f"""sqlite database: {sqlite_db}""")
     logger.info(f"""creating views for table: {table}""")
     logger.info(f"""views will be created for: {list_of_columns}""")
+    logger.info(f"""DDL file name: {args.ddl_file}""")
 
  
     report = []
@@ -63,6 +64,10 @@ def main(args):
 
     print('\n'.join(report))
 
+    with open(args.ddl_file, 'w') as reportfn:
+        reportfn.write('\n'.join(report))
+
+
 
 if __name__ == "__main__":
     """This is executed when run from the command line"""
@@ -91,7 +96,6 @@ if __name__ == "__main__":
         default="views.sql",
         help="--ddl-file <filename where DDL to create views will be stored>",
     )
-
 
     parser.add_argument(
         "-d",
