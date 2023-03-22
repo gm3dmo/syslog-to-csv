@@ -146,8 +146,8 @@
   },
   "unicorn": {
      "processor": "kv-to-csv.py",
-     "view_facets": ["msg", "repo", "user", "current_user", "auth_fingerprint",
-                     "auth", "user_agent","route", "path", "request_method"],
+     "view_facets": [ "repo", "user", "current_user", "auth_fingerprint",
+                     "auth", "user_agent","route", "request_method"],
     "must": "app",
             "must":  "app",
             "core": [
