@@ -6,15 +6,14 @@
 
 - [Convert key value pairs (logfmt)](docs/key-value-pairs.md)
 - [Convert jsonl format](docs/jsonl.md)
-
 - [Find gaps in timestamps in a logfile](docs/find-gaps-in-logfile-time.md)
 
-## Syslog to CSV
-Convert a [syslog](https://tools.ietf.org/html/rfc5424) file to Comma Separated Values (CSV) format using [Python 3](https://python.org).  Tested with Debian 10 and AWS Linux but other syslog formats will probably work.
+## Syslog to CSV and Key Value Pairs to CSV
+Convert a [syslog](https://tools.ietf.org/html/rfc5424) file to Comma Separated Values (CSV) format using [Python 3](https://python.org).  Tested with Debian 10 and AWS Linux but other syslog formats will probably work. The `kv-to-csv.py` script will convert a file that is composed of lines of key value pairs to CSV.
 
 ![syslog-to-csv](https://github.com/gm3dmo/syslog-to-csv/actions/workflows/syslog-to-csv.yml/badge.svg)
 
-
+The goal of the project is to be able to convert the most important (syslog, babeld, auth, unicorn) files from a GitHub Enterprise Server Support bundle to CSV for offline analysis.
 
 ##### Debug mode
 Debug mode will print out details of each line as it is processed:
