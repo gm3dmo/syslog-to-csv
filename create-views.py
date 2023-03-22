@@ -84,6 +84,14 @@ if __name__ == "__main__":
         help="--table-name  <name of table for which to create views/facets>",
     )
 
+    parser.add_argument(
+        "--ddl-file",
+        action="store",
+        dest="ddl_file",
+        default="views.sql",
+        help="--ddl-file <filename where DDL to create views will be stored>",
+    )
+
 
     parser.add_argument(
         "-d",
