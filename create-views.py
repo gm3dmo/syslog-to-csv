@@ -74,6 +74,7 @@ def main(args):
 
     with open(args.ddl_file, "w") as reportfn:
         reportfn.write("\n".join(report))
+        reportfn.write("\nEOF\n")
 
 
 if __name__ == "__main__":
