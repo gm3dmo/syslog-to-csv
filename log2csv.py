@@ -17,13 +17,13 @@ logger = logging.getLogger("log2csv")
 
 
 def create_connection(sqliteDB):
-     conn = None
-     try:
-          conn=sqlite3.connect(sqliteDB)
-          return conn
-     except Exception as e:
-          logger.error(f"""{e}""")
-     return conn
+    conn = None
+    try:
+        conn = sqlite3.connect(sqliteDB)
+        return conn
+    except Exception as e:
+        logger.error(f"""{e}""")
+    return conn
 
 
 def get_create_view_text(table, column):
@@ -35,30 +35,30 @@ def get_drop_view_text(table, column):
 
 
 def create_view(conn, create_view_sql):
-     try:
-          c = conn.cursor()
-          logger.info(f"""{create_view_sql}""")
-          c.execute(create_view_sql)
-     except Exception as e:
-          logger.error(f"""{e}""")
+    try:
+        c = conn.cursor()
+        logger.info(f"""{create_view_sql}""")
+        c.execute(create_view_sql)
+    except Exception as e:
+        logger.error(f"""{e}""")
 
 
 def drop_view(conn, drop_view_sql):
-     try:
-          c = conn.cursor()
-          logger.info(f"""{drop_view_sql}""")
-          c.execute(drop_view_sql)
-     except Exception as e:
-          logger.error(f"""{e}""")
+    try:
+        c = conn.cursor()
+        logger.info(f"""{drop_view_sql}""")
+        c.execute(drop_view_sql)
+    except Exception as e:
+        logger.error(f"""{e}""")
 
 
 def select_from_view(conn, query):
-     try:
-          c = conn.cursor()
-          logger.info(f"""select from view: {query}""")
-          c.execute(query)
-     except Exception as e:
-          logger.error(f"""{e}""")
+    try:
+        c = conn.cursor()
+        logger.info(f"""select from view: {query}""")
+        c.execute(query)
+    except Exception as e:
+        logger.error(f"""{e}""")
 
 
 def get_log_type(path):
@@ -90,10 +90,9 @@ def create_list_of_files_to_convert(args):
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
-                
                     table_name = get_table_name(log_type)
                     if table_name == False:
-                       table_name = log_type
+                        table_name = log_type
                     processor = get_processor(log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
@@ -131,7 +130,7 @@ def get_table_name(log_type):
             if "table_name" in data[log_type]:
                 table_name = data[log_type]["table_name"]
             return table_name
-        
+
 
 def get_view_facets(log_type):
     p = pathlib.Path(__file__)
