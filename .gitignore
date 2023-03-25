@@ -33,6 +33,7 @@ MANIFEST
 *.spec
 
 github-support-bundle
+phase-*
 
 # sqlite database
 *.db
