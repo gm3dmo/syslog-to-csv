@@ -3,6 +3,7 @@
 __version__ = "0.1.0"
 
 import sqlite3
+import os
 import sys
 import json
 import logging
@@ -18,8 +19,12 @@ from pathlib import Path
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
-def check_db_exists():
-    return True
+def check_db_exists(dbfile):
+    status = False
+    if os.path.isfile(dbfile):
+        if lc.create_connection(dbfile):
+            status = True
+    return status
 
 
 def main(args):
@@ -78,7 +83,7 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 print("ERROR:", err)
 
-        print(f"""Converting: {len(files_to_convert)}""")
+        print(f"""Converting {len(files_to_convert)} files.""")
         print(f"""Converting: {files_to_convert}""")
         # Now that syslog has been split into a file per daemon, we want to
         # include files like babeld.log for conversion to csv. Go round again
@@ -98,7 +103,7 @@ def main(args):
         print(f"""Phase 3: Generate sqlite database from csv files""")
         print(f"""SQLITE: {sqlite_db_chunk}""")
 
-        if check_db_exists() == True:
+        if check_db_exists(args.dbfile) == True:
             MACHINE_RUNNING = False
 
 
@@ -114,6 +119,15 @@ if __name__ == "__main__":
         default=logging.WARNING,
         help="debug(-d, --debug, etc)",
     )
+
+    parser.add_argument(
+        "--dbfile",
+        action="store",
+        dest="dbfile",
+        default="logs.db",
+        help="name of the sqlite database",
+    )
+
     parser.add_argument(
         "--python-interpreter",
         action="store",
