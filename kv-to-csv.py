@@ -13,7 +13,7 @@ import logging.config
 import pathlib
 import log2csv
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
 @log2csv.timeit

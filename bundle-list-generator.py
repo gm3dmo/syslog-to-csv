@@ -14,7 +14,7 @@ from pathlib import Path
 import log2csv as lc
 from pathlib import Path
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
 def main(args):
