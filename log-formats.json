@@ -54,7 +54,11 @@
                        "parent", "hook_id","github_request_id","dest_url","queue",
                        "event", "action","synthetic_status","status","request_duration",
                        "repo_id", "queue_duration", "sender_id","public_error_message"
-                     ]
+                     ],
+      "view_facets": [
+                       "msg", "public_error_message", "repo_id", "dest_url",
+                       "queue", "stats", "queue_duration", "action", "hook_id"
+                      ]
         },
   "gitrpcd": {
      "processor": "kv-to-csv.py",
