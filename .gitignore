@@ -32,6 +32,8 @@ MANIFEST
 *.manifest
 *.spec
 
+github-support-bundle
+
 # sqlite database
 *.db
 *.sql
