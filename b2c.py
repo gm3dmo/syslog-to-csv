@@ -6,6 +6,7 @@ import sqlite3
 import os
 import sys
 import json
+import time
 import logging
 import logging.config
 import argparse
@@ -64,7 +65,7 @@ def main(args):
     args.syslog_files = []
 
     # bin_dir = "syslog-to-csv"
-    bin_dir = "."
+    args.bin_dir = "."
 
     (
         files_to_convert,
@@ -99,9 +100,25 @@ def main(args):
         print(f"""Converting: {files_to_convert}""")
         print(f"""Phase 2b: Convert log files to CSV""")
         print(f"""\n""")
+        (
+            files_to_convert,
+            sqlite_db_chunk,
+            syslog_files,
+        ) = lc.create_list_of_files_to_convert(args)
+        print(f"""------------------""")
+        print(f"""GRONK: {files_to_convert}""")
+        print(f"""------------------""")
+        for line in files_to_convert:
+            cmd = line
+            try:
+                subprocess.run([cmd], check=True, shell=True)
+            except subprocess.CalledProcessError as err:
+                print("GOOSEY ERROR:", err)
+        print(f"""------------------""")
 
         print(f"""Phase 3: Generate sqlite database from csv files""")
         print(f"""SQLITE: {sqlite_db_chunk}""")
+        time.sleep(5)
 
         if check_db_exists(args.dbfile) == True:
             MACHINE_RUNNING = False
