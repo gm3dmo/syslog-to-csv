@@ -17,7 +17,7 @@ from pathlib import Path
 import log2csv as lc
 from pathlib import Path
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
 def check_db_exists(dbfile):
@@ -74,51 +74,66 @@ def main(args):
     ) = lc.create_list_of_files_to_convert(args)
 
     MACHINE_RUNNING = True
+    BOBBY_INTEGER = 0
 
     while MACHINE_RUNNING == True:
-        print(f"""Phase 1: Split syslog files out to a file per daemon""")
+        logger.info(f"""Phase 1: Split syslog files out to a file per daemon""")
         for line in syslog_files:
             cmd = f"""{args.python_interpreter} {splitter} {line}"""
             try:
                 subprocess.run([cmd], check=True, shell=True)
             except subprocess.CalledProcessError as err:
-                print("ERROR:", err)
+                logger.info("ERROR:", err)
 
         print(f"""Converting {len(files_to_convert)} files.""")
         print(f"""Converting: {files_to_convert}""")
-        # Now that syslog has been split into a file per daemon, we want to
-        # include files like babeld.log for conversion to csv. Go round again
-        # and regenerate the list of files to convert:
         (
             files_to_convert,
             sqlite_db_chunk,
             syslog_files,
         ) = lc.create_list_of_files_to_convert(args)
+        logger.info(f"""XXX SQLITE DDL: {len(sqlite_db_chunk)}""")
 
-        print(f"""Phase 2a: Generate Sankey Information based on file size""")
-        print(f"""Converting: {len(files_to_convert)}""")
-        print(f"""Converting: {files_to_convert}""")
-        print(f"""Phase 2b: Convert log files to CSV""")
+        logger.info(f"""Phase 2a: Generate Sankey Information based on file size""")
+        logger.info(f"""Converting: {len(files_to_convert)}""")
+
+        logger.info(f"""Converting: {files_to_convert}""")
+        logger.info(f"""Phase 2b: Convert log files to CSV""")
         print(f"""\n""")
-        (
-            files_to_convert,
-            sqlite_db_chunk,
-            syslog_files,
-        ) = lc.create_list_of_files_to_convert(args)
-        print(f"""------------------""")
-        print(f"""GRONK: {files_to_convert}""")
-        print(f"""------------------""")
+
         for line in files_to_convert:
             cmd = line
             try:
                 subprocess.run([cmd], check=True, shell=True)
             except subprocess.CalledProcessError as err:
-                print("GOOSEY ERROR:", err)
-        print(f"""------------------""")
+                logger.info("ERROR:", err)
 
-        print(f"""Phase 3: Generate sqlite database from csv files""")
-        print(f"""SQLITE: {sqlite_db_chunk}""")
+        logger.info(f"""Phase 3: Generate sqlite database from csv files""")
+        logger.info(f"""SQLITE DDL: {len(sqlite_db_chunk)}""")
+
+
+        sqlite_db_chunk = []
+        logger.info(f"""XXXx SQLITE DDL: {len(sqlite_db_chunk)}""")
+        (
+            files_to_convert,
+            sqlite_db_chunk,
+            syslog_files,
+        ) = lc.create_list_of_files_to_convert(args)
+
+        logger.info(f"""XXXx SQLITE DDL: {len(sqlite_db_chunk)}""")
+
+        sqlite_ddl_text = '\n'.join(sqlite_db_chunk)
+        logger.info(f"""--------_---------""")
+        logger.info(f"""SQLITE DDL: {sqlite_ddl_text}""")
+        logger.info(f"""--------_---------""")
+
+        with open(args.db_ddl_file, "w") as f:
+            f.writelines(f"{sqlite_ddl_text}\n")
+                
+
+        sys.exit()
         time.sleep(5)
+
 
         if check_db_exists(args.dbfile) == True:
             MACHINE_RUNNING = False
@@ -133,7 +148,7 @@ if __name__ == "__main__":
         action="store_const",
         dest="loglevel",
         const=logging.DEBUG,
-        default=logging.WARNING,
+        default=logging.INFO,
         help="debug(-d, --debug, etc)",
     )
 
@@ -143,6 +158,14 @@ if __name__ == "__main__":
         dest="dbfile",
         default="logs.db",
         help="name of the sqlite database",
+    )
+
+    parser.add_argument(
+        "---db-ddlfile",
+        action="store",
+        dest="db_ddl_file",
+        default="logs.ddl",
+        help="database",
     )
 
     parser.add_argument(
