@@ -38,6 +38,7 @@ phase-*
 # sqlite database
 *.db
 *.sql
+*.ddl
 
 # Installer logs
 pip-log.txt
