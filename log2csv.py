@@ -65,6 +65,108 @@ def get_log_type(path):
     log_type = path.stem.split(".")[0]
     return log_type
 
+def create_list_of_syslog_files_to_split(args):
+    log_list = []
+    count_of_log_types = {}
+    syslog_files = []
+    sqlite_db_chunk = args.sqlite_db_lines
+    logger.debug(f"""count_of_log_types: {count_of_log_types}""")
+
+    for lt in args.log_types:
+        count_of_log_types[lt] = 0
+
+    for log_directory in args.log_directories:
+        logger.debug(log_directory)
+        glob_string = f"""{log_directory}/*"""
+        for item in list(args.p.glob(glob_string)):
+            logger.debug(f"""{item.name}""")
+            if str(item).endswith(".csv"):
+                continue
+            if item.name.startswith("syslog"):
+                syslog_files.append(item)
+                logger.debug(f"{item.name}")
+
+    return syslog_files
+
+
+def create_list_of_files_to_convert_to_csv(args):
+    log_list = []
+    count_of_log_types = {}
+    sqlite_db_chunk = args.sqlite_db_lines
+    logger.debug(f"""count_of_log_types: {count_of_log_types}""")
+
+    for lt in args.log_types:
+        count_of_log_types[lt] = 0
+
+    for log_directory in args.log_directories:
+        logger.debug(log_directory)
+        glob_string = f"""{log_directory}/*"""
+        for item in list(args.p.glob(glob_string)):
+            if str(item).endswith(".csv"):
+                continue
+            else:
+                log_type = get_log_type(item)
+                if log_type in args.log_types:
+                    table_name = get_table_name(log_type)
+                    if table_name == False:
+                        table_name = log_type
+                    processor = get_processor(log_type)
+                    csv_file = f"""{item}.csv"""
+                    log_list.append(
+                        f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
+                    )
+    logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
+    return (log_list)
+
+
+def create_list_of_csv_to_import_to_sqlite(args):
+    log_list = []
+    count_of_log_types = {}
+    sqlite_db_chunk = args.sqlite_db_lines
+    logger.debug(f"""count_of_log_types: {count_of_log_types}""")
+
+    for lt in args.log_types:
+        count_of_log_types[lt] = 0
+
+    for log_directory in args.log_directories:
+        logger.debug(log_directory)
+        glob_string = f"""{log_directory}/*"""
+        for item in list(args.p.glob(glob_string)):
+            logger.debug(f"""{item.name}""")
+            if str(item).endswith(".csv"):
+                continue
+            if item.name.startswith("syslog"):
+                continue
+            else:
+                log_type = get_log_type(item)
+                if log_type in args.log_types:
+                    table_name = get_table_name(log_type)
+                    if table_name == False:
+                        table_name = log_type
+                    processor = get_processor(log_type)
+                    logger.debug(item)
+                    csv_file = f"""{item}.csv"""
+                    log_list.append(
+                        f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
+                    )
+                    if count_of_log_types[log_type] == 0:
+                        sqlite_db_chunk.append(f""".import {csv_file} {table_name}""")
+                        count_of_log_types[log_type] += 1
+                        logger.debug(
+                            f"""====> {log_type}: zero count {count_of_log_types[log_type]}"""
+                        )
+                    else:
+                        sqlite_db_chunk.append(
+                            f""".import "|tail -n +2 {csv_file}" {table_name} """
+                        )
+                        count_of_log_types[log_type] += 1
+                        logger.debug(
+                            f"""----> {log_type}: count {count_of_log_types[log_type]}"""
+                        )
+    logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
+    sqlite_db_chunk.append(f"""EOF""")
+    return sqlite_db_chunk 
+
 
 def create_list_of_files_to_convert(args):
     log_list = []
@@ -114,6 +216,7 @@ def create_list_of_files_to_convert(args):
                             f"""----> {log_type}: count {count_of_log_types[log_type]}"""
                         )
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
+    logger.info(f"COUNTER: ")
     sqlite_db_chunk.append(f"""EOF""")
     return (log_list, sqlite_db_chunk, syslog_files)
 

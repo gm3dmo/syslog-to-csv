@@ -63,21 +63,16 @@ def main(args):
     ]
 
     args.syslog_files = []
-
-    # bin_dir = "syslog-to-csv"
     args.bin_dir = "."
 
-    (
-        files_to_convert,
-        sqlite_db_chunk,
-        syslog_files,
-    ) = lc.create_list_of_files_to_convert(args)
+    syslog_files = lc.create_list_of_syslog_files_to_split(args)
+    print(syslog_files)
 
     MACHINE_RUNNING = True
-    BOBBY_INTEGER = 0
 
     while MACHINE_RUNNING == True:
         logger.info(f"""Phase 1: Split syslog files out to a file per daemon""")
+        logger.info(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
             cmd = f"""{args.python_interpreter} {splitter} {line}"""
             try:
@@ -85,22 +80,9 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
-        print(f"""Converting {len(files_to_convert)} files.""")
-        print(f"""Converting: {files_to_convert}""")
-        (
-            files_to_convert,
-            sqlite_db_chunk,
-            syslog_files,
-        ) = lc.create_list_of_files_to_convert(args)
-        logger.info(f"""XXX SQLITE DDL: {len(sqlite_db_chunk)}""")
 
-        logger.info(f"""Phase 2a: Generate Sankey Information based on file size""")
-        logger.info(f"""Converting: {len(files_to_convert)}""")
-
-        logger.info(f"""Converting: {files_to_convert}""")
-        logger.info(f"""Phase 2b: Convert log files to CSV""")
-        print(f"""\n""")
-
+        files_to_convert = lc.create_list_of_files_to_convert_to_csv(args)
+        logger.info(f"""Phase 2: {files_to_convert}""")
         for line in files_to_convert:
             cmd = line
             try:
@@ -108,32 +90,18 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
+
         logger.info(f"""Phase 3: Generate sqlite database from csv files""")
-        logger.info(f"""SQLITE DDL: {len(sqlite_db_chunk)}""")
+        args.sqlite_db_chunk = []
+        logger.info(f"""XXXx SQLITE DDL: {len(args.sqlite_db_chunk)}""")
+        args.sqlite_db_chunk = lc.create_list_of_csv_to_import_to_sqlite(args)
 
-
-        sqlite_db_chunk = []
-        logger.info(f"""XXXx SQLITE DDL: {len(sqlite_db_chunk)}""")
-        (
-            files_to_convert,
-            sqlite_db_chunk,
-            syslog_files,
-        ) = lc.create_list_of_files_to_convert(args)
-
-        logger.info(f"""XXXx SQLITE DDL: {len(sqlite_db_chunk)}""")
-
-        sqlite_ddl_text = '\n'.join(sqlite_db_chunk)
-        logger.info(f"""--------_---------""")
-        logger.info(f"""SQLITE DDL: {sqlite_ddl_text}""")
-        logger.info(f"""--------_---------""")
+        sqlite_ddl_text = '\n'.join(args.sqlite_db_chunk)
 
         with open(args.db_ddl_file, "w") as f:
             f.writelines(f"{sqlite_ddl_text}\n")
                 
-
-        sys.exit()
         time.sleep(5)
-
 
         if check_db_exists(args.dbfile) == True:
             MACHINE_RUNNING = False
@@ -143,13 +111,12 @@ if __name__ == "__main__":
     """This is executed when run from the command line"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-d",
-        "--debug",
+        "--log-level",
         action="store_const",
         dest="loglevel",
-        const=logging.DEBUG,
+        const=logging.INFO,
         default=logging.INFO,
-        help="debug(-d, --debug, etc)",
+        help="debug(-d, --log-level, etc)",
     )
 
     parser.add_argument(
