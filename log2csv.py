@@ -65,6 +65,7 @@ def get_log_type(path):
     log_type = path.stem.split(".")[0]
     return log_type
 
+
 def create_list_of_syslog_files_to_split(args):
     log_list = []
     count_of_log_types = {}
@@ -116,7 +117,7 @@ def create_list_of_files_to_convert_to_csv(args):
                         f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
                     )
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
-    return (log_list)
+    return log_list
 
 
 def create_list_of_csv_to_import_to_sqlite(args):
@@ -165,14 +166,13 @@ def create_list_of_csv_to_import_to_sqlite(args):
                         )
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
     sqlite_db_chunk.append(f"""EOF""")
-    return sqlite_db_chunk 
+    return sqlite_db_chunk
 
 
 def create_list_of_files_to_convert(args):
     log_list = []
     count_of_log_types = {}
     syslog_files = []
-    sqlite_db_chunk = args.sqlite_db_lines
     logger.debug(f"""count_of_log_types: {count_of_log_types}""")
 
     for lt in args.log_types:

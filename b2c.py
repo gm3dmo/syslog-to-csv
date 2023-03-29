@@ -29,7 +29,7 @@ def check_db_exists(dbfile):
 
 
 def main(args):
-    logger = logging.getLogger("bundle-list-generator")
+    logger = logging.getLogger("b2c")
     logger.setLevel(args.loglevel)
     args.p = Path(".")
     args.bin_dir = "syslog-to-csv"
@@ -80,7 +80,6 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
-
         files_to_convert = lc.create_list_of_files_to_convert_to_csv(args)
         logger.info(f"""Phase 2: {files_to_convert}""")
         for line in files_to_convert:
@@ -90,18 +89,24 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
-
+        logger.info(f"""Phase 2 Complete: \n\n{files_to_convert}""")
+        logger.info(f"""=====================================""")
         logger.info(f"""Phase 3: Generate sqlite database from csv files""")
         args.sqlite_db_chunk = []
-        logger.info(f"""XXXx SQLITE DDL: {len(args.sqlite_db_chunk)}""")
         args.sqlite_db_chunk = lc.create_list_of_csv_to_import_to_sqlite(args)
-
-        sqlite_ddl_text = '\n'.join(args.sqlite_db_chunk)
+        sqlite_ddl_text = "\n".join(args.sqlite_db_chunk)
 
         with open(args.db_ddl_file, "w") as f:
             f.writelines(f"{sqlite_ddl_text}\n")
-                
-        time.sleep(5)
+
+        # Create the database using the DDL file
+        cmd = f"""logs.ddl"""
+        try:
+            result = subprocess.run(
+                ["bash", cmd], check=True, shell=False, capture_output=True
+            )
+        except subprocess.CalledProcessError as err:
+            logger.info("ERROR:", err)
 
         if check_db_exists(args.dbfile) == True:
             MACHINE_RUNNING = False
