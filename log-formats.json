@@ -203,7 +203,7 @@
  "babeld": {
              "processor": "kv-to-csv.py",
              "contained_in_log": "syslog",
-             "view_facets": ["msg", "repo", "user", "user_agent", "proto"],
+             "view_facets": ["msg", "repo", "user", "user_agent", "proto", "log_level"],
              "must": "proto",
              "core": [
                        "ac_ms",
