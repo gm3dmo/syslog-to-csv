@@ -63,7 +63,7 @@ def main(args):
     ]
 
     args.syslog_files = []
-    args.bin_dir = "."
+    #args.bin_dir = "."
 
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
     print(syslog_files)
@@ -74,7 +74,7 @@ def main(args):
         logger.info(f"""Phase 1: Split syslog files out to a file per daemon""")
         logger.info(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
-            cmd = f"""{args.python_interpreter} {splitter} {line}"""
+            cmd = f"""{args.python_interpreter} {args.bin_dir}/{splitter} {line}"""
             try:
                 subprocess.run([cmd], check=True, shell=True)
             except subprocess.CalledProcessError as err:
