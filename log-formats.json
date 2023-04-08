@@ -21,8 +21,8 @@
             "dc",
             "site",
             "log_level",
-            "msg",
-        ],
+            "msg"
+        ]
     },
     "ldap-sync": {
         "processor": "kv-to-csv.py",
@@ -37,8 +37,8 @@
             "team_id",
             "team_name",
             "entry_found",
-            "ldap_fields_changed",
-        ],
+            "ldap_fields_changed"
+        ]
     },
     "spokesd": {
         "processor": "kv-to-csv.py",
@@ -67,8 +67,8 @@
             "component",
             "user_agent",
             "unavailable",
-            "status",
-        ],
+            "status"
+        ]
     },
     "spokes-sweeper": {
         "processor": "kv-to-csv.py",
@@ -97,8 +97,8 @@
             "type",
             "func",
             "request_id",
-            "user_agent",
-        ],
+            "user_agent"
+        ]
     },
     "hookshot-go": {
         "processor": "kv-to-csv.py",
@@ -123,7 +123,7 @@
             "repo_id",
             "queue_duration",
             "sender_id",
-            "public_error_message",
+            "public_error_message"
         ],
         "view_facets": [
             "msg",
@@ -134,8 +134,8 @@
             "stats",
             "queue_duration",
             "action",
-            "hook_id",
-        ],
+            "hook_id"
+        ]
     },
     "gitrpcd": {
         "processor": "kv-to-csv.py",
@@ -161,15 +161,15 @@
             "path",
             "blobs",
             "blob_size",
-            "spec",
-        ],
+            "spec"
+        ]
     },
     "actions-job-agent": {
         "processor": "sylog-jsonl-to-csv.py",
         "contained_in_log": "syslog",
         "table_name": "actionsjobagent",
         "must": "logType",
-        "core": [],
+        "core": []
     },
     "exceptions": {
         "processor": "jsonl-to-csv.py",
@@ -189,8 +189,8 @@
             "controller",
             "url",
             "repo_id",
-            "user_agent",
-        ],
+            "user_agent"
+        ]
     },
     "resqued": {
         "processor": "unknown",
@@ -212,8 +212,8 @@
             "spec",
             "message",
             "status",
-            "elapsed",
-        ],
+            "elapsed"
+        ]
     },
     "timerd": {
         "processor": "unknown",
@@ -228,8 +228,8 @@
             "at",
             "scheduler",
             "from",
-            "test",
-        ],
+            "test"
+        ]
     },
     "auth": {
         "processor": "kv-to-csv.py",
@@ -254,7 +254,7 @@
             "failure_reason",
             "failure_type",
             "hashed_token",
-            "token_type",
+            "token_type"
         ],
         "view_facets": [
             "ip",
@@ -270,8 +270,8 @@
             "from",
             "hashed_token",
             "message",
-            "protocol",
-        ],
+            "protocol"
+        ]
     },
     "gitauth": {
         "processor": "kv-to-csv.py",
@@ -298,8 +298,8 @@
             "status",
             "elapsed",
             "url",
-            "worker_request_count",
-        ],
+            "worker_request_count"
+        ]
     },
     "unicorn": {
         "processor": "kv-to-csv.py",
@@ -316,9 +316,8 @@
             "status",
             "integration_id",
             "path_info",
-            "remote_address",
+            "remote_address"
         ],
-        "must": "app",
         "must": "app",
         "core": [
             "app",
@@ -351,7 +350,7 @@
             "status",
             "url",
             "user",
-            "user_agent",
+            "user_agent"
         ],
         "known": [
             "content_length",
@@ -362,8 +361,8 @@
             "quota_tier",
             "oauth_access_id",
             "oauth_application_id",
-            "time_zone",
-        ],
+            "time_zone"
+        ]
     },
     "babeld": {
         "processor": "kv-to-csv.py",
@@ -435,7 +434,7 @@
             "user_agent",
             "version",
             "vk_ms",
-            "xff_ip",
+            "xff_ip"
         ],
         "known": [
             "ac_ms",
@@ -511,8 +510,8 @@
             "user_agent",
             "version",
             "vk_ms",
-            "xff_ip",
-        ],
+            "xff_ip"
+        ]
     },
     "sample": {
         "must": "at",
@@ -527,7 +526,7 @@
             "connect",
             "service",
             "status",
-            "bytes",
-        ],
-    },
+            "bytes"
+        ]
+    }
 }
