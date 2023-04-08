@@ -83,6 +83,8 @@ def create_list_of_syslog_files_to_split(args):
             logger.debug(f"""{item.name}""")
             if str(item).endswith(".csv"):
                 continue
+            if str(item).endswith(".backup"):
+                continue
             if item.name.startswith("syslog"):
                 syslog_files.append(item)
                 logger.debug(f"{item.name}")
@@ -104,6 +106,8 @@ def create_list_of_files_to_convert_to_csv(args):
         glob_string = f"""{log_directory}/*"""
         for item in list(args.p.glob(glob_string)):
             if str(item).endswith(".csv"):
+                continue
+            if str(item).endswith(".backup"):
                 continue
             else:
                 log_type = get_log_type(item)
@@ -186,6 +190,8 @@ def create_list_of_files_to_convert(args):
         for item in list(args.p.glob(glob_string)):
             logger.debug(f"""{item.name}""")
             if str(item).endswith(".csv"):
+                continue
+            if str(item).endswith(".backup"):
                 continue
             if item.name.startswith("syslog"):
                 syslog_files.append(item)
