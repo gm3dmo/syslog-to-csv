@@ -107,6 +107,18 @@ def main(args):
             logger.info("ERROR:", err)
 
         if check_db_exists(args.dbfile) == True:
+            conn = lc.create_connection(args.dbfile)
+            cursor = conn.cursor()
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+            tables = cursor.fetchall()
+            for table in tables:
+                line = f"""{args.python_interpreter} {args.bin_dir}/create-views.py --db-file {args.dbfile} --table-name {table[0]} --ddl-file {table[0]}.ddl"""
+                cmd = line
+                try:
+                    subprocess.run([cmd], check=True, shell=True)
+                except subprocess.CalledProcessError as err:
+                    logger.info("ERROR:", err)
+
             MACHINE_RUNNING = False
 
 
