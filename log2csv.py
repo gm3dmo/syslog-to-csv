@@ -136,6 +136,8 @@ def create_list_of_csv_to_import_to_sqlite(args):
             logger.debug(f"""{item.name}""")
             if str(item).endswith(".csv"):
                 continue
+            if str(item).endswith(".backup"):
+                continue
             if item.name.startswith("syslog"):
                 continue
             else:
