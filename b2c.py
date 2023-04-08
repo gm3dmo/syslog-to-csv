@@ -32,7 +32,6 @@ def main(args):
     logger = logging.getLogger("b2c")
     logger.setLevel(args.loglevel)
     args.p = Path(".")
-    args.bin_dir = "syslog-to-csv"
     args.log_directories = [
         "github-logs",
         "system-logs",
@@ -63,7 +62,6 @@ def main(args):
     ]
 
     args.syslog_files = []
-    #args.bin_dir = "."
 
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
     print(syslog_files)
@@ -133,11 +131,19 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "---db-ddlfile",
+        "--db-ddlfile",
         action="store",
         dest="db_ddl_file",
         default="logs.ddl",
-        help="database",
+        help="database ddl file",
+    )
+
+    parser.add_argument(
+        "--bin-dir",
+        action="store",
+        dest="bin_dir",
+        default="syslog-to-csv",
+        help="where the scripts live.",
     )
 
     parser.add_argument(
