@@ -137,7 +137,7 @@
             "repo_id",
             "dest_url",
             "queue",
-            "stats",
+            "status",
             "queue_duration",
             "action",
             "hook_id"
