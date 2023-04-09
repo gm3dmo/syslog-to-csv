@@ -63,8 +63,18 @@ def main(args):
 
     args.syslog_files = []
 
+
+    # If there is a pypy3 interpreter on the path
+    # lets use that for speed.
+    pypy3_interpreter_exists = lc.is_pypy3()
+    if pypy3_interpreter_exists:
+        logger.info(f"""Switching interpreter to pypy3: {pypy3_interpreter_exists}""")
+        args.python_interpreter=pypy3_interpreter_exists
+    else:
+        logger.info(f"""No pyp3 sticking with {args.python_interpreter}""")
+
+
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
-    print(syslog_files)
 
     MACHINE_RUNNING = True
 

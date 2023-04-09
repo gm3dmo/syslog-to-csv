@@ -10,10 +10,15 @@ import pathlib
 import sqlite3
 import datetime
 import logging
+import shutil
 import logging.config
 import unicodedata
 
 logger = logging.getLogger("log2csv")
+
+
+def is_pypy3():
+    return (shutil.which('pyp3'))
 
 
 def create_connection(sqliteDB):
