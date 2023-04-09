@@ -18,7 +18,7 @@ logger = logging.getLogger("log2csv")
 
 
 def is_pypy3():
-    return (shutil.which('pyp3'))
+    return (shutil.which('pypy3'))
 
 
 def create_connection(sqliteDB):
