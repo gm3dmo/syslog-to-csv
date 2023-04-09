@@ -68,6 +68,12 @@
             "user_agent",
             "unavailable",
             "status"
+        ],
+        "view_facets": [
+            "msg",
+            "level",
+            "service",
+            "unavailable"
         ]
     },
     "spokes-sweeper": {
