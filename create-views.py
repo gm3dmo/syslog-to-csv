@@ -37,11 +37,16 @@ def main(args):
     sqlite_db = args.db_file
     conn = create_connection(sqlite_db)
     table = args.table_name
-    list_of_columns = get_view_facets(table)
+    try: 
+        list_of_columns = get_view_facets(table)
+    except TypeError:
+        raise TypeError(f"""view_facets have not been defined for table: {table}""") 
+        sys.exit(1)
+
     logger.info(f"""sqlite database: {sqlite_db}""")
     logger.info(f"""creating views for table: {table}""")
     logger.info(f"""views will be created for: {list_of_columns}""")
-    logger.info(f"""DDL file name: {args.ddl_file}""")
+    logger.info(f"""SQL file name: {args.sql_file}""")
 
     report = []
     report_limit = 10
@@ -72,7 +77,7 @@ def main(args):
 
     print("\n".join(report))
 
-    with open(args.ddl_file, "w") as reportfn:
+    with open(args.sql_file, "w") as reportfn:
         reportfn.write("\n".join(report))
         reportfn.write("\nEOF\n")
 
@@ -98,11 +103,11 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--ddl-file",
+        "--sql-file",
         action="store",
-        dest="ddl_file",
+        dest="sql_file",
         default="views.sql",
-        help="--ddl-file <filename where DDL to create views will be stored>",
+        help="--sql-file <filename sql to report view will be stored.",
     )
 
     parser.add_argument(
