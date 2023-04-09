@@ -247,6 +247,9 @@ def get_view_facets(log_type):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
     kv_headers = {}
+    if log_type == 'hookshot':
+        log_type = 'hookshot-go'
+
     with open(log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
@@ -254,7 +257,9 @@ def get_view_facets(log_type):
             table_name = False
             if "view_facets" in data[log_type]:
                 view_facets = data[log_type]["view_facets"]
-            return view_facets
+                return view_facets
+            else:
+                return False
 
 
 def get_processor(log_type):
