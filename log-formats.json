@@ -190,6 +190,19 @@
             "url",
             "repo_id",
             "user_agent"
+        ],
+        "view_facets": [
+            "api_route",
+            "user",
+            "method",
+            "cause",
+            "class",
+            "message",
+            "request_id",
+            "controller",
+            "url",
+            "repo_id",
+            "user_agent"
         ]
     },
     "resqued": {
