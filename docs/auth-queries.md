@@ -221,3 +221,12 @@ protocol                                            percentage
 http                                                8.71
 svn                                                 0.01
 ```
+
+
+### Queries with temporal information
+
+Group by hour, login, message
+
+```
+SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications_count, message  from auth where at = 'failure' group by strftime ('%H',now), login, message  order by hour;
+```
