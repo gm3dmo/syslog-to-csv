@@ -228,5 +228,8 @@ svn                                                 0.01
 Group by hour, login, message
 
 ```
+.mode columns
+.width 15 15 5 30
+.headers on
 SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications_count, message  from auth where at = 'failure' group by strftime ('%H',now), login, message  order by hour;
 ```
