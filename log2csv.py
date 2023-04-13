@@ -18,7 +18,7 @@ logger = logging.getLogger("log2csv")
 
 
 def is_pypy3():
-    return (shutil.which('pypy3'))
+    return shutil.which("pypy3")
 
 
 def create_connection(sqliteDB):
@@ -252,8 +252,8 @@ def get_view_facets(log_type):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
     kv_headers = {}
-    if log_type == 'hookshot':
-        log_type = 'hookshot-go'
+    if log_type == "hookshot":
+        log_type = "hookshot-go"
 
     with open(log_formats_file) as json_file:
         data = json.load(json_file)

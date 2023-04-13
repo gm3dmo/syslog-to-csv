@@ -70,10 +70,9 @@ def main(args):
     pypy3_interpreter_exists = lc.is_pypy3()
     if pypy3_interpreter_exists:
         logger.info(f"""Switching interpreter to pypy3: {pypy3_interpreter_exists}""")
-        args.python_interpreter=pypy3_interpreter_exists
+        args.python_interpreter = pypy3_interpreter_exists
     else:
         logger.info(f"""No pyp3 sticking with {args.python_interpreter}""")
-
 
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
 
@@ -98,13 +97,15 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
-        args.report['files_to_convert'] = files_to_convert
+        args.report["files_to_convert"] = files_to_convert
 
-        file_list = "\n".join(args.report['files_to_convert'])
+        file_list = "\n".join(args.report["files_to_convert"])
         logger.info(f"""\n""")
         logger.info(f"""Files converted: \n\n{file_list}\n\n""")
         logger.info(f"""=============== Phase 2 Complete ==================\n\n""")
-        logger.info(f"""=============== Phase 3: Generate sqlite database ================\n""")
+        logger.info(
+            f"""=============== Phase 3: Generate sqlite database ================\n"""
+        )
         args.sqlite_db_chunk = []
         args.sqlite_db_chunk = lc.create_list_of_csv_to_import_to_sqlite(args)
         sqlite_ddl_text = "\n".join(args.sqlite_db_chunk)

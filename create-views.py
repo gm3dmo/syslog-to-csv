@@ -37,10 +37,10 @@ def main(args):
     sqlite_db = args.db_file
     conn = create_connection(sqlite_db)
     table = args.table_name
-    try: 
+    try:
         list_of_columns = get_view_facets(table)
     except TypeError:
-        raise TypeError(f"""view_facets have not been defined for table: {table}""") 
+        raise TypeError(f"""view_facets have not been defined for table: {table}""")
         sys.exit(1)
 
     logger.info(f"""sqlite database: {sqlite_db}""")
