@@ -236,7 +236,12 @@ SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications
 
 #### Auth failures by hour
 
+##### LDAP Specific
+
 ```
+.mode csv
+.headers on
+.timer on
 SELECT strftime('%Y-%m-%d %H:00:00', now) as hour, 
       sum(case when message = 'Authentication success via token' then 1 else 0 end) as auth_success_via_token,
       sum(case when message = 'Your account has been suspended. via token' then 1 else 0 end) as account_suspended_via_token,
@@ -246,4 +251,5 @@ SELECT strftime('%Y-%m-%d %H:00:00', now) as hour,
       sum(case when message = 'Invalid LDAP login credentials.' then 1 else 0 end) as invalid_ldap_login_creds
 FROM auth GROUP BY hour ORDER BY hour;
 ```
+
 
