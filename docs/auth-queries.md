@@ -233,3 +233,17 @@ Group by hour, login, message
 .headers on
 SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications_count, message  from auth where at = 'failure' group by strftime ('%H',now), login, message  order by hour;
 ```
+
+#### Auth failures by hour
+
+```
+SELECT strftime('%Y-%m-%d %H:00:00', now) as hour, 
+      sum(case when message = 'Authentication success via token' then 1 else 0 end) as auth_success_via_token,
+      sum(case when message = 'Your account has been suspended. via token' then 1 else 0 end) as account_suspended_via_token,
+      sum(case when message = 'Authentication success' then 1 else 0 end) as auth_success,
+      sum(case when message = 'Authentication failure' then 1 else 0 end) as auth_failure,
+      sum(case when message = 'Authentication failure via token' then 1 else 0 end) as auth_failure_via_token,
+      sum(case when message = 'Invalid LDAP login credentials.' then 1 else 0 end) as invalid_ldap_login_creds
+FROM auth GROUP BY hour ORDER BY hour;
+```
+
