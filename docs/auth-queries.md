@@ -227,7 +227,7 @@ svn                                                 0.01
 
 Group by hour, login, message
 
-```
+```sql
 .mode columns
 .width 15 15 5 90
 .headers on
