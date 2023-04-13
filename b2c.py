@@ -63,6 +63,7 @@ def main(args):
 
     args.syslog_files = []
 
+    args.report = {}
 
     # If there is a pypy3 interpreter on the path
     # lets use that for speed.
@@ -97,9 +98,13 @@ def main(args):
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
 
-        logger.info(f"""Phase 2 Complete: \n\n{files_to_convert}""")
-        logger.info(f"""=====================================""")
-        logger.info(f"""Phase 3: Generate sqlite database from csv files""")
+        args.report['files_to_convert'] = files_to_convert
+
+        file_list = "\n".join(args.report['files_to_convert'])
+        logger.info(f"""\n""")
+        logger.info(f"""Files converted: \n\n{file_list}\n\n""")
+        logger.info(f"""=============== Phase 2 Complete ==================\n\n""")
+        logger.info(f"""=============== Phase 3: Generate sqlite database ================\n""")
         args.sqlite_db_chunk = []
         args.sqlite_db_chunk = lc.create_list_of_csv_to_import_to_sqlite(args)
         sqlite_ddl_text = "\n".join(args.sqlite_db_chunk)
