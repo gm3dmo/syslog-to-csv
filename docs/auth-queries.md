@@ -240,6 +240,7 @@ SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications
 
 ```sql
 .mode columns
+.width 60
 .headers on
 .timer on
 SELECT strftime('%Y-%m-%d %H:00:00', now) as hour, 
@@ -248,6 +249,7 @@ SELECT strftime('%Y-%m-%d %H:00:00', now) as hour,
       sum(case when message = 'Authentication success' then 1 else 0 end) as auth_success,
       sum(case when message = 'Authentication failure' then 1 else 0 end) as auth_failure,
       sum(case when message = 'Authentication failure via token' then 1 else 0 end) as auth_failure_via_token,
+      sum(case when message like 'The external%' then 1 else 0 end) as external_auth_server_failed_to_respond,
       sum(case when message = 'Invalid LDAP login credentials.' then 1 else 0 end) as invalid_ldap_login_creds
 FROM auth GROUP BY hour ORDER BY hour;
 ```
