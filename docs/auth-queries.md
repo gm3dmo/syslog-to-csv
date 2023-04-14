@@ -252,7 +252,6 @@ SELECT strftime('%Y-%m-%d %H:00:00', now) as hour,
 FROM auth GROUP BY hour ORDER BY hour;
 ```
 
-
 ##### SAML Specific
 
 ```sql
@@ -260,7 +259,7 @@ FROM auth GROUP BY hour ORDER BY hour;
 .headers on
 .timer on
 .width 20 0 0 0
-SELECT strftime('%Y-%m-%d %H:00:00', now) as hour, 
+SELECT strftime('%Y-%m-%d %H:00:00', auth.now) as hour, 
       sum(case when message = 'Authentication success via token' then 1 else 0 end) as auth_success_via_token,
       sum(case when message = 'Authentication failure via token' then 1 else 0 end) as auth_failure_via_token,
       sum(case when message = 'Your account has been suspended. via token' then 1 else 0 end) as account_suspended_via_token,
@@ -270,3 +269,46 @@ SELECT strftime('%Y-%m-%d %H:00:00', now) as hour,
       sum(case when message like 'Unable to create the user because username is too long%' then 1 else 0 end) as username_too_long
 FROM auth GROUP BY hour ORDER BY hour;
 ```
+
+###### Top 10 of *user_id* logging in most
+
+```sql
+.mode columns
+.headers on
+.timer on
+.width 20 0 0 0
+SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.user_id, count(*) AS count
+FROM auth
+GROUP BY time_period, auth.user_id
+ORDER BY count DESC
+LIMIT 10;
+```
+
+###### Top 10 hours of *message* logged most
+
+```sql
+.mode columns
+.headers on
+.timer on
+.width 20 0 0 0
+SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.message, count(*) AS count
+FROM auth
+GROUP BY time_period, auth.message
+ORDER BY count DESC
+LIMIT 10;
+```
+
+###### Top 10 of *login* logging in most
+
+```sql
+.mode columns
+.headers on
+.timer on
+.width 20 0 0 0
+SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.login, count(*) AS count
+FROM auth
+GROUP BY time_period, auth.login
+ORDER BY count DESC
+LIMIT 10;
+```
+
