@@ -2,7 +2,7 @@
 
 #### Install/Setup `syslog-to-csv`
 - Inside the bundle directory `Downloads/github-support-bundle`, download and unzip the latest release of [syslog-to-csv](https://github.com/gm3dmo/syslog-to-csv/releases/latest)
-- Run `b2c.py`. This will automatically:
+- Run `python syslog-to-csv/b2c.py`. This will automatically:
   - Extract all daemon entries to their own files, see `system-logs/split-logs-syslog`.
   - Convert `.log` files to CSV format.
   - Load the CSV format files into a sqlite database named `logs.db`.
