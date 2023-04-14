@@ -4,6 +4,7 @@
 
 1. [Setup Instructions](docs/setup.md)
 
+2. Scripts
 - [Convert key value pairs (logfmt)](docs/key-value-pairs.md)
 - [Convert jsonl format](docs/jsonl.md)
 - [Find gaps in timestamps in a logfile](docs/find-gaps-in-logfile-time.md)
