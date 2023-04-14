@@ -79,17 +79,23 @@ def main(args):
     MACHINE_RUNNING = True
 
     while MACHINE_RUNNING == True:
-        logger.info(f"""Phase 1: Split syslog files out to a file per daemon""")
-        logger.info(f"""syslog_files: {syslog_files}""")
+        logger.info(
+            f"""=============== Phase 1:  Split system-logs/syslog files ==================\n\n"""
+        )
+        logger.info(f"""Split syslog files out to a file per daemon.\n""")
+        logger.debug(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
             cmd = f"""{args.python_interpreter} {args.bin_dir}/{splitter} {line}"""
             try:
                 subprocess.run([cmd], check=True, shell=True)
             except subprocess.CalledProcessError as err:
                 logger.info("ERROR:", err)
+        logger.info(f"""=============== Phase 1:  Complete ==================\n\n""")
 
+        logger.info(
+            f"""=============== Phase 2:  Convert to CSV ==================\n\n"""
+        )
         files_to_convert = lc.create_list_of_files_to_convert_to_csv(args)
-        logger.info(f"""Phase 2: {files_to_convert}""")
         for line in files_to_convert:
             cmd = line
             try:
@@ -104,7 +110,7 @@ def main(args):
         logger.info(f"""Files converted: \n\n{file_list}\n\n""")
         logger.info(f"""=============== Phase 2 Complete ==================\n\n""")
         logger.info(
-            f"""=============== Phase 3: Generate sqlite database ================\n"""
+            f"""=============== Phase 3: Generate sqlite database ================\n\n"""
         )
         args.sqlite_db_chunk = []
         args.sqlite_db_chunk = lc.create_list_of_csv_to_import_to_sqlite(args)
@@ -121,8 +127,12 @@ def main(args):
             )
         except subprocess.CalledProcessError as err:
             logger.info("ERROR:", err)
+        logger.info(f"""=============== Phase 3: Complete ================\n\n""")
 
         if check_db_exists(args.dbfile) == True:
+            logger.info(
+                f"""=============== Phase 4: Generate SQL Views ================\n\n"""
+            )
             conn = lc.create_connection(args.dbfile)
             cursor = conn.cursor()
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
@@ -134,6 +144,8 @@ def main(args):
                     subprocess.run([cmd], check=True, shell=True)
                 except subprocess.CalledProcessError as err:
                     logger.info("ERROR:", err)
+
+            logger.info(f"""=============== Phase 4: Complete ================\n\n""")
 
             MACHINE_RUNNING = False
 
