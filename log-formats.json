@@ -318,6 +318,14 @@
             "elapsed",
             "url",
             "worker_request_count"
+        ],
+        "view_facets": [
+            "path",
+            "path_info",
+            "repo",
+            "remote_address",
+            "user_agent",
+            "status"
         ]
     },
     "unicorn": {
