@@ -114,6 +114,8 @@ def create_list_of_files_to_convert_to_csv(args):
                 continue
             if str(item).endswith(".backup"):
                 continue
+            if str(item).startswith("system-logs/auth.log"):
+                continue
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
