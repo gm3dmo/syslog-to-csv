@@ -2,7 +2,7 @@
 .width 20 20 20 20
 .headers on
 .timer on
-SELECT strftime('%Y-%m-%d %H:00:00', now) as timeframe,
+SELECT strftime('%Y-%m-%dT%H:00:00', now) as timeframe,
       sum(case when status like '20%' then 1 else 0 end) as status_20x,
       sum(case when status like '30%' then 1 else 0 end) as status_30x,
       sum(case when status = '403' then 1 else 0 end) as status_403,
