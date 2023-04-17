@@ -231,7 +231,7 @@ Group by hour, login, message
 .mode columns
 .width 15 15 5 90
 .headers on
-SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications_count, message  from auth where at = 'failure' group by strftime ('%H',now), login, message  order by hour;
+SELECT strftime ('%Y-%m-%dT%H:00:00',now) hour, login, count(login) as authentications_count, message  from auth where at = 'failure' group by strftime ('%H',now), login, message  order by hour;
 ```
 
 #### Auth failures by hour
@@ -243,7 +243,7 @@ SELECT strftime ('%Y-%m-%d %H',now) hour, login, count(login) as authentications
 .width 60
 .headers on
 .timer on
-SELECT strftime('%Y-%m-%d %H:00:00', now) as hour, 
+SELECT strftime('%Y-%m-%dT%H:00:00', now) as hour, 
       sum(case when message = 'Authentication success via token' then 1 else 0 end) as auth_success_via_token,
       sum(case when message = 'Your account has been suspended. via token' then 1 else 0 end) as account_suspended_via_token,
       sum(case when message = 'Authentication success' then 1 else 0 end) as auth_success,
@@ -261,7 +261,7 @@ FROM auth GROUP BY hour ORDER BY hour;
 .headers on
 .timer on
 .width 20 0 0 0
-SELECT strftime('%Y-%m-%d %H:00:00', auth.now) as hour, 
+SELECT strftime('%Y-%m-%dT%H:00:00', auth.now) as hour, 
       sum(case when message = 'Authentication success via token' then 1 else 0 end) as auth_success_via_token,
       sum(case when message = 'Authentication failure via token' then 1 else 0 end) as auth_failure_via_token,
       sum(case when message = 'Your account has been suspended. via token' then 1 else 0 end) as account_suspended_via_token,
@@ -279,7 +279,7 @@ FROM auth GROUP BY hour ORDER BY hour;
 .headers on
 .timer on
 .width 20 0 0 0
-SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.user_id, count(*) AS count
+SELECT strftime('%Y-%m-%dT%H:00:00', auth.now) AS time_period, auth.user_id, count(*) AS count
 FROM auth
 GROUP BY time_period, auth.user_id
 ORDER BY count DESC
@@ -293,7 +293,7 @@ LIMIT 10;
 .headers on
 .timer on
 .width 20 0 0 0
-SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.message, count(*) AS count
+SELECT strftime('%Y-%m-%dT%H:00:00', auth.now) AS time_period, auth.message, count(*) AS count
 FROM auth
 GROUP BY time_period, auth.message
 ORDER BY count DESC
@@ -307,7 +307,7 @@ LIMIT 10;
 .headers on
 .timer on
 .width 20 0 0 0
-SELECT strftime('%Y-%m-%d %H:00:00', auth.now) AS time_period, auth.login, count(*) AS count
+SELECT strftime('%Y-%m-%dT%H:00:00', auth.now) AS time_period, auth.login, count(*) AS count
 FROM auth
 GROUP BY time_period, auth.login
 ORDER BY count DESC
