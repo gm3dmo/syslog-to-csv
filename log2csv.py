@@ -21,6 +21,17 @@ def is_pypy3():
     return shutil.which("pypy3")
 
 
+def get_distinct_values(conn, table, column):
+    data = False
+    try:
+        c = conn.cursor()
+        query = f"""select distinct({column}) from {table}"""
+        data = c.execute(query)
+    except Exception as e:
+        logger.error(f"""{e}""")
+    return data
+
+
 def create_connection(sqliteDB):
     conn = None
     try:
