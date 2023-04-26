@@ -77,7 +77,7 @@ SELECT strftime('%Y-%m-%dT%H:00:00', time) as timeframe,
 
 
     footer = """
-FROM hookshot GROUP BY timeframe ORDER BY timeframe
+FROM hookshot GROUP BY timeframe ORDER BY timeframe;
 """
 
     print(f"""{header}{middle} {footer}""")
