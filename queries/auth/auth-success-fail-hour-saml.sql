@@ -1,4 +1,4 @@
-.mode columns
+.mode csv
 .headers on
 .timer on
 .width 20 0 0 0
