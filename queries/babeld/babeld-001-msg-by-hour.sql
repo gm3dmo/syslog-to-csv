@@ -10,4 +10,4 @@ SELECT strftime('%Y-%m-%d %H:00:00', ts) as timeframe,
       sum(case when msg like 'denying auth for non-git user%' then 1 else 0 end) as deny_auth_non_git_user,
       sum(case when msg like 'http op done: (403)%' then 1 else 0 end) as http_op_done_403,
       sum(case when msg like 'Timed out reading request body from client%' then 1 else 0 end) as tmout_read_req_body_from_client
-FROM babeld GROUP BY hour ORDER BY timeframe;
+FROM babeld GROUP BY timeframe ORDER BY timeframe;
