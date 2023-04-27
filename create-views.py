@@ -26,6 +26,9 @@ from log2csv import (
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
+
+
+
 @log2csv.timeit
 def main(args):
     # create logger
@@ -43,10 +46,13 @@ def main(args):
         raise TypeError(f"""view_facets have not been defined for table: {table}""")
         sys.exit(1)
 
+    temporal_column = "now"
+
     logger.info(f"""sqlite database: {sqlite_db}""")
     logger.info(f"""creating views for table: {table}""")
     logger.info(f"""views will be created for: {list_of_columns}""")
     logger.info(f"""SQL file name: {args.sql_file}""")
+
 
     report = []
     report_limit = 10
@@ -54,7 +60,6 @@ def main(args):
 .mode columns
 .headers on
 .width 60 0 0
-
 .print '{table} Summary'
 .print '---------------'"""
     report.append(header)
@@ -74,6 +79,12 @@ def main(args):
             f"""SELECT * FROM {table}_{column_view} order by percentage desc limit {report_limit}; 
 .print ''"""
         )
+        report.append(f"""print ''
+.print '============================================================='
+.print ''
+.width 0 0 0
+SELECT  min({temporal_column}) as "first_record", max({temporal_column}) as "last_record",  printf("%.2f", JULIANDAY(max({temporal_column})) - JULIANDAY(min({temporal_column}))) AS "span (days)" from {table} where now != '';""")
+        
 
     print("\n".join(report))
 
