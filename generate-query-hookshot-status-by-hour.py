@@ -11,7 +11,8 @@ import logging
 import argparse
 import logging.config
 import pathlib
-#import log2csv
+
+# import log2csv
 import string
 
 from log2csv import (
@@ -23,25 +24,24 @@ from log2csv import (
     select_from_view,
     get_view_facets,
     get_view_facets,
-    get_distinct_values
+    get_distinct_values,
 )
 
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
 def stripVowels(text):
-    new_text = text.translate(str.maketrans(dict.fromkeys('aeiouAEIOU')))
-    text = new_text.replace("::","_")
+    new_text = text.translate(str.maketrans(dict.fromkeys("aeiouAEIOU")))
+    text = new_text.replace("::", "_")
     return text
 
 
 def replaceColons(text):
-    return text.replace("::","_")
+    return text.replace("::", "_")
 
 
 def prefixStatus(text):
     return text.replace(f"""status_{text}""")
-
 
 
 def main(args):
@@ -54,7 +54,6 @@ def main(args):
     sqlite_db = args.db_file
     conn = create_connection(sqlite_db)
 
-
     report = []
     report_limit = 10
     header = f""".mode csv
@@ -63,18 +62,15 @@ def main(args):
 SELECT strftime('%Y-%m-%dT%H:00:00', time) as timeframe,
 """
 
-
     body = []
     # remove the final comman from teh final line
 
-
     values = get_distinct_values(conn, args.table_name, "status")
     for v in values:
-        line_template =  f"""sum(case when status like '{v[0]}' then 1 else 0 end) as status_{v[0]}"""
+        line_template = f"""sum(case when status like '{v[0]}' then 1 else 0 end) as status_{v[0]}"""
         body.append(line_template)
 
-    middle = (',\n'.join(body))
-
+    middle = ",\n".join(body)
 
     footer = """
 FROM hookshot GROUP BY timeframe ORDER BY timeframe;
