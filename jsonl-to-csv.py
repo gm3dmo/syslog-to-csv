@@ -49,7 +49,9 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        with open(p, "r") as jsonl_file:
+        open_fn = log2csv.open_file_handle(args.filename_path)
+        with open_fn(args.filename_path, "rb") as jsonl_file:
+            # with open(p, "r") as jsonl_file:
             line_count = 0
             for line in jsonl_file:
                 line_count += 1
