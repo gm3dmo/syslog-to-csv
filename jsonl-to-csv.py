@@ -30,6 +30,7 @@ def main(args):
     # logger.setLevel(logging.DEBUG)
 
     p = pathlib.Path(sys.argv[1])
+    args.filename_path = pathlib.Path(args.filename)
 
     status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
     fieldnames = status_codes[args.log_type][args.section]
@@ -77,7 +78,9 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("filename", help="a syslog file")
+    
+    parser.add_argument("filename", help="a jsonl file")
+    
     parser.add_argument(
         "--log-type",
         action="store",
