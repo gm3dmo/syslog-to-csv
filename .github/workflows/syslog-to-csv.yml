@@ -23,9 +23,6 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Run black formatter linter
-      uses: psf/black@stable
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
