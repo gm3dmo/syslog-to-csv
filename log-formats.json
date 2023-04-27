@@ -290,7 +290,8 @@
             "hashed_token",
             "message",
             "protocol"
-        ]
+        ],
+        "temporal" : ["now", "at"]
     },
     "gitauth": {
         "processor": "kv-to-csv.py",
@@ -327,6 +328,7 @@
             "user_agent",
             "status"
         ]
+        "temporal" : ["now" ]
     },
     "unicorn": {
         "processor": "kv-to-csv.py",
@@ -344,6 +346,9 @@
             "integration_id",
             "path_info",
             "remote_address"
+        ],
+        "temporal" : [
+            "now"
         ],
         "must": "app",
         "core": [
@@ -395,6 +400,7 @@
         "processor": "kv-to-csv.py",
         "contained_in_log": "syslog",
         "view_facets": ["msg", "repo", "user", "user_agent", "proto", "log_level"],
+        "temporal": ["ts"],
         "must": "proto",
         "core": [
             "ac_ms",
