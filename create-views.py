@@ -75,16 +75,18 @@ def main(args):
         view_table = f"{table}_{column_view}"
         query = f"SELECT * FROM {table}_{column_view}"
         select_from_view(conn, query)
+
         report.append(
-            f"""SELECT * FROM {table}_{column_view} order by percentage desc limit {report_limit}; 
+            f"""SELECT * FROM {table}_{column_view} order by percentage desc limit {report_limit};
 .print ''"""
         )
-        report.append(f"""print ''
+
+    report.append(f""".print ''
 .print '============================================================='
 .print ''
 .width 0 0 0
 SELECT  min({temporal_column}) as "first_record", max({temporal_column}) as "last_record",  printf("%.2f", JULIANDAY(max({temporal_column})) - JULIANDAY(min({temporal_column}))) AS "span (days)" from {table} where now != '';""")
-        
+
 
     print("\n".join(report))
 
