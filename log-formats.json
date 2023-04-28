@@ -327,8 +327,8 @@
             "remote_address",
             "user_agent",
             "status"
-        ]
-        "temporal" : ["now" ]
+        ],
+        "temporal" : ["now"]
     },
     "unicorn": {
         "processor": "kv-to-csv.py",
