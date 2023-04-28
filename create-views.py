@@ -21,6 +21,7 @@ from log2csv import (
     drop_view,
     select_from_view,
     get_view_facets,
+    get_temporal_column,
 )
 
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
@@ -43,7 +44,7 @@ def main(args):
         raise TypeError(f"""view_facets have not been defined for table: {table}""")
         sys.exit(1)
 
-    temporal_column = get_temporal_column_name(table):
+    temporal_column = get_temporal_column_name(table)
 
     logger.info(f"""sqlite database: {sqlite_db}""")
     logger.info(f"""creating views for table: {table}""")
