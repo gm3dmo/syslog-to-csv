@@ -271,7 +271,7 @@ def get_table_name(log_type):
             return table_name
 
 
-def get_temporal_column_name(log_type):
+def get_temporal_column(log_type):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
     kv_headers = {}
