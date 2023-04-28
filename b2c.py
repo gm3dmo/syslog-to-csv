@@ -27,6 +27,20 @@ def check_db_exists(dbfile):
             status = True
     return status
 
+def write_logo():
+    logo = """
+Lets have some good old
+
+ _                     _ _     ______           
+| |                   | | |    |  ___|          
+| |__  _   _ _ __   __| | | ___| |_ _   _ _ __  
+| '_ \| | | | '_ \ / _` | |/ _ \  _| | | | '_ \ 
+| |_) | |_| | | | | (_| | |  __/ | | |_| | | | |
+|_.__/ \__,_|_| |_|\__,_|_|\___\_|  \__,_|_| |_|
+
+
+"""
+
 
 def main(args):
     logger = logging.getLogger("b2c")
@@ -75,6 +89,8 @@ def main(args):
         logger.info(f"""No pyp3 sticking with {args.python_interpreter}""")
 
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
+
+    write_logo()
 
     MACHINE_RUNNING = True
 
