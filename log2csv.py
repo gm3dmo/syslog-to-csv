@@ -271,6 +271,24 @@ def get_table_name(log_type):
             return table_name
 
 
+def get_temporal_column_name(log_type):
+    p = pathlib.Path(__file__)
+    log_formats_file = p.parent / "log-formats.json"
+    kv_headers = {}
+    if log_type == "hookshot":
+        log_type = "hookshot-go"
+
+    with open(log_formats_file) as json_file:
+        data = json.load(json_file)
+        if log_type in data:
+            temporal = False
+            if "temporal" in data[log_type]:
+                temporal = data[log_type]["temporal"][0]
+                return temporal 
+            else:
+                return False
+
+
 def get_view_facets(log_type):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
