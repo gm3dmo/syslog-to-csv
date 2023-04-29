@@ -11,6 +11,18 @@
                         ],
         "temporal" : ["now", "at"]
           },
+    "launch-receiver": {
+       "processor": "kv-to-csv.py",
+       "table_name": "launchreceiver",
+       "must": "time",
+       "core": [
+                         "time", "level", "msg", "response_time", "user_agent"
+                       ],
+        "view_facets": [
+                         "level", "msg", "user_agent" 
+                        ],
+        "temporal" : ["now", "at"]
+          },
     "codeload": {
         "processor": "kv-to-csv.py",
         "table_name": "codeload",
