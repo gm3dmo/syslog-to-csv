@@ -11,6 +11,19 @@
                         ],
         "temporal" : ["now", "at"]
           },
+    "authzd": {
+       "processor": "kv-to-csv.py",
+       "table_name": "authzd",
+       "must": "Timestamp",
+       "core": [
+                         "Timestamp", "SeverityText", "Body", "user_agent", "gh.authzd.request.authorize.decision",
+                         "gh.authzd.request.authorize.decision.reason"
+                       ],
+        "view_facets": [
+                         "SeverityText", "Body", "gh.authzd.request.authorize.decision"
+                        ],
+        "temporal" : ["Timestamp" ]
+          },
     "launch-receiver": {
        "processor": "kv-to-csv.py",
        "table_name": "launchreceiver",
