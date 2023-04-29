@@ -1,4 +1,16 @@
 {
+    "launch-deployer": {
+       "processor": "kv-to-csv.py",
+       "table_name": "launchdeployer",
+       "must": "time",
+       "core": [
+                         "time", "level", "msg", "code","request_time"
+                       ],
+        "view_facets": [
+                         "level", "msg", "code" 
+                        ],
+        "temporal" : ["now", "at"]
+          },
     "codeload": {
         "processor": "kv-to-csv.py",
         "table_name": "codeload",
