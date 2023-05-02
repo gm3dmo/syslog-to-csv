@@ -27,7 +27,7 @@ from log2csv import (
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
-def get_sql_status_query(table, divisor):
+def get_sql_status_query(table, divisor, temporal_column):
     query = f"""SELECT strftime('%Y-%m-%d %H:%M:%S', datetime(strftime('%s', now) / {divisor} * {divisor}, 'unixepoch')) AS bucket,
 SUM(CASE WHEN status like '20%' THEN 1 ELSE 0 END) AS status_20x,
 SUM(CASE WHEN status = '401' THEN 1 ELSE 0 END) AS status_401,
@@ -59,8 +59,13 @@ def main(args):
     report = []
     divisors = [ 300, 600, 1200, 3600 ]
     
-    query = get_sql_status_query(table, divisor)
-    print(f"""{query}""")
+    for divisor in divisors:
+         report_file_name = f"""{table}_status_{divisor}"""
+         logger.info(f"""{report_file_name}""")
+         query = get_sql_status_query(table, divisor, temporal_column)
+
+         print(f"""{query}""")
+         print()
 
     header = f"""sqlite3 {sqlite_db} << EOF
 .mode columns
