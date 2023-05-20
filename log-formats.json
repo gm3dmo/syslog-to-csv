@@ -436,7 +436,7 @@
     "babeld": {
         "processor": "kv-to-csv.py",
         "contained_in_log": "syslog",
-        "view_facets": ["msg", "repo", "user", "user_agent", "proto", "log_level"],
+        "view_facets": ["msg", "repo", "user", "user_agent", "proto", "log_level", "ssh_cmd"],
         "temporal": ["ts"],
         "must": "proto",
         "core": [
