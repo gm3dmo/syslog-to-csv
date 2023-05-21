@@ -51,11 +51,9 @@ def main(args):
 
     report = []
     report_limit = 10
-    header = f""".mode columns
-.width 20 20 20 20
+    header = f""".mode csv
 .headers on
-.timer on
-SELECT strftime('%Y-%m-%dT%H:00:00', created_at) as timeframe,
+SELECT strftime('%Y-%m-%dT%H:%M:%S', datetime(strftime('%s', created_at) / 600 * 600, 'unixepoch')) AS timeframe,
 """
 
 
