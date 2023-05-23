@@ -49,6 +49,7 @@ def main(args):
     args.log_directories = [
         "github-logs",
         "system-logs",
+        "babeld-logs",
         "system-logs/split-logs-syslog",
         "system-logs/split-logs-syslog.1",
     ]
