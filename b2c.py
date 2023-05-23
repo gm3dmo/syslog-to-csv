@@ -62,12 +62,18 @@ def main(args):
         "exceptions",
         "auth",
         "gitauth",
-        "syslog",
         "hookshot-go",
         "babeld",
         "gitrpcd",
         "spokesd",
     ]
+
+    logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
+    if args.generate_syslog_csv == True:
+        logger.info("Adding syslog to csv conversion.")
+        args.log_types.append("syslog")
+    logger.info(f"args.log_types: {args.log_types}")
+        
 
     args.sqlite_db_lines = [
         "rm logs.db",
@@ -201,6 +207,19 @@ if __name__ == "__main__":
         dest="bin_dir",
         default="syslog-to-csv",
         help="where the scripts live.",
+    )
+
+    parser.add_argument(
+        "--generate-syslog-csv",
+        action="store_true",
+        help="Generate the syslog csv files",
+    )
+
+    parser.add_argument(
+        "--no-generate-syslog-csv",
+        action="store_false",
+        dest="generate-syslog-csv",
+        help="Dont generating the syslog csv files",
     )
 
     parser.add_argument(
