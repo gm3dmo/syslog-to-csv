@@ -110,7 +110,7 @@ def main(args):
         logger.debug(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
             if args.turbo == True and str(line).endswith(".1"):  
-                logger.info(f"""Skip {line} because turbo mode.""")
+                logger.info(f"""Skipping {line} because turbo flag is engaged (--turbo).""")
                 next
             cmd = f"""{args.python_interpreter} {args.bin_dir}/{splitter} {line}"""
             try:
