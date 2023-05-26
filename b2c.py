@@ -68,6 +68,7 @@ def main(args):
         "spokesd",
     ]
 
+    logger.info(f"args.turbo {args.turbo}")
     logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
     if args.generate_syslog_csv == True:
         logger.info("Adding syslog to csv conversion.")
@@ -108,6 +109,9 @@ def main(args):
         logger.info(f"""Split syslog files out to a file per daemon.\n""")
         logger.debug(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
+            if args.turbo == True and str(line).endswith(".1"):  
+                logger.info(f"""Skipping {line} because turbo flag is engaged (--turbo).""")
+                next
             cmd = f"""{args.python_interpreter} {args.bin_dir}/{splitter} {line}"""
             try:
                 subprocess.run([cmd], check=True, shell=True)
@@ -220,6 +224,19 @@ if __name__ == "__main__":
         action="store_false",
         dest="generate-syslog-csv",
         help="Dont generating the syslog csv files",
+    )
+
+    parser.add_argument(
+        "--turbo",
+        action="store_true",
+        help="Skip the .1 files.",
+    )
+
+    parser.add_argument(
+        "--no-turbo",
+        action="store_false",
+        dest="turbo_mode",
+        help="Generate from .1 log files.",
     )
 
     parser.add_argument(
