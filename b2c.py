@@ -109,7 +109,7 @@ def main(args):
         logger.info(f"""Split syslog files out to a file per daemon.\n""")
         logger.debug(f"""syslog_files: {syslog_files}""")
         for line in syslog_files:
-            if args.turbo == True and (str(line).endswith(".1") or str(line.endswith(".gz"))):  
+            if args.turbo == True and (str(line).endswith(".1") or str(line).endswith(".gz")):  
                 logger.info(f"""Skipping {line} because turbo flag (--turbo)  is engaged we do not procss .1 or .gz files""")
                 next
             cmd = f"""{args.python_interpreter} {args.bin_dir}/{splitter} {line}"""
