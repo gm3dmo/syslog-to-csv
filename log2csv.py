@@ -107,6 +107,9 @@ def create_list_of_syslog_files_to_split(args):
         glob_string = f"""{log_directory}/*"""
         for item in list(args.p.glob(glob_string)):
             logger.debug(f"""{item.name}""")
+            if args.turbo == True and (str(item).endswith(".1") or str(item).endswith(".gz")):
+                logger.info(f"""Skipping {item} because turbo engaged""")
+                continue
             if str(item).endswith(".csv"):
                 continue
             if str(item).endswith(".backup"):
