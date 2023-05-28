@@ -29,22 +29,27 @@ def check_db_exists(dbfile):
 
 def write_logo():
     logo = """
-Lets have some good old
 
- _                     _ _     ______           
-| |                   | | |    |  ___|          
-| |__  _   _ _ __   __| | | ___| |_ _   _ _ __  
-| '_ \| | | | '_ \ / _` | |/ _ \  _| | | | '_ \ 
-| |_) | |_| | | | | (_| | |  __/ | | |_| | | | |
-|_.__/ \__,_|_| |_|\__,_|_|\___\_|  \__,_|_| |_|
-
-
+    
+                  Lets have some good old
+    
+     _                     _ _     ______           
+    | |                   | | |    |  ___|          
+    | |__  _   _ _ __   __| | | ___| |_ _   _ _ __  
+    | '_ \| | | | '_ \ / _` | |/ _ \  _| | | | '_ \ 
+    | |_) | |_| | | | | (_| | |  __/ | | |_| | | | |
+    |_.__/ \__,_|_| |_|\__,_|_|\___\_|  \__,_|_| |_|
+    
+    
 """
+    print(logo)
 
 
 def main(args):
+    write_logo()
     logger = logging.getLogger("b2c")
     logger.setLevel(args.loglevel)
+
     args.p = Path(".")
     args.log_directories = [
         "github-logs",
@@ -70,6 +75,7 @@ def main(args):
 
     logger.info(f"args.turbo {args.turbo}")
     logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
+
     if args.generate_syslog_csv == True:
         logger.info("Adding syslog to csv conversion.")
         args.log_types.append("syslog")
@@ -98,7 +104,6 @@ def main(args):
 
     syslog_files = lc.create_list_of_syslog_files_to_split(args)
 
-    write_logo()
 
     MACHINE_RUNNING = True
 
