@@ -162,7 +162,7 @@ def create_list_of_files_to_convert_to_csv(args):
                     processor = get_processor(log_type)
                     csv_file = f"""{item}.csv"""
                     log_list.append(
-                        f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file}"""
+                        f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file} --log-formats {args.log_formats_file}"""
                     )
     logger.debug(f"""end count_of_log_types: {count_of_log_types}""")
     return log_list

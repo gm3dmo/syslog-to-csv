@@ -73,7 +73,7 @@ def main(args):
     args.log_formats_file = f"""{args.bin_dir}/{args.log_formats_filename}"""
 
     logger.info(f"GHES release in bundle: {args.ghes_release}")
-    logger.info(f"log formats file is: {args.log_formats_filename}")
+    logger.info(f"log formats file is: {args.log_formats_file}")
     lf = lc.get_log_formats(args.log_formats_file)
 
 

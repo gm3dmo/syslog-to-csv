@@ -23,11 +23,13 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 def main(args):
     # create logger
-    logger = logging.getLogger("root")
+    logger = logging.getLogger("jsonl-to-csv")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(logging.INFO)
-    # logger.setLevel(logging.DEBUG)
+
+    logger.info(f"""filename: {args.filename}""")
+    logger.info(f"""log formats: {args.log_formats_file}""")
 
     p = pathlib.Path(sys.argv[1])
     args.filename_path = pathlib.Path(args.filename)
@@ -118,6 +120,7 @@ if __name__ == "__main__":
         action="store_true",
         help="--no-header <dont print the header in the csv",
     )
+
     parser.add_argument(
         "--section",
         action="store",
@@ -125,5 +128,14 @@ if __name__ == "__main__":
         default="core",
         help="--section in `log-formats.json` to match against default is `core`.",
     )
+
+    parser.add_argument(
+        "--log-formats",
+        action="store",
+        dest="log_formats_file",
+        default="log-formats.json",
+        help="--log-formats the location of the log-formats file to use.",
+    )
+
     args = parser.parse_args()
     main(args)

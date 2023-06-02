@@ -19,12 +19,13 @@ logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 @log2csv.timeit
 def main(args):
     # create logger
-    logger = logging.getLogger("root")
+    logger = logging.getLogger("kv-to-csv")
     FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
-    logger.debug(f"""filename: {args.filename}""")
+    logger.info(f"""filename: {args.filename}""")
+    logger.info(f"""log formats: {args.log_formats_file}""")
 
     args.report_data = {}
     args.filename_path = pathlib.Path(args.filename)
@@ -206,12 +207,21 @@ if __name__ == "__main__":
         action="store_true",
         help="--no-line-length don't t add the line length column to the csv. ",
     )
+
     parser.add_argument(
         "--section",
         action="store",
         dest="section",
         default="core",
         help="--section in `log-formats.json` to match against default is `core`.",
+    )
+
+    parser.add_argument(
+        "--log-formats",
+        action="store",
+        dest="log_formats_file",
+        default="log-formats.json",
+        help="--log-formats the location of the log-formats file to use.",
     )
 
     args = parser.parse_args()
