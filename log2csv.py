@@ -27,6 +27,18 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+
+def get_gh_config(gh_conf_file="github.conf"):
+    config = configparser.ConfigParser()
+    config.read(conf_file)
+    return config
+
+
+def get_ghes_version(ghes_config):
+    ghes_version = ghes_config.get('core', 'package-version')
+    return ghes_version
+
+
 def is_pypy3():
     return shutil.which("pypy3")
 
