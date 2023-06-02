@@ -52,13 +52,27 @@ def main(args):
 
     args.bundle_config_file = f"{args.bundle_dir}/metadata/github.conf"
     args.bundle_config = lc.get_gh_config(args.bundle_config_file)
-    args.ghes_version = lc.get_ghes_version(args.bundle_config)
+    args.ghes_release = lc.get_ghes_version(args.bundle_config)
+    args.ghes_feature_release = args.ghes_release[0:3]
+    args.int_ghes_feature_release = int(args.ghes_feature_release.replace('.',''))
 
-    logger.info(f"args.turbo {args.turbo}")
-    logger.info(f"args.bundle_dir {args.bundle_dir}")
-    logger.info(f"args.bundle_config_file {args.bundle_config_file}")
+
+    logger.info(f"args.bundle_dir: {args.bundle_dir}")
+    logger.info(f"args.bundle_config_file: {args.bundle_config_file}")
     logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
-    logger.info(f"args.ghes_version: {args.ghes_version}")
+    logger.info(f"args.turbo: {args.turbo}")
+    logger.info(f"args.ghes_release: {args.ghes_release}")
+    logger.info(f"args.ghes_feature_release: {args.ghes_feature_release}")
+    logger.info(f"args.int_ghes_feature_release: {args.int_ghes_feature_release}")
+
+    if args.int_ghes_feature_release >= 39:
+        args.log_formats="log-formats-3.9.json"
+    else:
+        args.log_formats="log-formats.json"
+
+    logger.info(f"GHES release in bundle: {args.ghes_release}")
+    logger.info(f"log formats file is: {args.log_formats}")
+    
 
 
     args.p = Path(".")
