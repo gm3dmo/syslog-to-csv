@@ -381,6 +381,9 @@ def open_file_handle(fn):
     open_fh = gzip.open if is_gzipped(fn) else open
     return open_fh
 
+def get_log_formats(log_formats_file):
+    logging.info(f"""log_formats_file used: {log_formats_file}""")
+
 
 def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     p = pathlib.Path(__file__)

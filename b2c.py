@@ -66,13 +66,15 @@ def main(args):
     logger.info(f"args.int_ghes_feature_release: {args.int_ghes_feature_release}")
 
     if args.int_ghes_feature_release >= 39:
-        args.log_formats="log-formats-3.9.json"
+        args.log_formats_filename ="log-formats-3.9.json"
     else:
-        args.log_formats="log-formats.json"
+        args.log_formats_filename ="log-formats.json"
+
+    args.log_formats_file = f"""{args.bin_dir}/{args.log_formats_filename}"""
 
     logger.info(f"GHES release in bundle: {args.ghes_release}")
-    logger.info(f"log formats file is: {args.log_formats}")
-    
+    logger.info(f"log formats file is: {args.log_formats_filename}")
+    lf = lc.get_log_formats(args.log_formats_file)
 
 
     args.p = Path(".")
