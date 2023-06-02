@@ -35,16 +35,18 @@ def main(args):
     logging.basicConfig(format=FORMAT)
     logger.setLevel(args.loglevel)
 
+    logger.info(f"""log formats: {args.log_formats_file}""")
+
     sqlite_db = args.db_file
     conn = create_connection(sqlite_db)
     table = args.table_name
     try:
-        list_of_columns = get_view_facets(table)
+        list_of_columns = get_view_facets(args, table)
     except TypeError:
         raise TypeError(f"""view_facets have not been defined for table: {table}""")
         sys.exit(1)
 
-    temporal_column = get_temporal_column(table)
+    temporal_column = get_temporal_column(args, table)
 
     logger.info(f"""sqlite database: {sqlite_db}""")
     logger.info(f"""creating views for table: {table}""")
@@ -119,6 +121,14 @@ if __name__ == "__main__":
         dest="sql_file",
         default="views.sql",
         help="--sql-file <filename sql to report view will be stored.",
+    )
+
+    parser.add_argument(
+        "--log-formats",
+        action="store",
+        dest="log_formats_file",
+        default="log-formats.json",
+        help="--log-formats the location of the log-formats file to use.",
     )
 
     parser.add_argument(

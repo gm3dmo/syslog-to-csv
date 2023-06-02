@@ -156,10 +156,10 @@ def create_list_of_files_to_convert_to_csv(args):
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
-                    table_name = get_table_name(log_type)
+                    table_name = get_table_name(args, log_type)
                     if table_name == False:
                         table_name = log_type
-                    processor = get_processor(log_type)
+                    processor = get_processor(args, log_type)
                     csv_file = f"""{item}.csv"""
                     log_list.append(
                         f"""{args.python_interpreter} {args.bin_dir}/{processor} {item} --log-type {log_type} --csv-file {csv_file} --log-formats {args.log_formats_file}"""
@@ -191,10 +191,10 @@ def create_list_of_csv_to_import_to_sqlite(args):
             else:
                 log_type = get_log_type(item)
                 if log_type in args.log_types:
-                    table_name = get_table_name(log_type)
+                    table_name = get_table_name(args, log_type)
                     if table_name == False:
                         table_name = log_type
-                    processor = get_processor(log_type)
+                    processor = get_processor(args, log_type)
                     logger.debug(item)
                     csv_file = f"""{item}.csv"""
                     log_list.append(
@@ -273,11 +273,9 @@ def create_list_of_files_to_convert(args):
     return (log_list, sqlite_db_chunk, syslog_files)
 
 
-def get_table_name(log_type):
-    p = pathlib.Path(__file__)
-    log_formats_file = p.parent / "log-formats.json"
+def get_table_name(args, log_type):
     kv_headers = {}
-    with open(log_formats_file) as json_file:
+    with open(args.log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
             kv_headers[log_type] = {}
@@ -287,14 +285,12 @@ def get_table_name(log_type):
             return table_name
 
 
-def get_temporal_column(log_type):
-    p = pathlib.Path(__file__)
-    log_formats_file = p.parent / "log-formats.json"
+def get_temporal_column(args, log_type):
     kv_headers = {}
     if log_type == "hookshot":
         log_type = "hookshot-go"
 
-    with open(log_formats_file) as json_file:
+    with open(args.log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
             temporal = False
@@ -305,14 +301,12 @@ def get_temporal_column(log_type):
                 return False
 
 
-def get_view_facets(log_type):
-    p = pathlib.Path(__file__)
-    log_formats_file = p.parent / "log-formats.json"
+def get_view_facets(args, log_type):
     kv_headers = {}
     if log_type == "hookshot":
         log_type = "hookshot-go"
 
-    with open(log_formats_file) as json_file:
+    with open(args.log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
             kv_headers[log_type] = {}
@@ -324,11 +318,9 @@ def get_view_facets(log_type):
                 return False
 
 
-def get_processor(log_type):
-    p = pathlib.Path(__file__)
-    log_formats_file = p.parent / "log-formats.json"
+def get_processor(args, log_type):
     kv_headers = {}
-    with open(log_formats_file) as json_file:
+    with open(args.log_formats_file) as json_file:
         data = json.load(json_file)
         if log_type in data:
             kv_headers[log_type] = {}

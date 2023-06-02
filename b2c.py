@@ -195,7 +195,7 @@ def main(args):
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
             tables = cursor.fetchall()
             for table in tables:
-                line = f"""{args.python_interpreter} {args.bin_dir}/create-views.py --db-file {args.dbfile} --table-name {table[0]} --sql-file {table[0]}.sql"""
+                line = f"""{args.python_interpreter} {args.bin_dir}/create-views.py --db-file {args.dbfile} --table-name {table[0]} --sql-file {table[0]}.sql --log-formats {args.log_formats_file}"""
                 cmd = line
                 try:
                     subprocess.run([cmd], check=True, shell=True)
