@@ -50,6 +50,10 @@ def main(args):
     logger = logging.getLogger("b2c")
     logger.setLevel(args.loglevel)
 
+    logger.info(f"args.turbo {args.turbo}")
+    logger.info(f"args.bundle {args.bundle_dir}")
+    logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
+
     args.p = Path(".")
     args.log_directories = [
         "github-logs",
@@ -73,8 +77,6 @@ def main(args):
         "spokesd",
     ]
 
-    logger.info(f"args.turbo {args.turbo}")
-    logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
 
     if args.generate_syslog_csv == True:
         logger.info("Adding syslog to csv conversion.")
@@ -216,6 +218,14 @@ if __name__ == "__main__":
         dest="bin_dir",
         default="syslog-to-csv",
         help="where the scripts live.",
+    )
+
+    parser.add_argument(
+        "--bundle-dir",
+        action="store",
+        dest="bundle_dir",
+        default=".",
+        help="where the bundle lives"
     )
 
     parser.add_argument(
