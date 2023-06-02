@@ -13,6 +13,7 @@ import logging
 import shutil
 import logging.config
 import unicodedata
+import configparser
 
 logger = logging.getLogger("log2csv")
 
@@ -30,7 +31,7 @@ class bcolors:
 
 def get_gh_config(gh_conf_file="github.conf"):
     config = configparser.ConfigParser()
-    config.read(conf_file)
+    config.read(gh_conf_file)
     return config
 
 

@@ -50,9 +50,16 @@ def main(args):
     logger = logging.getLogger("b2c")
     logger.setLevel(args.loglevel)
 
+    args.bundle_config_file = f"{args.bundle_dir}/metadata/github.conf"
+    args.bundle_config = lc.get_gh_config(args.bundle_config_file)
+    args.ghes_version = lc.get_ghes_version(args.bundle_config)
+
     logger.info(f"args.turbo {args.turbo}")
-    logger.info(f"args.bundle {args.bundle_dir}")
+    logger.info(f"args.bundle_dir {args.bundle_dir}")
+    logger.info(f"args.bundle_config_file {args.bundle_config_file}")
     logger.info(f"args.generate_syslog_csv: {args.generate_syslog_csv}")
+    logger.info(f"args.ghes_version: {args.ghes_version}")
+
 
     args.p = Path(".")
     args.log_directories = [
