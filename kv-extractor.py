@@ -51,10 +51,17 @@ def main(args):
 
     log_entry = sys.stdin.read()
 
-    r = parse_kv_pairs_two(log_entry)
-    print(f"""log entry: {log_entry}""")
-    print(r)
-    print(f"""keys: {r.keys()}""")
+    lines = log_entry.splitlines()
+
+    results = {}
+    for i, line in enumerate(lines):
+        r = parse_kv_pairs_two(log_entry)
+        results.update(r)
+        #results[i] = r
+
+    print(f"""keys: {results.keys()}""")
+    print(f"""length keys: {len(results.keys())}""")
+    print ("woo hoo")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
