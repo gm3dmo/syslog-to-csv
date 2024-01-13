@@ -61,6 +61,7 @@ def main(args):
         "babeld-logs",
         "system-logs/split-logs-syslog",
         "system-logs/split-logs-syslog.1",
+        "docker/container-logs",
     ]
 
     priority_logs = []
