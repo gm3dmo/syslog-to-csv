@@ -11,6 +11,7 @@ import sys
 import shlex
 import logging
 import argparse
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -57,30 +58,22 @@ def main(args):
     for i, line in enumerate(lines):
         r = parse_kv_pairs_two(log_entry)
         results.update(r)
-        #results[i] = r
 
-    print(f"""keys: {results.keys()}""")
-    print(f"""length keys: {len(results.keys())}""")
-    print ("woo hoo")
+    logger.debug(f"""keys: {results.keys()}""")
+    logger.debug(f"""length keys: {len(results.keys())}""")
+
+    print(json.dumps(list(results.keys())))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--power-config", action="store", dest="power_config", default=".gh-api-examples.conf", help="This is the config file to use to access variables for the power.")
     parser.add_argument("-e", "--extension", action="store", dest="extension", default="c")
 
-    parser.add_argument(
-        "--issues",
-        action="store",
-        dest="number_of_issues",
-        default=3,
-        help="The number of issues to create.",
-    )
     parser.add_argument(
         "-l",
         "--loglevel",
         action="store",
         dest="loglevel",
-        default="debug",
+        default="info",
         help="Set the log level",
     )
 
