@@ -3,9 +3,8 @@
 Module Docstring
 """
 
-__author__ = "Your Name"
+__author__ = "David Morris @gm3dmo"
 __version__ = "0.1.0"
-__license__ = "MIT"
 
 import sys
 import shlex
