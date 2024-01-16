@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module Docstring
+An experiment in extracting key value pairs from files.
 """
 
 __author__ = "David Morris @gm3dmo"
