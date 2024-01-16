@@ -11,20 +11,35 @@ import shlex
 import logging
 import argparse
 import json
+import configparser
 
 from dataclasses import dataclass
-
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class Report:
-    # Report on the number of lines processed/failed etc.
-    lines_total: int = 0
-    lines_parsed: int = 0
-    lines_with_read_failed: int = 0
-    lines_with_parse_failed: int = 0
+    def __init__(self):
+        self.file_stats = {}
+        self.ghes_config = None
+        self.ghes_version = None
+        self.lines_total = 0
+        self.lines_parsed = 0
+        self.lines_with_read_failed = 0
+        self.lines_with_parse_failed = 0
+
+    def get_ghes_config(self, gh_conf_file):
+        config = configparser.ConfigParser()
+        config.read(gh_conf_file)
+        self.ghes_config = config
+
+    def get_ghes_version(self):
+        self.ghes_version = self.ghes_config.get('core', 'package-version')
+
+    def __str__(self):
+            return f'Report(file_stats={self.file_stats}, ghes_version={self.ghes_version})'
+            #return f'Report(ghes_version={self.ghes_version}, lines_total={self.lines_total}, lines_parsed={self.lines_parsed}, lines_with_read_failed={self.lines_with_read_failed}, lines_with_parse_failed={self.lines_with_parse_failed})'
 
 
 def parse_kv(text):
@@ -60,21 +75,23 @@ def main(args):
     logger = logging.getLogger(__name__)
 
     report = Report()
+    report.get_ghes_config("../metadata/github.conf")
+    report.get_ghes_version()
+    print(report.ghes_version)
+
     results = {}
 
     for  (line_number, line, exception) in read_file_line_by_line(args.kv_input_file):
         if line is None:
-            logger.warning(f"failed to read {args.kv_input_file} at line:{line_number}")
-            report.lines_with_read_failed += 1
+            report.file_stats.setdefault(args.kv_input_file, {"lines_with_read_failed": 0, "lines_total": 0, "lines_parsed": 0, "lines_with_parse_failures": 0})["lines_with_read_failed"] += 1
             continue    
-        report.lines_total+= 1
+        report.file_stats.setdefault(args.kv_input_file, {"lines_with_read_failed": 0, "lines_total": 0, "lines_parsed": 0, "lines_with_parse_failures": 0})["lines_total"] += 1
         try:
            r = parse_kv(line)
-           report.lines_parsed += 1
+           report.file_stats[args.kv_input_file]["lines_parsed"] += 1
            results.update(r)
         except Exception as e:
-            logger.warning(f"failed to parse the file {args.kv_input_file} at line:{line_number}: {e}")
-            report.lines_with_parse_failures += 1
+            report.file_stats[args.kv_input_file]["lines_with_parse_failures"] += 1
 
     logger.debug(f"""keys: {results.keys()}""")
     logger.debug(f"""length keys: {len(results.keys())}""")
