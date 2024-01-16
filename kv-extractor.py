@@ -13,56 +13,62 @@ import logging
 import argparse
 import json
 
+from dataclasses import dataclass
+
+@dataclass
+class Report:
+    lines_total: int = 0
+    lines_processed: int = 0
+    lines_with_errors: int = 0
+
 logger = logging.getLogger(__name__)
 
 
-def parse_kv_pairs_two(text):
-    try:
-        tokenizer = shlex.shlex(text, posix=True)
-    except Exception:
-        raise
+def parse_kv(text):
+    tokenizer = shlex.shlex(text, posix=True)
     tokenizer.commenters = ""
     tokenizer.whitespace_split = True
     tokenizer.whitespace = " "
     result = {}
 
-    try:
-        for token in tokenizer:
-            if "=" in token:
-                logger.debug(f"""token: {token}""")
-                key, value = token.split("=", 1)  # Split at the first equal sign only
-                result[key] = value
-                #result.update(dict(x.split("=", 1) for x in token.split(",",1)))
-    except ValueError:
-        error = tokenizer.token.splitlines()[0]
-        logger.info("parsing problem tokenzer leader: " + tokenizer.error_leader())
-        logger.info("partsing problem text: " + text)
+    for token in tokenizer:
+        if "=" in token:
+            logging.debug(f"""token: {token}""")
+            key, value = token.split("=", 1)  # Split at the first equal sign only
+            result[key] = value
 
     return result
-
 
 
 def main(args):
     """ Main entry point of the app """
 
-    loglevel = args.loglevel.upper()
-    logging.basicConfig(level=loglevel)
+    log_level = args.log_level.upper()
+    logging.basicConfig(level=log_level)
     logger = logging.getLogger(__name__)
-
 
     log_entry = sys.stdin.read()
 
     lines = log_entry.splitlines()
 
+    report = Report()
+
     results = {}
     for i, line in enumerate(lines):
-        r = parse_kv_pairs_two(log_entry)
-        results.update(r)
+        report.lines_total+= 1
+        try:
+           r = parse_kv(log_entry)
+           results.update(r)
+        except Exception as e:
+           logger.error(f"Failed to parse line {i}: {e}")
 
     logger.debug(f"""keys: {results.keys()}""")
     logger.debug(f"""length keys: {len(results.keys())}""")
 
+    print("------")
     print(json.dumps(list(results.keys())))
+    print("------")
+    print(report)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -70,9 +76,9 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-l",
-        "--loglevel",
+        "--log-level",
         action="store",
-        dest="loglevel",
+        dest="log_level",
         default="info",
         help="Set the log level",
     )
