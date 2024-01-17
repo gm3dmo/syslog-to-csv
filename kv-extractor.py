@@ -24,22 +24,30 @@ class Report:
         self.file_stats = {}
         self.ghes_config = None
         self.ghes_version = None
+        self.ghes_feature_version = None
         self.lines_total = 0
         self.lines_parsed = 0
         self.lines_with_read_failed = 0
         self.lines_with_parse_failed = 0
+        self.kv_pairs_extracted = 0
 
     def get_ghes_config(self, gh_conf_file):
         config = configparser.ConfigParser()
         config.read(gh_conf_file)
         self.ghes_config = config
+        self.get_ghes_version()
+        self.get_ghes_feature_version()
 
     def get_ghes_version(self):
         self.ghes_version = self.ghes_config.get('core', 'package-version')
 
+    def get_ghes_feature_version(self):
+        # https://docs.github.com/en/enterprise-server@3.11/admin/overview/about-upgrades-to-new-releases
+        release, feature, patch = self.ghes_version.split('.')
+        self.ghes_feature_version = (f"{release}.{feature}")
+
     def __str__(self):
-            return f'Report(file_stats={self.file_stats}, ghes_version={self.ghes_version})'
-            #return f'Report(ghes_version={self.ghes_version}, lines_total={self.lines_total}, lines_parsed={self.lines_parsed}, lines_with_read_failed={self.lines_with_read_failed}, lines_with_parse_failed={self.lines_with_parse_failed})'
+            return f'Report(file_stats={self.file_stats}, ghes_version={self.ghes_version}, ghes_feature_version={self.ghes_feature_version}, lines_total={self.lines_total}, lines_parsed={self.lines_parsed}, lines_with_read_failed={self.lines_with_read_failed}, lines_with_parse_failed={self.lines_with_parse_failed}, kv_pairs_extracted={self.kv_pairs_extracted})'
 
 
 def parse_kv(text):
@@ -76,8 +84,7 @@ def main(args):
 
     report = Report()
     report.get_ghes_config("../metadata/github.conf")
-    report.get_ghes_version()
-    print(report.ghes_version)
+    print(report.ghes_feature_version)
 
     results = {}
 
@@ -94,12 +101,17 @@ def main(args):
             report.file_stats[args.kv_input_file]["lines_with_parse_failures"] += 1
 
     logger.debug(f"""keys: {results.keys()}""")
-    logger.debug(f"""length keys: {len(results.keys())}""")
+
+    report.file_stats[args.kv_input_file]["kv_pairs_extracted"] = len(results.keys())
+    
+    keys_extracted = len(results.keys())
 
     print("------")
     print(json.dumps(list(results.keys())))
     print("------")
+
     print(report)
+
 
 
 if __name__ == "__main__":
