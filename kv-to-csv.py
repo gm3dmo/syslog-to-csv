@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __version__ = "0.1.0"
 
@@ -11,25 +11,26 @@ import logging
 import argparse
 import logging.config
 import pathlib
-import log2csv
+import bundlefun as bf
 
-logging.basicConfig(stream=sys.stderr, level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-
-@log2csv.timeit
 def main(args):
-    # create logger
-    logger = logging.getLogger("root")
-    FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
-    logging.basicConfig(format=FORMAT)
-    logger.setLevel(args.loglevel)
+    """kv-to-csv - process a file containing key value pairs and outputs a csv file"""
+    log_level = args.log_level.upper()
+    logging.basicConfig(level=log_level)
+    logger = logging.getLogger('bf')
+    loggers = [logging.getLogger(name) for name in logging.root.manager.loggerDict]
+
+    for logger in loggers:
+        logger.setLevel(level=log_level)
 
     logger.debug(f"""filename: {args.filename}""")
 
     args.report_data = {}
     args.filename_path = pathlib.Path(args.filename)
-    args.file_size_bytes = log2csv.get_filesize(args.filename_path)
-    args.file_size_human = log2csv.sizer(args.file_size_bytes)
+    args.file_size_bytes = bf.get_filesize(args.filename_path)
+    args.file_size_human = bf.sizer(args.file_size_bytes)
 
     args.report_data["start_timestamp"] = time.time()
 
@@ -43,13 +44,8 @@ def main(args):
         args.csv_path = pathlib.Path(args.csv_file)
 
     args.report_data["filename_path"] = args.filename_path
-    logger.info(f"""filename: {args.filename_path}""")
-    logger.info(f"""filename.stem: {args.filename_path.stem}""")
-    logger.info(f"""filename.suffix: ({args.filename_path.suffix})""")
-    logger.info(f"""filename.size: {args.file_size_human}""")
-    logger.info(f"""filename.log_type: {args.log_type}""")
 
-    status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
+    status_codes = bf.get_wanted_kv_headers(logtype=args.log_type)
     logger.debug(f"""status_codes: {status_codes}""")
 
     fieldnames = status_codes[args.log_type][args.section]
@@ -65,7 +61,7 @@ def main(args):
         writer = csv.DictWriter(csvhandle, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        open_fn = log2csv.open_file_handle(args.filename_path)
+        open_fn = bf.open_file_handle(args.filename_path)
         with open_fn(args.filename_path, "rb") as file:
             lines_processed_counter = 0
             for line_count, line in enumerate(file.readlines()):
@@ -83,11 +79,12 @@ def main(args):
                     continue
 
                 if args.section == "core":
-                    # delete the keys of parsed line we don't want
                     try:
-                        raw_parsed_line = log2csv.parse_kv_pairs_two(
+                        logger.debug(f"""parsing raw line {line}""")
+                        raw_parsed_line = bf.parse_kv_pairs_two(
                             line.rstrip("\r\n")
                         )
+                        logger.debug("""parsing raw line done: {raw_parsed_line}""")
                         parsed_line = {
                             k: raw_parsed_line[k]
                             for k in status_codes[args.log_type][args.section]
@@ -128,33 +125,29 @@ def main(args):
     args.report_data["csv_file"] = args.csv_file
     args.report_data["skipped_count"] = skipped_count
     args.report_data["csv_size_in_bytes"] = os.stat(args.csv_file).st_size
-    args.report_data["human_size_of_csv"] = log2csv.sizer(
+    args.report_data["human_size_of_csv"] = bf.sizer(
         args.report_data["csv_size_in_bytes"]
     )
 
-    logger.info(
+    logger.debug(
         f"""Converted file: {args.filename_path} size type: {args.log_type} to CSV file {args.report_data["csv_file"]} size {args.report_data["csv_size_in_bytes"]} bytes or roughly {args.report_data["human_size_of_csv"]}.\n\n"""
     )
-    logger.info(
+    logger.debug(
         f"""Processed: {args.report_data["filename_path"]}\nLines in file={lines_processed_counter} lines.\nSkipped={args.report_data["skipped_count"]}\nCSV file: {args.report_data["csv_file"]} """
     )
 
 
 if __name__ == "__main__":
-    """This is executed when run from the command line"""
+    """Process the key value pairs found on a line and write them to a format like CSV."""
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("filename", help="a syslog file")
-
+    parser.add_argument("filename", help="a syslog file to be processed")
     parser.add_argument(
-        "-d",
-        "--debug",
-        action="store_const",
-        dest="loglevel",
-        const=logging.DEBUG,
-        default=logging.INFO,
-        # default=logging.WARNING,
-        help="debug(-d, --debug, etc)",
+        "--log-level",
+        action="store",
+        dest="log_level",
+        default="info",
+        help="Set the log level",
     )
 
     parser.add_argument(

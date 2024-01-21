@@ -28,6 +28,7 @@ from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class Report:
     def __init__(self):
@@ -47,6 +48,7 @@ class Report:
         self.ghes_config = config
         self.get_ghes_version()
         self.get_ghes_feature_version()
+        self.log_formats_file = 'log-formats.json'
 
     def get_ghes_version(self):
         self.ghes_version = self.ghes_config.get('core', 'package-version')
@@ -85,18 +87,6 @@ def read_file_line_by_line(filename):
                 yield line_number, line, None
     except Exception as e:
         yield line_number, None, str(e)
-
-
-
-def get_gh_config(gh_conf_file="github.conf"):
-    config = configparser.ConfigParser()
-    config.read(conf_file)
-    return config
-
-
-def get_ghes_version(ghes_config):
-    ghes_version = ghes_config.get('core', 'package-version')
-    return ghes_version
 
 
 def is_pypy3():
@@ -444,12 +434,12 @@ def open_file_handle(fn):
 def get_wanted_kv_headers(logtype="sample", extract_type="core"):
     p = pathlib.Path(__file__)
     log_formats_file = p.parent / "log-formats.json"
-    logging.info(f"""log_formats_file used: {log_formats_file}""")
+    logging.debug(f"""log_formats_file used: {log_formats_file}""")
     kv_headers = {}
     with open(log_formats_file) as json_file:
         data = json.load(json_file)
         if logtype in data:
-            logging.info(
+            logging.debug(
                 f"""logtype ({logtype}) is known and can be processed: {logtype}
 extracting {len(data[logtype]['core'])} kv fields"""
             )
@@ -489,6 +479,7 @@ def timeit(method):
 
 
 def parse_kv_pairs_two(text):
+    logger.debug(f"""parse_kv_pairs_two: ({text})""")
     try:
         tokenizer = shlex.shlex(text, posix=True)
     except Exception:

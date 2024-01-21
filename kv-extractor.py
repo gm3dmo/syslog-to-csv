@@ -54,7 +54,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('kv_input_file', help='Full path to a log file to process')
     parser.add_argument(
-        "-l",
         "--log-level",
         action="store",
         dest="log_level",
