@@ -11,7 +11,7 @@ import logging.config
 import argparse
 import datetime
 import pathlib
-import log2csv as lc
+import bundlefun as lc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
