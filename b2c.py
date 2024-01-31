@@ -14,7 +14,7 @@ import datetime
 import pathlib
 import subprocess
 from pathlib import Path
-import log2csv as lc
+import bundlefun as lc
 from pathlib import Path
 
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
