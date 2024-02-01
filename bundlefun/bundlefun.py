@@ -23,6 +23,8 @@ import unicodedata
 import configparser
 import logging.config
 
+from importlib.metadata import distribution
+
 from dataclasses import dataclass
 
 
@@ -587,3 +589,10 @@ def fix_syslog_date(original_date, base_year=""):
     return (real_date, rd, real_datetime_obj)
 
 
+if __name__ == "__main__":
+
+    dist = distribution("my-module-name")
+
+    data_path = dist.locate_file("format.json")
+
+    print(type(data_path), data_path)
