@@ -27,7 +27,6 @@ from bundlefun import (
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 
-@log2csv.timeit
 def main(args):
     # create logger
     logger = logging.getLogger("root")
