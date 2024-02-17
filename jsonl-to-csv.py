@@ -32,7 +32,7 @@ def main(args):
     p = pathlib.Path(sys.argv[1])
     args.filename_path = pathlib.Path(args.filename)
 
-    status_codes = log2csv.get_wanted_kv_headers(logtype=args.log_type)
+    status_codes = bundlefun.get_wanted_kv_headers(logtype=args.log_type)
     fieldnames = status_codes[args.log_type][args.section]
 
     if args.no_line_number is False:
@@ -50,7 +50,7 @@ def main(args):
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         if args.no_header == False:
             writer.writeheader()
-        open_fn = log2csv.open_file_handle(args.filename_path)
+        open_fn = bundlefun.open_file_handle(args.filename_path)
         with open_fn(args.filename_path, "rb") as jsonl_file:
             # with open(p, "r") as jsonl_file:
             line_count = 0
