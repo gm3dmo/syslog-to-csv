@@ -14,7 +14,7 @@ import logging
 import argparse
 import logging.config
 import pathlib
-import log2csv
+import bundlefun 
 from pathlib import Path
 
 
