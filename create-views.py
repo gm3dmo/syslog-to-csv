@@ -11,9 +11,9 @@ import logging
 import argparse
 import logging.config
 import pathlib
-import log2csv
+import bundlefun
 
-from log2csv import (
+from bundlefun import (
     create_connection,
     get_create_view_text,
     get_drop_view_text,
