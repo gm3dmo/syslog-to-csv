@@ -200,6 +200,12 @@ if __name__ == "__main__":
         help="--no-line-length don't t add the line length column to the csv. ",
     )
     parser.add_argument(
+        "--ghes-version",
+        action="store",
+        dest="ghes_version",
+        help="version of ghes",
+    )
+    parser.add_argument(
         "--section",
         action="store",
         dest="section",
