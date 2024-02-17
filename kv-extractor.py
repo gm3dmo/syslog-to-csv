@@ -6,6 +6,7 @@ An experiment in extracting key value pairs from files.
 __author__ = "David Morris gm3dmo@gmail.com"
 __version__ = "0.1.0"
 
+import sys
 import json
 import logging
 import argparse
@@ -20,8 +21,7 @@ def main(args):
     logger = logging.getLogger(__name__)
 
     report = bf.Report()
-    #report.get_ghes_config("../metadata/github.conf")
-    print(report.ghes_feature_version)
+    report.get_ghes_config("../metadata/github.conf")
 
     results = {}
 
@@ -43,11 +43,9 @@ def main(args):
     
     keys_extracted = len(results.keys())
 
-    print("------")
     print(json.dumps(list(results.keys())))
-    print("------")
 
-    print(report)
+    print(report, file=sys.stderr)
 
 
 if __name__ == "__main__":
