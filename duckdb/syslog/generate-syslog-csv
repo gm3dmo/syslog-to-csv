@@ -1,0 +1,2 @@
+
+pypy3 syslog-to-csv.py --csv-file syslog.csv ../system-logs/syslog
