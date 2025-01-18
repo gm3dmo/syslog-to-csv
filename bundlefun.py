@@ -501,8 +501,8 @@ def parse_kv_pairs_two(text):
     return result
 
 
-def get_csv_handle(output_filename, fieldnames):
-    csv_file = open(output_filename, "w")
+def get_csv_handle(output_filename, fieldnames, mode="w"):
+    csv_file = open(output_filename, mode=mode)
     csv_writer = csv.DictWriter(
         csv_file, delimiter=",", fieldnames=fieldnames, quoting=csv.QUOTE_NONNUMERIC
     )

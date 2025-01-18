@@ -23,6 +23,10 @@ def main(args):
     logger = logging.getLogger("syslog-to-csv")
     logger.setLevel(args.loglevel)
 
+    if args.append:
+        args.header = "no"
+
+
     deletions_handler = {
         "64charguids": lc.wipe_64charguids_from_string,
         "guids": lc.wipe_guids_from_string,
@@ -45,6 +49,8 @@ def main(args):
     args.report_data["start_timestamp"] = time.time()
 
     logger.info(f"""filename: {args.filename_path}""")
+    logger.info(f"""append_mode: {args.append}""")
+    logger.info(f"""print header: {args.header}""")
     logger.info(f"""filename.stem: {args.filename_path.stem}""")
     logger.info(f"""filename.suffix: ({args.filename_path.suffix})""")
     logger.info(f"""filename.size: {args.file_size_human}""")
@@ -52,8 +58,9 @@ def main(args):
 
     skipped_count = 0
 
-    csv_writer = lc.get_csv_handle(args.output_filename, fieldnames=syslog_fieldnames)
-
+    # Get the appropriate mode for the CSV writer based on append flag
+    csv_mode = 'a' if args.append else 'w'
+    csv_writer = lc.get_csv_handle(args.output_filename, fieldnames=syslog_fieldnames, mode=csv_mode)
     if args.header == "yes":
         csv_writer.writeheader()
 
@@ -64,6 +71,8 @@ def main(args):
     split_at_column = 15
 
     open_fn = lc.open_file_handle(args.filename_path)
+    # Note: The input file should always be opened in read mode ("rb")
+    # Append mode only applies to the output CSV file
     with open_fn(args.filename_path, "rb") as file:
         for line_number, line in enumerate(file):
             try:
@@ -189,6 +198,13 @@ if __name__ == "__main__":
         dest="header",
         default="yes",
         help="--header no <dont print the header in the csv",
+    )
+
+    parser.add_argument(
+    "--append",
+    action="store_true",
+    default=False,
+    help="Append to existing CSV file instead of creating new one",
     )
 
     args = parser.parse_args()
