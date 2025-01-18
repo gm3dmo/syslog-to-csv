@@ -5,4 +5,4 @@ SELECT
     COUNT(*) as total_lines
 FROM syslog 
 GROUP BY daemon 
-ORDER BY avg_line_length DESC;"
+ORDER BY avg_line_length DESC;
