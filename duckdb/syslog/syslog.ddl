@@ -1,3 +1,3 @@
+.timer on
 CREATE TABLE syslog AS
-·     SELECT * FROM 'syslog-to-csv/syslog.csv';
-
+     SELECT * FROM 'syslog-to-csv/syslog.csv';
