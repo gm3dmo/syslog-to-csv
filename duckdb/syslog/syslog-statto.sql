@@ -11,5 +11,3 @@ SELECT
 FROM syslog 
 GROUP BY daemon 
 ORDER BY total_length DESC;
-EOQ
-)
