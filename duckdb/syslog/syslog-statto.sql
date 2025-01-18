@@ -10,4 +10,5 @@ SELECT
     COUNT(*) as total_lines
 FROM syslog 
 GROUP BY daemon 
-ORDER BY total_length DESC;
+ORDER BY total_length DESC
+LIMIT 20;
