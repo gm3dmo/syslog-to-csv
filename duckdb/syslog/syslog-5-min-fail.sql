@@ -1,3 +1,4 @@
+.mode csv
 SELECT
   to_timestamp(floor(epoch(real_date) / 300) * 300) AS five_min_bucket,
   daemon,
