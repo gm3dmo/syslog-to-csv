@@ -1,0 +1,182 @@
+:root {
+
+    /* Text colours */
+    --govuk-text-colour: #0b0c0c;
+    --govuk-secondary-text-colour: #505a5f;
+
+    /* Link colours */
+    --govuk-link-colour: #1d70b8;
+    --govuk-link-hover-colour: #003078;
+    --govuk-link-visited-colour: #4c2c92;
+    --govuk-link-active-colour: #0b0c0c;
+
+    /* Border colours */
+    --govuk-border-colour: #b1b4b6;
+    --govuk-input-border-colour: #0b0c0c;
+
+    /* Focus state */
+    --govuk-focus-colour: #ffdd00;  /* For keyboard focus indication */
+    --govuk-focus-text-colour: #0b0c0c;
+
+    /* Error state */
+    --govuk-error-colour: #d4351c;  /* For error messages */
+
+    /* Success state */
+    --govuk-success-colour: #00703c;  /* For success messages */
+
+    /* Brand colour */
+    --govuk-brand-colour: #1d70b8;
+
+    /* Font families */
+    --monospace-font: monospace;
+    --sans-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* Existing variables */
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    
+    /* GOV.UK colours */
+    --govuk-red: #d4351c;
+    --govuk-yellow: #ffdd00;
+    --govuk-green: #00703c;
+    --govuk-blue: #1d70b8;
+    --govuk-dark-blue: #003078;
+    --govuk-light-blue: #5694ca;
+    --govuk-purple: #4c2c92;
+    --govuk-black: #0b0c0c;
+    --govuk-dark-grey: #505a5f;
+    --govuk-mid-grey: #b1b4b6;
+    --govuk-light-grey: #f3f2f1;
+    --govuk-white: #ffffff;
+    --govuk-light-purple: #6f72af;
+    --govuk-bright-purple: #912b88;
+    --govuk-pink: #d53880;
+    --govuk-light-pink: #f499be;
+    --govuk-orange: #f47738;
+    --govuk-brown: #b58840;
+    --govuk-light-green: #85994b;
+    --govuk-turquoise: #28a197;
+
+}
+body {
+    font-family: var(--sans-font);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--text-color);
+}
+
+.input-container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea#logInput {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--govuk-mid-grey);
+    border-radius: 4px;
+    font-family: var(--monospace-font);
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea#logInput:focus {
+    outline: 3px solid var(--govuk-yellow);
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px;
+}
+
+button {
+    background-color: var(--govuk-green);
+    color: var(--govuk-white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.results-container {
+    margin-top: 20px;
+    text-align: left;
+    padding: 20px;
+    background-color: var(--govuk-white);
+    border: 1px solid var(--govuk-mid-grey);
+    border-radius: 4px;
+    display: none;
+}
+
+.log-container {
+    font-family: var(--monospace-font);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.log-line {
+    display: flex;
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+.line-number {
+    color: var(--govuk-dark-grey);
+    min-width: 3em;
+    text-align: right;
+    margin-right: 1em;
+    user-select: none;
+}
+
+.line-content {
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.log-line.highlighted {
+    background-color: var(--govuk-yellow);
+}
+
+.duplicate-report {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--govuk-white);
+    border: 1px solid var(--govuk-mid-grey);
+    border-radius: 4px;
+    display: none;
+}
+
+.duplicate-report h2 {
+    color: var(--govuk-black);
+    margin-top: 0;
+}
+
+.duplicate-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: var(--govuk-light-grey);
+    border-radius: 4px;
+}
+
+.duplicate-value {
+    font-family: var(--monospace-font);
+    color: var(--govuk-blue);
+}
+
+.duplicate-keys {
+    margin-top: 5px;
+    font-family: var(--monospace-font);
+    color: var(--govuk-dark-grey);
+} 
