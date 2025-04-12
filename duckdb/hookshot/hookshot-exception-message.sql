@@ -1,3 +1,4 @@
+.mode csv
 SELECT
   date_trunc('minute', CAST("Timestamp" AS TIMESTAMP)) - INTERVAL '1 minute' * (EXTRACT(MINUTE FROM CAST("Timestamp" AS TIMESTAMP)) % 10) AS timeframe,
   "http.status_code", "gh.repo.name_with_owner", "gh.request.api.route",  COUNT(*) AS count
